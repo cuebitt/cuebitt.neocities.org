@@ -1,0 +1,14 @@
+{
+  "increasr": {
+    "itemName": "increasr",
+    "desc": "A counter that site visitors can increment. Provided by inc.reasrng.net",
+    "imgUrl": "https://raw.githubusercontent.com/cuebitt/webcomponents/main/components/increasr/meta/preview.png",
+    "imgAlt": "increasr component preview",
+    "source": {
+      "user": "cuebitt",
+      "repository": "webcomponents",
+      "filePath": "components/increasr/increasr.js",
+      "helpPath": "components/increasr/README.md"
+    }
+  }
+}

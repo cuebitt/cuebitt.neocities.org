@@ -1,0 +1,330 @@
+<!-- 
+    Cuebitt's Web Components Shop
+    
+    This is so bad. If you're seeing this mess please don't judge me.
+    I have nothing to offer you in return other than my Web Components.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script>
+      document.addEventListener("alpine:init", () => {
+        Alpine.store("modalOpen", {
+          about: false,
+          cart: false,
+          genTags: false,
+        });
+
+        Alpine.store("shoppingCart", {
+          cartItems: new Set(),
+
+          add(id) {
+            console.log("added to cart: ", id);
+            this.cartItems.add(id);
+          },
+        });
+
+        Alpine.store("generatedScriptTags", {
+          genTags: [],
+          genHelp: [],
+        });
+      });
+    </script>
+    <script type="module" src="script.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
+    <link
+      href="https://unpkg.com/basscss@8.0.2/css/basscss.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/css.gg/icons/icons.css"
+      rel="stylesheet"
+    />
+    <style>
+      .buttonlink {
+        margin: calc(var(--pico-nav-link-spacing-vertical) * -1)
+          calc(var(--pico-nav-link-spacing-horizontal) * -1);
+      }
+
+      .buttonlink:is(:hover, :active, :focus) {
+        --pico-background-color: transparent;
+      }
+
+      .item-card {
+        max-width: 15rem;
+      }
+    </style>
+    <title>Web Component Shop</title>
+  </head>
+  <body
+    x-data="{
+    shopItems: {}
+}"
+    x-init="shopItems = await (await fetch('shopItems.json')).json();"
+  >
+    <header class="container">
+      <nav>
+        <ul>
+          <li><strong>Web Component Shop</strong></li>
+        </ul>
+        <ul x-data>
+          <li>
+            <button
+              role="link"
+              @click="$store.modalOpen.about = true;"
+              class="border-none buttonlink"
+            >
+              About
+            </button>
+          </li>
+          <li>
+            <button class="secondary" @click="$store.modalOpen.cart = true;">
+              <span class="flex items-center mxn2">
+                <span class="px2">Cart</span>
+                <i class="gg-shopping-cart px2"></i>
+              </span>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section>
+        <section>
+          <div class="flex flex-wrap justify-between p2" style="gap: 1em">
+            <template x-for="[id, item] in Object.entries(shopItems)">
+              <article class="flex-none item-card">
+                <header>
+                  <strong x-text="item.itemName"></strong>
+                </header>
+                <section
+                  class="flex justify-center items-center"
+                  style="height: 10rem"
+                >
+                  <div>
+                    <img
+                      :alt="item.imgAlt"
+                      :src="item.imgUrl"
+                      style="margin: 0 auto"
+                    />
+                  </div>
+                </section>
+                <section>
+                  <p x-text="item.desc"></p>
+                </section>
+                <footer>
+                  <div class="flex justify-end">
+                    <button
+                      aria-label="add to cart"
+                      data-tooltip="Add to Cart"
+                      @click="$store.shoppingCart.add(id)"
+                    >
+                      <i class="gg-shopping-bag"></i>
+                    </button>
+                  </div>
+                </footer>
+              </article>
+            </template>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <footer class="container">
+      <hr />
+      <div class="flex flex-column">
+        <section class="flex justify-center">
+          <nav>
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="/sitemap">Sitemap</a></li>
+              <li>
+                <a
+                  href="http://github.com/cuebitt/cuebitt.neocities.org"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Source</a
+                >
+              </li>
+            </ul>
+          </nav>
+        </section>
+        <section class="flex justify-center">
+          <a
+            href="http://neocities.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              alt="Hosted by Neocities"
+              src="https://cdn.jsdelivr.net/gh/neocities/neocities@master/public/img/neocitiesbadge.svg"
+            />
+          </a>
+        </section>
+      </div>
+    </footer>
+
+    <!-- About Dialog -->
+    <dialog x-data :open="$store.modalOpen.about">
+      <article>
+        <header>
+          <button
+            aria-label="Close"
+            rel="prev"
+            @click="$store.modalOpen.about = false;"
+          ></button>
+          <p>
+            <strong>About</strong>
+          </p>
+        </header>
+        <p>
+          The Web Component Shop page (this one) is built using the following
+          open-source libraries:
+        </p>
+        <ul>
+          <li>
+            <a
+              href="https://picocss.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              >PicoCSS</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://basscss.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Basscss</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://alpinejs.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Alpine.js</a
+            >
+          </li>
+          <li>
+            <a
+              href="http://github.com/cuebitt/webcomponents"
+              target="_blank"
+              rel="noopener noreferrer"
+              >cuebitt/webcomponents</a
+            >
+          </li>
+        </ul>
+        <p>
+          ...two CSS frameworks and a front-end library in a Neocities site. Yes
+          I know I cheated 😅. This part of my website is interactive and I'm
+          giving you free stuff so I hope you'll forgive me.
+        </p>
+        <p>
+          It's not React and Tailwind though, so cut me just a little slack 🥲.
+        </p>
+      </article>
+    </dialog>
+
+    <!-- Shopping Cart Dialog -->
+    <dialog x-data :open="$store.modalOpen.cart">
+      <article>
+        <header>
+          <button
+            aria-label="Close"
+            rel="prev"
+            @click="$store.modalOpen.cart = false;"
+          ></button>
+          <p>
+            <strong>Cart</strong>
+          </p>
+        </header>
+        <div style="min-height: 15rem">
+          <ul>
+            <template x-for="id in [...$store.shoppingCart.cartItems]">
+              <li x-text="shopItems[id]['itemName']"></li>
+            </template>
+          </ul>
+
+          <p
+            class="center pt3"
+            x-show="$store.shoppingCart.cartItems.size === 0"
+          >
+            Your cart is empty!
+          </p>
+        </div>
+        <footer>
+          <div class="inline-block float-end">
+            <button
+              class="secondary"
+              :disabled="$store.shoppingCart.cartItems.size === 0"
+              @click="$store.shoppingCart.cartItems.clear()"
+            >
+              <span class="flex items-center mxn1">
+                <span class="px1">Clear Cart</span>
+                <span class="px1">
+                  <i class="gg-trash"></i>
+                </span>
+              </span>
+            </button>
+            <button
+              :disabled="$store.shoppingCart.cartItems.size === 0"
+              @click="$store.generatedScriptTags.genTags = WebComponentShop.generateTagList([...$store.shoppingCart.cartItems], shopItems); $store.generatedScriptTags.genHelp = WebComponentShop.generateHelpList([...$store.shoppingCart.cartItems], shopItems); $store.modalOpen.cart = false; $store.shoppingCart.cartItems.clear(); $store.modalOpen.genTags = true;"
+            >
+              <span class="flex items-center mxn1">
+                <span class="px1">Check Out</span>
+                <span class="px1">
+                  <i class="gg-check-r"></i>
+                </span>
+              </span>
+            </button>
+          </div>
+        </footer>
+      </article>
+    </dialog>
+
+    <!-- Checkout Dialog -->
+    <dialog :open="$store.modalOpen.genTags">
+      <article>
+        <header>
+          <button
+            aria-label="Close"
+            rel="prev"
+            @click="$store.modalOpen.genTags = false;"
+          ></button>
+          <p><strong>Thank you!</strong></p>
+        </header>
+        <section>
+          <p>Insert this into your HTML document's head tag:</p>
+          <pre><code x-text="$store.generatedScriptTags.genTags.join('\n');"></code></pre>
+        </section>
+        <section>
+          <p>...and visit the following links for usage information:</p>
+          <ul>
+            <template x-for="helpLink in $store.generatedScriptTags.genHelp">
+              <li>
+                <a
+                  :href="helpLink"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  x-text="helpLink"
+                ></a>
+              </li>
+            </template>
+          </ul>
+        </section>
+      </article>
+    </dialog>
+  </body>
+</html>
