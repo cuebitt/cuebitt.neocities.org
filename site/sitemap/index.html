@@ -3,14 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cuebitt's Website</title>
+    <title>Sitemap</title>
+
     <link
       href="https://cdn.jsdelivr.net/npm/modern-normalize@2.0.0/modern-normalize.min.css"
       rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
     />
     <style>
       .flex {
@@ -31,30 +28,56 @@
         min-height: 100vh;
       }
 
+      .container {
+        margin-bottom: 1rem;
+        padding: 0 2rem;
+      }
+
       main {
         flex: 1;
+      }
+
+      nav > ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      nav > ul > li {
+        display: inline-block;
+        padding: 0 0.5rem;
+      }
+
+      ul.sitemap-tree > li {
+        font-size: 2rem;
       }
     </style>
   </head>
   <body>
     <div class="outer-container">
       <header class="container">
-        <h1>Cuebitt's Website ~ 🐮😇</h1>
+        <h1 style="font-size: 3rem;">Cuebitt's Website ~ 🐮😇</h1>
       </header>
       <main class="container">
-        <div class="flex justify-center" style="margin: 5rem 0">
-          <p style="font-size: 2rem">🚧 Homepage Under Construction 🚧</p>
-        </div>
+        <ul class="sitemap-tree">
+          <li>
+            <a href="/">Homepage</a>
+            <ul>
+              <li style="font-size: 1rem; margin: 0.5rem 0;">
+                It's the homepage, obviously. I think you know what this is.
+              </li>
+            </ul>
+          </li>
 
-        <div class="flex justify-center" style="padding: 0 5rem;">
-          <p>
-            Hi, I'm Cuebitt. I'm a
-            <span title="Computer Science">CS</span> student and a furry. I
-            haven't actually built my homepage yet so... please see the
-            <a href="/sitemap">sitemap</a> for a directory of this website's
-            content.
-          </p>
-        </div>
+          <li>
+            <a href="/shop">Web Component Shop</a>
+            <ul>
+                <li style="font-size: 1rem; margin: 0.5rem 0;">
+                A gallery of Web Components you can add to your website! I
+                styled it like a shop, but all the stuff on there is free.
+              </li>
+            </ul>
+          </li>
+        </ul>
       </main>
       <footer class="container">
         <hr />
