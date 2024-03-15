@@ -117,6 +117,13 @@
       <section>
         <section>
           <div class="flex flex-wrap justify-between p2" style="gap: 1em">
+            <div
+              x-show="Object.keys(shopItems).length === 0 && shopItems.constructor === Object"
+              aria-busy="true"
+            >
+              Getting web components...
+            </div>
+
             <template x-for="[id, item] in Object.entries(shopItems)">
               <article class="flex-none item-card">
                 <header>
