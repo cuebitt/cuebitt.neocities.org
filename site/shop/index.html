@@ -79,7 +79,17 @@
     <header class="container">
       <nav>
         <ul>
-          <li><strong>Web Component Shop</strong></li>
+          <li>
+            <h1>
+              Web Component
+              <span
+                data-tooltip="is it really a shop if everything is free?"
+                data-placement="bottom"
+                >Shop</span
+              >
+              ~ 🐮😇
+            </h1>
+          </li>
         </ul>
         <ul x-data>
           <li>
@@ -136,7 +146,7 @@
                       rel="noopener noreferrer"
                       style="width: 3rem"
                       class="secondary"
-                      data-tooltip="Open Source Code"
+                      data-tooltip="Source Code"
                       ><i class="gg-code-slash" style="margin: 0 auto"></i
                     ></a>
                     <button
@@ -205,8 +215,8 @@
         <section>
           <h4>Open Source Attribution</h4>
           <p>
-            The Web Component Shop page (this one) is built using the following
-            open-source libraries:
+            The Web Component Shop page is built using the following open-source
+            libraries:
           </p>
           <ul>
             <li>
@@ -233,23 +243,18 @@
                 >Alpine.js</a
               >
             </li>
-            <li>
-              <a
-                href="http://github.com/cuebitt/webcomponents"
-                target="_blank"
-                rel="noopener noreferrer"
-                >cuebitt/webcomponents</a
-              >
-            </li>
           </ul>
           <p>
             ...two CSS frameworks and a front-end library in a Neocities site.
             Yes I know I cheated 😅. This part of my website is interactive and
-            I'm giving you free stuff so I hope you'll forgive me.
+            I'm giving you free stuff so I hope you'll forgive me. (It's not
+            React and Tailwind though, so cut me just a little slack 🥲)
           </p>
           <p>
-            It's not React and Tailwind though, so cut me just a little slack
-            🥲.
+            The dependencies above are used to create this web page, but not the
+            components themselves. The web components provided do not have any
+            dependencies, though future ones might. Any future components with
+            dependencies will be clearly labelled as such.
           </p>
         </section>
         <section>
@@ -259,6 +264,16 @@
             License. A copy of the license is included in each of the source
             files, so you don't need to do anything to credit me. But I would
             appreciate a shoutout 🥺👉👈.
+          </p>
+          <p>
+            Source code for all the web components provided is hosted on GitHub
+            at
+            <a
+              href="http://github.com/cuebitt/webcomponents"
+              target="_blank"
+              rel="noopener noreferrer"
+              >cuebitt/webcomponents</a
+            >.
           </p>
         </section>
       </article>
