@@ -384,7 +384,7 @@
                   :href="helpLink"
                   target="_blank"
                   rel="noopener noreferrer"
-                  x-text="helpLink"
+                  x-text="helpLink.split('/').slice(-2).join('/')"
                 ></a>
               </li>
             </template>
