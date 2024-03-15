@@ -1,5 +1,5 @@
 <!-- 
-    Cuebitt's Web Components Shop
+    Cuebitt's Web Component Shop
     
     This is so bad. If you're seeing this mess please don't judge me.
     I have nothing to offer you in return other than my Web Components.
@@ -37,6 +37,10 @@
         });
       });
     </script>
+    <script
+      type="module"
+      src="//esm.run/@dile/dile-toast@2.0.5/dile-toast"
+    ></script>
     <script type="module" src="script.js"></script>
     <link
       rel="stylesheet"
@@ -124,11 +128,21 @@
                   <p x-text="item.desc"></p>
                 </section>
                 <footer>
-                  <div class="flex justify-end">
+                  <div class="flex justify-end" style="gap: 0.5rem">
+                    <a
+                      :href="`http://github.com/${item.source.user}/${item.source.repository}/tree/main/${item.source.filePath}`"
+                      role="button"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style="width: 3rem"
+                      class="secondary"
+                      data-tooltip="Open Source Code"
+                      ><i class="gg-code-slash" style="margin: 0 auto"></i
+                    ></a>
                     <button
                       aria-label="add to cart"
                       data-tooltip="Add to Cart"
-                      @click="$store.shoppingCart.add(id)"
+                      @click="$store.shoppingCart.add(id); $refs.d_toast.open(`added ${shopItems[id].itemName} to the cart.`, 'success');"
                     >
                       <i class="gg-shopping-bag"></i>
                     </button>
@@ -188,52 +202,65 @@
             <strong>About</strong>
           </p>
         </header>
-        <p>
-          The Web Component Shop page (this one) is built using the following
-          open-source libraries:
-        </p>
-        <ul>
-          <li>
-            <a
-              href="https://picocss.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              >PicoCSS</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://basscss.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Basscss</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://alpinejs.dev"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Alpine.js</a
-            >
-          </li>
-          <li>
-            <a
-              href="http://github.com/cuebitt/webcomponents"
-              target="_blank"
-              rel="noopener noreferrer"
-              >cuebitt/webcomponents</a
-            >
-          </li>
-        </ul>
-        <p>
-          ...two CSS frameworks and a front-end library in a Neocities site. Yes
-          I know I cheated 😅. This part of my website is interactive and I'm
-          giving you free stuff so I hope you'll forgive me.
-        </p>
-        <p>
-          It's not React and Tailwind though, so cut me just a little slack 🥲.
-        </p>
+        <section>
+          <h4>Open Source Attribution</h4>
+          <p>
+            The Web Component Shop page (this one) is built using the following
+            open-source libraries:
+          </p>
+          <ul>
+            <li>
+              <a
+                href="https://picocss.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                >PicoCSS</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://basscss.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Basscss</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://alpinejs.dev"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Alpine.js</a
+              >
+            </li>
+            <li>
+              <a
+                href="http://github.com/cuebitt/webcomponents"
+                target="_blank"
+                rel="noopener noreferrer"
+                >cuebitt/webcomponents</a
+              >
+            </li>
+          </ul>
+          <p>
+            ...two CSS frameworks and a front-end library in a Neocities site.
+            Yes I know I cheated 😅. This part of my website is interactive and
+            I'm giving you free stuff so I hope you'll forgive me.
+          </p>
+          <p>
+            It's not React and Tailwind though, so cut me just a little slack
+            🥲.
+          </p>
+        </section>
+        <section>
+          <h4>Crediting Web Component Shop</h4>
+          <p>
+            Web Component Shop's web components are distributed under the MIT
+            License. A copy of the license is included in each of the source
+            files, so you don't need to do anything to credit me. But I would
+            appreciate a shoutout 🥺👉👈.
+          </p>
+        </section>
       </article>
     </dialog>
 
@@ -250,12 +277,23 @@
             <strong>Cart</strong>
           </p>
         </header>
-        <div style="min-height: 15rem">
-          <ul>
+        <div class="flex justify-between items-end">
+          <h2>Components</h2>
+          <h4 class="pr2">Price</h4>
+        </div>
+        <div style="min-height: 15rem" class="p2">
+          <ol>
             <template x-for="id in [...$store.shoppingCart.cartItems]">
-              <li x-text="shopItems[id]['itemName']"></li>
+              <li>
+                <div class="flex justify-between items-center">
+                  <p>
+                    <em x-text="shopItems[id]['itemName']"></em>
+                  </p>
+                  <p>$0.00</p>
+                </div>
+              </li>
             </template>
-          </ul>
+          </ol>
 
           <p
             class="center pt3"
@@ -264,6 +302,19 @@
             Your cart is empty!
           </p>
         </div>
+
+        <hr />
+        <div class="flex flex-column items-end">
+          <span class="flex" style="gap: 2em">
+            <p><em>Subtotal:</em></p>
+            <p>$0.00</p>
+          </span>
+          <span class="flex" style="gap: 2em">
+            <p><strong>Total:</strong></p>
+            <p>$0.00</p>
+          </span>
+        </div>
+
         <footer>
           <div class="inline-block float-end">
             <button
@@ -326,5 +377,8 @@
         </section>
       </article>
     </dialog>
+
+    <!-- Add To Cart Toast -->
+    <dile-toast x-ref="d_toast" id="myToast" duration="3000"></dile-toast>
   </body>
 </html>
