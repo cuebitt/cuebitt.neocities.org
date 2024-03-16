@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cuebitt's Webgarden Plant</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/css.gg/icons/css/code-slash.css"
+      rel="stylesheet"
+    />
+
+    <!-- shelves.css -->
+    <style>
+      .flex {
+        display: flex;
+      }
+
+      .flex-column {
+        flex-direction: column;
+      }
+
+      .justify-center {
+        justify-content: center;
+      }
+
+      .outer-container {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      main {
+        flex: 1;
+      }
+    </style>
+
+    <style>
+      .shelf {
+        display: block;
+        z-index: 9;
+        content: url("assets/img/shelf.png");
+        position: relative;
+        width: 941px;
+        height: 175px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .stuffonshelf {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        position: relative;
+        z-index: 10;
+        margin-bottom: -80px; /* This is what actually puts the stuff ON the shelf instead of hovering above it */
+        width: 770px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="container">
+      <h1>Cuebitt's Webgarden Plant ~ 🐮😇</h1>
+    </header>
+    <main class="container">
+      <section>
+        <div class="stuffonshelf">
+          <div
+            style="
+              height: 250px;
+              width: 250px;
+              image-rendering: pixelated;
+              display: flex;
+              align-items: end;
+            "
+          >
+            <a
+              href="https://www.deviantart.com/buoyfriend/art/Cacti-576233261"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-tooltip="by buoyfriend (DeviantArt)"
+            >
+              <img
+                src="assets/img/potted-cacti.png"
+                alt="Potted Bamboo from Minecraft"
+                width="250px"
+                height="120px"
+              />
+            </a>
+          </div>
+          <iframe
+            src="https://cuebitt.neocities.org/webgarden.html"
+            height="250px"
+            width="250px"
+            scrolling="no"
+            loading="lazy"
+          ></iframe>
+          <div style="height: 350px; width: 250px; margin-top: -100px">
+            <article style="height: 100%" class="overflow-auto">
+              <header>
+                Paste this snippet on your site to add my plant to your garden:
+              </header>
+
+              <div style="position: relative">
+                <pre
+                  style="padding: 1em; white-space: pre-wrap"
+                  id="iframe-codeblock"
+                >
+&lt;iframe src="https://cuebitt.neocities.org/webgarden.html" height="250px" width="250px" scrolling="no" loading="lazy"&gt;&lt;/iframe&gt;</pre
+                >
+                <button
+                  style="
+                    position: absolute;
+                    top: 0.25em;
+                    right: 0.25em;
+                    padding: 0.25em 0.75em;
+                  "
+                  class="outline"
+                  data-tooltip="click to copy!"
+                  onclick="copyIframeTag()"
+                >
+                  <i class="gg-code-slash"></i>
+                </button>
+              </div>
+            </article>
+          </div>
+        </div>
+        <img class="shelf" />
+      </section>
+    </main>
+    <footer class="container">
+      <hr />
+      <div class="flex flex-column">
+        <section class="flex justify-center">
+          <nav>
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="/sitemap">Sitemap</a></li>
+              <li>
+                <a
+                  href="http://github.com/cuebitt/cuebitt.neocities.org"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Source</a
+                >
+              </li>
+            </ul>
+          </nav>
+        </section>
+        <section class="flex justify-center">
+          <a
+            href="http://neocities.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              alt="Hosted by Neocities"
+              src="https://cdn.jsdelivr.net/gh/neocities/neocities@master/public/img/neocitiesbadge.svg"
+            />
+          </a>
+        </section>
+      </div>
+    </footer>
+
+    <script>
+      function copyIframeTag() {
+        const htmlTag = document.getElementById("iframe-codeblock").textContent;
+        navigator.clipboard.writeText(htmlTag);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Cuebitt's Webgarden Plant</title>
+    <link rel="stylesheet" href="webgarden.css" />
+    <style>
+      html,
+      body,
+      div,
+      span,
+      applet,
+      object,
+      iframe,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p,
+      blockquote,
+      pre,
+      a,
+      abbr,
+      acronym,
+      address,
+      big,
+      cite,
+      code,
+      del,
+      dfn,
+      em,
+      font,
+      img,
+      ins,
+      kbd,
+      q,
+      s,
+      samp,
+      small,
+      strike,
+      strong,
+      sub,
+      sup,
+      tt,
+      var,
+      b,
+      u,
+      i,
+      center,
+      dl,
+      dt,
+      dd,
+      ol,
+      ul,
+      li,
+      fieldset,
+      form,
+      label,
+      legend,
+      caption {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        outline: 0;
+        font-size: 100%;
+        vertical-align: baseline;
+        background: transparent;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-image: url(assets/graphpaper2.png);
+        background-repeat: repeat;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="plant">
+      <div class="outer-container">
+        <div class="halo-container hvr-rotate">
+          <span class="halo-inner">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="250"
+              height="45"
+              viewBox="0 0 66.146 18.521"
+            >
+              <ellipse
+                cx="33.073"
+                cy="9.26"
+                fill="none"
+                rx="31.795"
+                ry="5.983"
+                style="
+                  opacity: 1;
+                  fill: #000;
+                  fill-opacity: 0;
+                  stroke: #e1be4c;
+                  stroke-width: 5;
+                  stroke-dasharray: none;
+                  stroke-opacity: 1;
+                "
+              />
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="250"
+              height="45"
+              viewBox="0 0 66.146 18.521"
+            >
+              <ellipse
+                cx="33.073"
+                cy="9.26"
+                fill="none"
+                rx="31.795"
+                ry="5.983"
+                style="
+                  opacity: 1;
+                  fill: #000;
+                  fill-opacity: 0;
+                  stroke: #ffcf33;
+                  stroke-width: 2.55564;
+                  stroke-dasharray: none;
+                  stroke-opacity: 1;
+                "
+              />
+            </svg>
+          </span>
+        </div>
+        <div class="inner-container bg-purple-blob">
+          <header>
+            <a
+              href="http://cuebitt.neocities.org"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <h1 class="grandstander header stroke-text-yellow">Cuebitt</h1>
+              <h2 class="grandstander subheader stroke-text-yellow">
+                on Neocities!
+              </h2>
+            </a>
+          </header>
+          <main>
+            <p class="nunito-sans">programming, resources, blog, & more!</p>
+
+            <p class="nunito-sans">
+              <a
+                href="http://cuebitt.neocities.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                >cuebitt.neocities.org</a
+              >
+            </p>
+          </main>
+          <footer>
+            <div class="tbh-img">
+              <img
+                id="cuebitt-garden-indigo-tbh"
+                class="hvr-horizontal-shake"
+                src="/assets/indigo-tbh.png"
+                alt="tbh/autism creature modified to look like my fursona"
+                onclick="doConfetti()"
+              />
+            </div>
+          </footer>
+        </div>
+      </div>
+    </div>
+
+    <script type="module">
+      import confetti from "https://cdn.skypack.dev/canvas-confetti";
+
+      document.getElementById("cuebitt-garden-indigo-tbh").onclick = () =>
+        confetti({ startVelocity: 20, spread: 60, origin: { x: 0.5, y: 1 } });
+    </script>
+  </body>
+</html>
