@@ -52,7 +52,9 @@
 .nunito-sans {
   font-family: "Nunito Sans", sans-serif;
   font-style: normal;
-  font-variation-settings: "wdth" 100, "YTLC" 500;
+  font-variation-settings:
+    "wdth" 100,
+    "YTLC" 500;
 }
 
 /* Animations */
@@ -194,7 +196,8 @@ main > p {
 }
 
 .stroke-text-yellow {
-  text-shadow: rgb(255, 235, 171) 3px 0px 0px,
+  text-shadow:
+    rgb(255, 235, 171) 3px 0px 0px,
     rgb(255, 235, 171) 2.834871px 0.981584px 0px,
     rgb(255, 235, 171) 2.357662px 1.855109px 0px,
     rgb(255, 235, 171) 1.620907px 2.524413px 0px,

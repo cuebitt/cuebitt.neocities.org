@@ -1,0 +1,19 @@
+{
+  "name": "cuebitt.neocities.org",
+  "version": "1.0.0",
+  "description": "my Neocities website!",
+  "scripts": {
+    "dev": "servor --reload",
+    "prepare": "husky"
+  },
+  "author": "cuebitt",
+  "devDependencies": {
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "prettier": "3.2.5",
+    "servor": "^4.0.2"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  }
+}
