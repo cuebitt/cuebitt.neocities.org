@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "my Neocities website!",
   "scripts": {
-    "dev": "servor --reload",
+    "dev": "servor site/ --reload --static",
     "prepare": "husky",
     "lint": "eslint site"
   },

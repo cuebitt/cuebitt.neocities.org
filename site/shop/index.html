@@ -63,10 +63,6 @@
       .buttonlink:is(:hover, :active, :focus) {
         --pico-background-color: transparent;
       }
-
-      .item-card {
-        max-width: 15rem;
-      }
     </style>
     <title>Web Component Shop</title>
   </head>
@@ -114,62 +110,58 @@
     </header>
 
     <main class="container">
-      <section>
-        <section>
-          <div class="flex flex-wrap justify-between p2" style="gap: 1em">
-            <div
-              x-show="Object.keys(shopItems).length === 0 && shopItems.constructor === Object"
-              aria-busy="true"
-            >
-              Getting web components...
-            </div>
+      <div class="flex flex-wrap fit">
+        <div
+          x-show="Object.keys(shopItems).length === 0 && shopItems.constructor === Object"
+          aria-busy="true"
+        >
+          Getting web components...
+        </div>
 
-            <template x-for="[id, item] in Object.entries(shopItems)">
-              <article class="flex-none item-card">
-                <header>
-                  <strong x-text="item.itemName"></strong>
-                </header>
-                <section
-                  class="flex justify-center items-center"
-                  style="height: 10rem"
-                >
-                  <div>
-                    <img
-                      :alt="item.imgAlt"
-                      :src="item.imgUrl"
-                      style="margin: 0 auto"
-                    />
-                  </div>
-                </section>
-                <section>
-                  <p x-text="item.desc"></p>
-                </section>
-                <footer>
-                  <div class="flex justify-end" style="gap: 0.5rem">
-                    <a
-                      :href="`http://github.com/${item.source.user}/${item.source.repository}/tree/main/${item.source.filePath}`"
-                      role="button"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style="width: 3rem"
-                      class="secondary"
-                      data-tooltip="Source Code"
-                      ><i class="gg-code-slash" style="margin: 0 auto"></i
-                    ></a>
-                    <button
-                      aria-label="add to cart"
-                      data-tooltip="Add to Cart"
-                      @click="$store.shoppingCart.add(id); $refs.d_toast.open(`added ${shopItems[id].itemName} to the cart.`, 'success');"
-                    >
-                      <i class="gg-shopping-bag"></i>
-                    </button>
-                  </div>
-                </footer>
-              </article>
-            </template>
+        <template x-for="[id, item] in Object.entries(shopItems)">
+          <div class="item-card col col-4 p2">
+            <article>
+              <header>
+                <strong x-text="item.itemName"></strong>
+              </header>
+              <section
+                class="flex justify-center items-center"
+                style="height: 8em"
+              >
+                <img
+                  :alt="item.imgAlt"
+                  :src="item.imgUrl"
+                  style="margin: 0 auto"
+                />
+              </section>
+              <section style="height: 5em; vertical-align: middle">
+                <p x-text="item.desc"></p>
+              </section>
+              <footer>
+                <div class="flex justify-end" style="gap: 0.5rem">
+                  <a
+                    :href="`http://github.com/${item.source.user}/${item.source.repository}/tree/main/${item.source.filePath}`"
+                    role="button"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style="width: 3rem"
+                    class="secondary"
+                    data-tooltip="Source Code"
+                    ><i class="gg-code-slash" style="margin: 0 auto"></i
+                  ></a>
+                  <button
+                    aria-label="add to cart"
+                    data-tooltip="Add to Cart"
+                    @click="$store.shoppingCart.add(id); $refs.d_toast.open(`added ${shopItems[id].itemName} to the cart.`, 'success');"
+                  >
+                    <i class="gg-shopping-bag"></i>
+                  </button>
+                </div>
+              </footer>
+            </article>
           </div>
-        </section>
-      </section>
+        </template>
+      </div>
     </main>
 
     <footer class="container">

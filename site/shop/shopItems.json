@@ -1,14 +1,26 @@
 {
-  "increasr": {
-    "itemName": "increasr",
+  "increasr-frame": {
+    "itemName": "increasr-frame",
     "desc": "A counter that site visitors can increment. (Convenience wrapper around the iframe provided by inc.reasrng.net)",
-    "imgUrl": "https://raw.githubusercontent.com/cuebitt/webcomponents/main/components/increasr/meta/preview.png",
-    "imgAlt": "increasr component preview",
+    "imgUrl": "https://raw.githubusercontent.com/cuebitt/webcomponents/main/components/increasr-frame/meta/preview.png",
+    "imgAlt": "increasr-frame component preview",
     "source": {
       "user": "cuebitt",
       "repository": "webcomponents",
-      "filePath": "components/increasr/increasr.js",
-      "helpPath": "components/increasr/README.md"
+      "filePath": "components/increasr-frame/increasr-frame.js",
+      "helpPath": "components/increasr-frame/README.md"
+    }
+  },
+  "webgarden-greenhouse": {
+    "itemName": "webgarden-greenhouse",
+    "desc": "A \"Webgarden Greenhouse\". Displays micro-site iframe previews on your site. Uses shelves.css by MissMoss.",
+    "imgUrl": "https://raw.githubusercontent.com/cuebitt/webcomponents/main/components/webgarden-greenhouse/meta/preview.png",
+    "imgAlt": "webgarden-greenhouse component preview",
+    "source": {
+      "user": "cuebitt",
+      "repository": "webcomponents",
+      "filePath": "components/webgarden-greenhouse/webgarden-greenhouse.js",
+      "helpPath": "components/webgarden-greenhouse/README.md"
     }
   }
 }
