@@ -3,7 +3,10 @@ const generateTagList = (ids, tagItems) => {
   const cdnLinks = new Set();
   ids.forEach((id) => {
     const tagItemSrc = tagItems[id].source;
-    const jsSrc = `https://cdn.jsdelivr.net/gh/${tagItemSrc.user}/${tagItemSrc.repository}/${tagItemSrc.filePath}`;
+
+    const jsSrc = Object.prototype.hasOwnProperty.call(tagItemSrc, "tag")
+      ? `https://cdn.jsdelivr.net/gh/${tagItemSrc.user}/${tagItemSrc.repository}@${tagItemSrc.tag}/${tagItemSrc.filePath}`
+      : `https://cdn.jsdelivr.net/gh/${tagItemSrc.user}/${tagItemSrc.repository}/${tagItemSrc.filePath}`;
 
     cdnLinks.add(String.raw`<script type="module" src="${jsSrc}"></script>`);
   });
