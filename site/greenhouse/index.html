@@ -3,18 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-    <title>Cuebitt's Webgarden Greenhouse</title>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <title>Webgarden Greenhouse</title>
+
+    <!-- CSS Stylesheets -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
     />
     <link
-      href="https://cdn.jsdelivr.net/npm/css.gg/icons/css/code-slash.css"
+      href="https://cdn.jsdelivr.net/npm/css.gg@2.0.0/icons/css/code-slash.css"
       rel="stylesheet"
     />
-
-    <!-- shelves.css -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/css.gg@2.0.0/icons/css/danger.css"
+      rel="stylesheet"
+    />
     <style>
       .flex {
         display: flex;
@@ -37,8 +41,12 @@
       main {
         flex: 1;
       }
-    </style>
 
+      .disclaimer {
+        width: 20rem;
+      }
+    </style>
+    <!-- shelves.css -->
     <style>
       .shelf {
         display: block;
@@ -63,10 +71,16 @@
         margin-right: auto;
       }
     </style>
+
+    <!-- Web Components -->
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/gh/cuebitt/webcomponents/components/webgarden-greenhouse/webgarden-greenhouse.js"
+    ></script>
   </head>
   <body>
     <header class="container">
-      <h1>Cuebitt's Webgarden Greenhouse ~ 🐮😇</h1>
+      <h1>Cuebitt's Greenhouse ~ 🐮😇</h1>
     </header>
     <main class="container">
       <section>
@@ -95,7 +109,7 @@
             </a>
           </div>
           <iframe
-            src="https://cuebitt.neocities.org/webgarden.html"
+            src="//cuebitt.neocities.org/webgarden.html"
             height="250px"
             width="250px"
             scrolling="no"
@@ -104,7 +118,8 @@
           <div style="height: 350px; width: 250px; margin-top: -100px">
             <article style="height: 100%" class="overflow-auto">
               <header>
-                Paste this snippet on your site to add my plant to your garden:
+                Paste this snippet into your webgarden greenhouse to add my pot
+                to your garden:
               </header>
 
               <div style="position: relative">
@@ -132,6 +147,30 @@
           </div>
         </div>
         <img class="shelf" />
+      </section>
+
+      <!-- third party pots -->
+      <section class="flex justify-center">
+        <article class="disclaimer">
+          <details style="margin: 0">
+            <summary>
+              <span class="" style="gap: 0.5em; display: inline-flex"
+                >Disclaimer <i class="gg-danger"></i
+              ></span>
+            </summary>
+            <p>
+              The Webgarden pots below are not hosted on this website. I'm
+              collecting a garden of websites I think are cool, but I am not
+              affiliated with and do not endorse any of the third-party content
+              below.
+            </p>
+          </details>
+        </article>
+      </section>
+      <section>
+        <webgarden-greenhouse
+          plants="ne0nbandit,missmoss,melonking,obspogon,https://thefrugalgamer.net/webgarden.html,https://obby.dog/webgarden.html"
+        ></webgarden-greenhouse>
       </section>
     </main>
     <footer class="container">

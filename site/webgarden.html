@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <title>Cuebitt's Webgarden Plant</title>
     <link rel="stylesheet" href="webgarden.css" />
     <style>
@@ -70,7 +70,7 @@
         box-sizing: border-box;
       }
 
-      body {
+      .plant {
         background-image: url(assets/graphpaper2.png);
         background-repeat: repeat;
       }
@@ -80,9 +80,10 @@
   <body>
     <div class="plant">
       <div class="outer-container">
-        <div class="halo-container hvr-rotate">
-          <span class="halo-inner">
+        <div class="halo-container">
+          <div class="halo-inner">
             <svg
+              class="float-element"
               xmlns="http://www.w3.org/2000/svg"
               width="250"
               height="45"
@@ -104,13 +105,6 @@
                   stroke-opacity: 1;
                 "
               />
-            </svg>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="250"
-              height="45"
-              viewBox="0 0 66.146 18.521"
-            >
               <ellipse
                 cx="33.073"
                 cy="9.26"
@@ -128,23 +122,27 @@
                 "
               />
             </svg>
-          </span>
+          </div>
         </div>
         <div class="inner-container bg-purple-blob">
           <header>
-            <a
-              href="http://cuebitt.neocities.org"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <h1 class="grandstander header stroke-text-yellow">Cuebitt</h1>
-              <h2 class="grandstander subheader stroke-text-yellow">
-                on Neocities!
-              </h2>
-            </a>
+            <div class="hvr-tada">
+              <a
+                href="http://cuebitt.neocities.org"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <h1 class="grandstander header stroke-text-yellow">Cuebitt</h1>
+                <h2 class="grandstander subheader stroke-text-yellow">
+                  on Neocities!
+                </h2>
+              </a>
+            </div>
           </header>
           <main>
-            <p class="nunito-sans">programming, resources, blog, & more!</p>
+            <p class="nunito-sans">
+              programming, web dev resources, blog, & more!
+            </p>
 
             <p class="nunito-sans">
               <a
