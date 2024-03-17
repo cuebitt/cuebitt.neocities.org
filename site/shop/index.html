@@ -10,6 +10,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="light dark" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <title>Cuebitt's Component Shop</title>
+
+    <!-- Alpine.js -->
     <script
       defer
       src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
@@ -39,11 +43,15 @@
         Alpine.store("filteredShopItems", {});
       });
     </script>
+
+    <!-- Web Components -->
     <script
       type="module"
-      src="//esm.run/@dile/dile-toast@2.0.5/dile-toast"
+      src="https://cdn.jsdelivr.net/gh/ComcastSamples/wc-toast@main/wc-toast.min.js"
     ></script>
     <script type="module" src="script.js"></script>
+
+    <!-- CSS Stylesheets  -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
@@ -53,7 +61,7 @@
       rel="stylesheet"
     />
     <link
-      href="https://cdn.jsdelivr.net/npm/css.gg/icons/icons.css"
+      href="https://cdn.jsdelivr.net/npm/css.gg/icons/icons.min.css"
       rel="stylesheet"
     />
     <style>
@@ -65,9 +73,19 @@
       .buttonlink:is(:hover, :active, :focus) {
         --pico-background-color: transparent;
       }
+
+      body {
+        --wc-toast-background: aquamarine;
+      }
+
+      wc-toast.left {
+        left: 2em;
+      }
+
+      wc-toast {
+        border-radius: 0.5em;
+      }
     </style>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-    <title>Cuebitt's Component Shop</title>
   </head>
   <body
     x-data="{
@@ -166,7 +184,7 @@
                   <button
                     aria-label="add to cart"
                     data-tooltip="Add to Cart"
-                    @click="$store.shoppingCart.add(id); $refs.d_toast.open(`added ${shopItems[id].itemName} to the cart.`, 'success');"
+                    @click="$store.shoppingCart.add(id); $refs.wc_toast_contents.textContent = `Added ${shopItems[id].itemName} to the cart!`;$refs.wc_toast.open();"
                   >
                     <i class="gg-shopping-bag"></i>
                   </button>
@@ -407,6 +425,11 @@
     </dialog>
 
     <!-- Add To Cart Toast -->
-    <dile-toast x-ref="d_toast" id="myToast" duration="3000"></dile-toast>
+    <wc-toast x-ref="wc_toast" id="wcToast" duration="60" class="left"
+      ><p
+        x-ref="wc_toast_contents"
+        style="vertical-align: middle; margin: 0"
+      ></p
+    ></wc-toast>
   </body>
 </html>
