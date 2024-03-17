@@ -1,10 +1,10 @@
+<!doctype html>
 <!-- 
     Cuebitt's Web Component Shop
     
     This is so bad. If you're seeing this mess please don't judge me.
     I have nothing to offer you in return other than my Web Components.
 -->
-<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -18,31 +18,7 @@
       defer
       src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
     ></script>
-    <script>
-      document.addEventListener("alpine:init", () => {
-        Alpine.store("modalOpen", {
-          about: false,
-          cart: false,
-          genTags: false,
-        });
-
-        Alpine.store("shoppingCart", {
-          cartItems: new Set(),
-
-          add(id) {
-            console.log("added to cart: ", id);
-            this.cartItems.add(id);
-          },
-        });
-
-        Alpine.store("generatedScriptTags", {
-          genTags: [],
-          genHelp: [],
-        });
-
-        Alpine.store("filteredShopItems", {});
-      });
-    </script>
+    <script src="init.js"></script>
 
     <!-- Web Components -->
     <script
@@ -57,42 +33,16 @@
       href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
     />
     <link
-      href="https://unpkg.com/basscss@8.0.2/css/basscss.min.css"
+      href="https://cdn.jsdelivr.net/npm/basscss@8.0.2/css/basscss.min.css"
       rel="stylesheet"
     />
     <link
-      href="https://cdn.jsdelivr.net/npm/css.gg/icons/icons.min.css"
+      href="https://css.gg/css?=|check-r|code-slash|shopping-bag|shopping-cart|trash"
       rel="stylesheet"
     />
-    <style>
-      .buttonlink {
-        margin: calc(var(--pico-nav-link-spacing-vertical) * -1)
-          calc(var(--pico-nav-link-spacing-horizontal) * -1);
-      }
-
-      .buttonlink:is(:hover, :active, :focus) {
-        --pico-background-color: transparent;
-      }
-
-      body {
-        --wc-toast-background: aquamarine;
-      }
-
-      wc-toast.left {
-        left: 2em;
-      }
-
-      wc-toast {
-        border-radius: 0.5em;
-      }
-    </style>
+    <link rel="stylesheet" href="style.css" />
   </head>
-  <body
-    x-data="{
-    shopItems: {}
-}"
-    x-init="shopItems = await (await fetch('shopItems.json')).json(); $store.filteredShopItems = {...shopItems};"
-  >
+  <body>
     <header class="container">
       <nav>
         <ul>
@@ -115,7 +65,7 @@
               name="search"
               placeholder="Search"
               aria-label="Search"
-              @change="$store.filteredShopItems = window.WebComponentShop.filterObject(shopItems, $el.value)"
+              @change="$store.filteredShopItems = window.WebComponentShop.filterObject($store.shopItems, $el.value)"
             />
           </li>
           <li>
@@ -139,10 +89,10 @@
       </nav>
     </header>
 
-    <main class="container">
+    <main class="container" x-data>
       <div class="flex flex-wrap fit">
         <div
-          x-show="Object.keys(shopItems).length === 0 && shopItems.constructor === Object"
+          x-show="Object.keys($store.shopItems).length === 0 && $store.shopItems.constructor === Object"
           aria-busy="true"
         >
           Getting web components...
@@ -184,7 +134,7 @@
                   <button
                     aria-label="add to cart"
                     data-tooltip="Add to Cart"
-                    @click="$store.shoppingCart.add(id); $refs.wc_toast_contents.textContent = `Added ${shopItems[id].itemName} to the cart!`;$refs.wc_toast.open();"
+                    @click="$store.shoppingCart.add(id); $refs.wc_toast_contents.textContent = `Added ${$store.shopItems[id].itemName} to the cart!`;$refs.wc_toast.open();"
                   >
                     <i class="gg-shopping-bag"></i>
                   </button>
@@ -334,7 +284,7 @@
           </p>
         </header>
         <div style="height: 15rem" class="overflow-auto">
-          <div x-show="$store.shoppingCart.cartItems.size > 0">
+          <div x-show="$store.shoppingCart.size > 0">
             <table class="striped" style="margin: 0">
               <thead>
                 <tr>
@@ -345,16 +295,19 @@
                 </tr>
               </thead>
               <tbody>
-                <template x-for="id in [...$store.shoppingCart.cartItems]">
+                <template x-for="id in [...$store.shoppingCart]">
                   <tr>
-                    <th scope="row" x-text="shopItems[id]['itemName']"></th>
-                    <td x-text="shopItems[id]['source']['user']"></td>
+                    <th
+                      scope="row"
+                      x-text="$store.shopItems[id]['itemName']"
+                    ></th>
+                    <td x-text="$store.shopItems[id]['source']['user']"></td>
                     <td>$0.00</td>
                     <td>
                       <button
                         data-tooltip="Remove from Cart"
                         data-placement="left"
-                        @click="$store.shoppingCart.cartItems.delete(id);"
+                        @click="$store.shoppingCart.delete(id);"
                       >
                         <i class="gg-trash"></i>
                       </button>
@@ -365,10 +318,7 @@
             </table>
           </div>
 
-          <p
-            class="center pt3"
-            x-show="$store.shoppingCart.cartItems.size === 0"
-          >
+          <p class="center pt3" x-show="$store.shoppingCart.size === 0">
             Your cart is empty!
           </p>
         </div>
@@ -389,8 +339,8 @@
           <div class="inline-block float-end">
             <button
               class="secondary"
-              :disabled="$store.shoppingCart.cartItems.size === 0"
-              @click="$store.shoppingCart.cartItems.clear()"
+              :disabled="$store.shoppingCart.size === 0"
+              @click="$store.shoppingCart.clear()"
             >
               <span class="flex items-center mxn1">
                 <span class="px1">Clear Cart</span>
@@ -400,8 +350,8 @@
               </span>
             </button>
             <button
-              :disabled="$store.shoppingCart.cartItems.size === 0"
-              @click="window.WebComponentShop.doCheckout(shopItems);"
+              :disabled="$store.shoppingCart.size === 0"
+              @click="window.WebComponentShop.doCheckout();"
             >
               <span class="flex items-center mxn1">
                 <span class="px1">Check Out</span>

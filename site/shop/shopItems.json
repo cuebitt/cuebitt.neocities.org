@@ -8,7 +8,8 @@
       "user": "cuebitt",
       "repository": "webcomponents",
       "filePath": "components/increasr-frame/increasr-frame.js",
-      "helpPath": "components/increasr-frame/README.md"
+      "helpPath": "components/increasr-frame/README.md",
+      "tag": "v1.0.0"
     }
   },
   "webgarden-greenhouse": {
@@ -20,7 +21,8 @@
       "user": "cuebitt",
       "repository": "webcomponents",
       "filePath": "components/webgarden-greenhouse/webgarden-greenhouse.js",
-      "helpPath": "components/webgarden-greenhouse/README.md"
+      "helpPath": "components/webgarden-greenhouse/README.md",
+      "tag": "v1.0.0"
     }
   }
 }

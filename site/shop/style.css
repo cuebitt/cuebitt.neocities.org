@@ -1,0 +1,20 @@
+.buttonlink {
+  margin: calc(var(--pico-nav-link-spacing-vertical) * -1)
+    calc(var(--pico-nav-link-spacing-horizontal) * -1);
+}
+
+.buttonlink:is(:hover, :active, :focus) {
+  --pico-background-color: transparent;
+}
+
+body {
+  --wc-toast-background: aquamarine;
+}
+
+wc-toast.left {
+  left: 2em;
+}
+
+wc-toast {
+  border-radius: 0.5em;
+}

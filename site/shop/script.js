@@ -1,8 +1,8 @@
 // Generate a list of <script> tags using JSDelivr links
-const generateTagList = (ids, tagItems) => {
+const generateTagList = (ids) => {
   const cdnLinks = new Set();
   ids.forEach((id) => {
-    const tagItemSrc = tagItems[id].source;
+    const tagItemSrc = window.Alpine.store("shopItems")[id].source;
 
     const jsSrc = Object.prototype.hasOwnProperty.call(tagItemSrc, "tag")
       ? `https://cdn.jsdelivr.net/gh/${tagItemSrc.user}/${tagItemSrc.repository}@${tagItemSrc.tag}/${tagItemSrc.filePath}`
@@ -15,10 +15,10 @@ const generateTagList = (ids, tagItems) => {
 };
 
 // Generate a list of URLs that point to the help document for each component
-const generateHelpList = (ids, tagItems) => {
+const generateHelpList = (ids) => {
   const helpLinks = new Set();
   ids.forEach((id) => {
-    const helpItemSrc = tagItems[id].source;
+    const helpItemSrc = window.Alpine.store("shopItems")[id].source;
     const helpUrl = `https://github.com/${helpItemSrc.user}/${helpItemSrc.repository}/tree/main/${helpItemSrc.helpPath}`;
 
     helpLinks.add(helpUrl);
@@ -47,19 +47,17 @@ const filterObject = (obj, filterString) => {
   return filteredObj;
 };
 
-const doCheckout = (shopItems) => {
+const doCheckout = () => {
   window.Alpine.store("generatedScriptTags").genTags =
     window.WebComponentShop.generateTagList(
-      window.Alpine.store("shoppingCart").cartItems,
-      shopItems,
+      window.Alpine.store("shoppingCart"),
     );
   window.Alpine.store("generatedScriptTags").genHelp =
     window.WebComponentShop.generateHelpList(
-      window.Alpine.store("shoppingCart").cartItems,
-      shopItems,
+      window.Alpine.store("shoppingCart"),
     );
   window.Alpine.store("modalOpen").cart = false;
-  window.Alpine.store("shoppingCart").cartItems.clear();
+  window.Alpine.store("shoppingCart").clear();
   window.Alpine.store("modalOpen").genTags = true;
 };
 
