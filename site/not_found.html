@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <title>Page Not Found</title>
+    <!-- css stylesheets -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
@@ -32,6 +33,9 @@
         flex: 1;
       }
     </style>
+
+    <!-- web components -->
+    <script type="module" src="components/cuebitt-footer.js"></script>
   </head>
   <body>
     <div class="outer-container">
@@ -54,39 +58,8 @@
           </div>
         </div>
       </main>
-      <footer class="container">
-        <hr />
-        <div class="flex flex-column">
-          <section class="flex justify-center">
-            <nav>
-              <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/sitemap">Sitemap</a></li>
-                <li>
-                  <a
-                    href="http://github.com/cuebitt/cuebitt.neocities.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    >Source</a
-                  >
-                </li>
-              </ul>
-            </nav>
-          </section>
-          <section class="flex justify-center">
-            <a
-              href="http://neocities.org"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                alt="Hosted by Neocities"
-                src="https://cdn.jsdelivr.net/gh/neocities/neocities@master/public/img/neocitiesbadge.svg"
-              />
-            </a>
-          </section>
-        </div>
-      </footer>
+
+      <cuebitt-footer></cuebitt-footer>
     </div>
   </body>
 </html>
