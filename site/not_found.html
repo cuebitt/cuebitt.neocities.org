@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <title>Page Not Found</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
+    <style>
+      .flex {
+        display: flex;
+      }
+
+      .flex-column {
+        flex-direction: column;
+      }
+
+      .justify-center {
+        justify-content: center;
+      }
+
+      .outer-container {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      main {
+        flex: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="outer-container">
+      <header class="container">
+        <h1>404 - Page Not Found</h1>
+      </header>
+      <main class="container">
+        <div style="position: relative">
+          <span
+            style="position: absolute; top: 5%; right: 10%; font-size: 2.5vw"
+          >
+            <p><strong>ERROR 404:</strong></p>
+            <p><strong>NOT FOUND grip</strong></p>
+          </span>
+          <div class="flex justify-center">
+            <img
+              src="assets/404_grip.png"
+              style="max-width: 34rem; margin: 0 auto"
+            />
+          </div>
+        </div>
+      </main>
+      <footer class="container">
+        <hr />
+        <div class="flex flex-column">
+          <section class="flex justify-center">
+            <nav>
+              <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/sitemap">Sitemap</a></li>
+                <li>
+                  <a
+                    href="http://github.com/cuebitt/cuebitt.neocities.org"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Source</a
+                  >
+                </li>
+              </ul>
+            </nav>
+          </section>
+          <section class="flex justify-center">
+            <a
+              href="http://neocities.org"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                alt="Hosted by Neocities"
+                src="https://cdn.jsdelivr.net/gh/neocities/neocities@master/public/img/neocitiesbadge.svg"
+              />
+            </a>
+          </section>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
