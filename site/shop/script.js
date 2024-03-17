@@ -24,7 +24,45 @@ const generateHelpList = (ids, tagItems) => {
   return [...helpLinks];
 };
 
+// Filter an object based on its keys
+// Returns an object whose keys start with or are filterString
+// Used by the search bar
+const filterObject = (obj, filterString) => {
+  if (filterString === "") {
+    return { ...obj };
+  }
+
+  const filteredObj = {};
+  const keys = Object.keys(obj);
+
+  keys.forEach((key) => {
+    if (key.startsWith(filterString) || key.includes(filterString)) {
+      filteredObj[key] = obj[key];
+    }
+  });
+
+  return filteredObj;
+};
+
+const doCheckout = (shopItems) => {
+  window.Alpine.store("generatedScriptTags").genTags =
+    window.WebComponentShop.generateTagList(
+      window.Alpine.store("shoppingCart").cartItems,
+      shopItems,
+    );
+  window.Alpine.store("generatedScriptTags").genHelp =
+    window.WebComponentShop.generateHelpList(
+      window.Alpine.store("shoppingCart").cartItems,
+      shopItems,
+    );
+  window.Alpine.store("modalOpen").cart = false;
+  window.Alpine.store("shoppingCart").cartItems.clear();
+  window.Alpine.store("modalOpen").genTags = true;
+};
+
 window.WebComponentShop = {
   generateTagList,
   generateHelpList,
+  filterObject,
+  doCheckout,
 };

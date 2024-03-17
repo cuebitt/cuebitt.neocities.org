@@ -35,6 +35,8 @@
           genTags: [],
           genHelp: [],
         });
+
+        Alpine.store("filteredShopItems", {});
       });
     </script>
     <script
@@ -70,7 +72,7 @@
     x-data="{
     shopItems: {}
 }"
-    x-init="shopItems = await (await fetch('shopItems.json')).json();"
+    x-init="shopItems = await (await fetch('shopItems.json')).json(); $store.filteredShopItems = {...shopItems};"
   >
     <header class="container">
       <nav>
@@ -88,6 +90,15 @@
           </li>
         </ul>
         <ul x-data>
+          <li>
+            <input
+              type="search"
+              name="search"
+              placeholder="Search"
+              aria-label="Search"
+              @change="$store.filteredShopItems = window.WebComponentShop.filterObject(shopItems, $el.value)"
+            />
+          </li>
           <li>
             <button
               role="link"
@@ -118,7 +129,9 @@
           Getting web components...
         </div>
 
-        <template x-for="[id, item] in Object.entries(shopItems)">
+        <template
+          x-for="[id, item] in Object.entries($store.filteredShopItems)"
+        >
           <div class="item-card col col-4 p2">
             <article>
               <header>
@@ -345,7 +358,7 @@
             </button>
             <button
               :disabled="$store.shoppingCart.cartItems.size === 0"
-              @click="$store.generatedScriptTags.genTags = WebComponentShop.generateTagList([...$store.shoppingCart.cartItems], shopItems); $store.generatedScriptTags.genHelp = WebComponentShop.generateHelpList([...$store.shoppingCart.cartItems], shopItems); $store.modalOpen.cart = false; $store.shoppingCart.cartItems.clear(); $store.modalOpen.genTags = true;"
+              @click="window.WebComponentShop.doCheckout(shopItems);"
             >
               <span class="flex items-center mxn1">
                 <span class="px1">Check Out</span>
