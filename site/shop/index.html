@@ -144,6 +144,14 @@
           </div>
         </template>
       </div>
+
+      <!-- Add To Cart Toast -->
+      <wc-toast x-ref="wc_toast" id="wcToast" duration="3" class="left"
+        ><p
+          x-ref="wc_toast_contents"
+          style="vertical-align: middle; margin: 0; color: black"
+        ></p
+      ></wc-toast>
     </main>
 
     <!-- i plan to keep picocss on this page, so i won't use my cuebitt-footer component here -->
@@ -324,15 +332,27 @@
         </div>
 
         <hr />
-        <div class="flex flex-column items-end">
-          <span class="flex" style="gap: 2em">
-            <span><em>Subtotal:</em></span>
-            <span>$0.00</span>
-          </span>
-          <span class="flex" style="gap: 2em">
-            <span><strong>Total:</strong></span>
-            <span>$0.00</span>
-          </span>
+        <div class="flex justify-between">
+          <div>
+            <label>
+              <input
+                type="checkbox"
+                name="english"
+                x-model:checked="$store.generatedScriptTags.minify"
+              />
+              Use coupon (minify JS scripts)
+            </label>
+          </div>
+          <div class="flex flex-column items-end">
+            <span class="flex" style="gap: 2em">
+              <span><em>Subtotal:</em></span>
+              <span>$0.00</span>
+            </span>
+            <span class="flex" style="gap: 2em">
+              <span><strong>Total:</strong></span>
+              <span>$0.00</span>
+            </span>
+          </div>
         </div>
 
         <footer>
@@ -366,7 +386,7 @@
     </dialog>
 
     <!-- Checkout Dialog -->
-    <dialog :open="$store.modalOpen.genTags">
+    <dialog x-data :open="$store.modalOpen.genTags">
       <article>
         <header>
           <button
@@ -397,13 +417,5 @@
         </section>
       </article>
     </dialog>
-
-    <!-- Add To Cart Toast -->
-    <wc-toast x-ref="wc_toast" id="wcToast" duration="60" class="left"
-      ><p
-        x-ref="wc_toast_contents"
-        style="vertical-align: middle; margin: 0"
-      ></p
-    ></wc-toast>
   </body>
 </html>

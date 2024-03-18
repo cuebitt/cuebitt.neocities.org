@@ -12,6 +12,7 @@ document.addEventListener("alpine:init", () => {
   window.Alpine.store("generatedScriptTags", {
     genTags: [],
     genHelp: [],
+    minify: false,
   });
 
   // Fetch the shop items from shopItems.json

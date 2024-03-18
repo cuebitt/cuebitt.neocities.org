@@ -2,7 +2,11 @@
 const generateTagList = (ids) => {
   const cdnLinks = new Set();
   ids.forEach((id) => {
-    const tagItemSrc = window.Alpine.store("shopItems")[id].source;
+    const tagItemSrc = { ...window.Alpine.store("shopItems")[id].source };
+
+    if (window.Alpine.store("generatedScriptTags").minify) {
+      tagItemSrc.filePath = tagItemSrc.filePath.replace(".js", ".min.js");
+    }
 
     const jsSrc = Object.prototype.hasOwnProperty.call(tagItemSrc, "tag")
       ? `https://cdn.jsdelivr.net/gh/${tagItemSrc.user}/${tagItemSrc.repository}@${tagItemSrc.tag}/${tagItemSrc.filePath}`

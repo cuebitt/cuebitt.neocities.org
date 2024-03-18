@@ -9,7 +9,7 @@
       "repository": "webcomponents",
       "filePath": "components/increasr-frame/increasr-frame.js",
       "helpPath": "components/increasr-frame/README.md",
-      "tag": "v1.0.0"
+      "tag": "v1.1.0"
     }
   },
   "webgarden-greenhouse": {
@@ -22,7 +22,20 @@
       "repository": "webcomponents",
       "filePath": "components/webgarden-greenhouse/webgarden-greenhouse.js",
       "helpPath": "components/webgarden-greenhouse/README.md",
-      "tag": "v1.0.0"
+      "tag": "v1.1.0"
+    }
+  },
+  "lanyard-status": {
+    "itemName": "lanyard-status",
+    "desc": "Displays your current discord profile photo, name, status, and activity. Powered by Lanyard!",
+    "imgUrl": "https://raw.githubusercontent.com/cuebitt/webcomponents/main/components/lanyard-status/meta/preview.png",
+    "imgAlt": "lanyard-status component preview",
+    "source": {
+      "user": "cuebitt",
+      "repository": "webcomponents",
+      "filePath": "components/lanyard-status/lanyard-status.js",
+      "helpPath": "components/lanyard-status/README.md",
+      "tag": "v1.1.0"
     }
   }
 }
