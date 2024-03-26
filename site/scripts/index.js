@@ -91,7 +91,7 @@ document.querySelectorAll(".channel.occupied").forEach((channel) => {
 });
 
 // Setup Cue Menu button (close carousel)
-document.querySelector(".cue-button").addEventListener("click", (e) => {
+document.querySelector(".menu-button").addEventListener("click", (e) => {
   // "unfocus" the button if necessary
   document.activeElement?.blur && document.activeElement.blur();
 
