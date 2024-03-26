@@ -49,6 +49,12 @@ carousel.on("move", (newIdx) => {
       channelSfx.playSound(channel.dataset.channelSfx);
     }, 500);
   }
+
+  if ("url" in channel.dataset) {
+    startBtnLink.href = channel.dataset.url;
+  } else {
+    startBtnLink.href = "#";
+  }
 });
 
 // Setup channel click events
