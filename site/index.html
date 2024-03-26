@@ -87,7 +87,6 @@
           href=""
           rel="noopener noreferrer"
           data-hover-sfx="hover_click"
-          data-click-sfx="ding"
           >Start</a
         >
       </div>
@@ -241,7 +240,7 @@
               class="bottom-btn cue-button"
               aria-label="cue button"
               data-hover-sfx="hover_click"
-              data-click-sfx="ding"
+              data-tooltip="🧟‍♂️"
             ></button>
           </div>
           <div class="date-label-container">
@@ -254,7 +253,6 @@
               class="bottom-btn mail-button"
               aria-label="mail button"
               data-hover-sfx="hover_click"
-              data-click-sfx="ding"
               data-tooltip="Credits & Attribution"
             ></a>
           </div>
@@ -268,5 +266,41 @@
 
     <script type="module" src="/scripts/index.js"></script>
     <script type="module" src="/scripts/tooltips.js"></script>
+
+    <script type="module">
+      import { Howl } from "howler";
+
+      const zombieSfx = new Howl({
+        src: ["https://files.catbox.moe/yos1c2.mp3"],
+        volume: 0.5,
+        sprite: {
+          z0: [10421, 419],
+          z1: [200, 900],
+          z2: [1148, 745],
+          z3: [1994, 511],
+          z4: [2488, 469],
+          z5: [2974, 511],
+          z6: [3493, 573],
+          z7: [4071, 662],
+          z8: [4934, 737],
+          z9: [5780, 947],
+          z10: [6752, 527],
+          z11: [7305, 921],
+          z12: [8276, 737],
+          z13: [8997, 611],
+          z14: [9709, 310],
+          z15: [10052, 310],
+        },
+      });
+
+      document
+        .querySelector(".bottom-btn.cue-button")
+        .addEventListener("click", () => {
+          const val = Math.floor(Math.random() * 16);
+          console.log(`z${val}`);
+
+          zombieSfx.play(`z${val}`);
+        });
+    </script>
   </body>
 </html>
