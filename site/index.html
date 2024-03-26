@@ -6,6 +6,17 @@
     <title>Cuebitt's Cue Menu</title>
 
     <link rel="stylesheet" href="index.css" />
+
+    <script type="importmap">
+      {
+        "imports": {
+          "@floating-ui/dom": "https://cdn.jsdelivr.net/npm/@floating-ui/dom@1.6.3/+esm",
+          "howler": "https://cdn.jsdelivr.net/npm/howler@2.2.4/+esm",
+          "nanoid": "https://cdn.jsdelivr.net/npm/nanoid@5.0.6/+esm",
+          "@splidejs/splide": "https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/+esm"
+        }
+      }
+    </script>
   </head>
 
   <!-- TODO -->
@@ -111,9 +122,9 @@
     <script type="module" src="script.js"></script>
 
     <script type="module">
-      import { computePosition } from "https://cdn.jsdelivr.net/npm/@floating-ui/dom@1.6.3/+esm";
-      import { Howl } from "https://cdn.jsdelivr.net/npm/howler@2.2.4/+esm";
-      import { nanoid } from "https://cdn.jsdelivr.net/npm/nanoid@3.1.23/+esm";
+      import { computePosition } from "@floating-ui/dom";
+      import { Howl } from "howler";
+      import { nanoid } from "nanoid";
 
       // Init WiiMenuJS
       WiiMenuJS.init();

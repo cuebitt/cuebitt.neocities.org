@@ -1,5 +1,5 @@
-import { Howl } from "https://cdn.jsdelivr.net/npm/howler@2.2.4/+esm";
-import { Splide } from "https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/+esm";
+import { Howl } from "howler";
+import { Splide } from "@splidejs/splide";
 
 const formatDate = () => {
   // Get the current date
