@@ -256,6 +256,10 @@ audio {
   height: 100vh;
 }
 
+.channel:not(.occupied) {
+  pointer-events: none;
+}
+
 .channel {
   background-color: white;
   position: relative;
