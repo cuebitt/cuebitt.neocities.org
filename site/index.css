@@ -724,3 +724,27 @@ audio {
   margin: 0;
   padding: 0;
 }
+
+/* ART */
+
+.art-channel:not(.channel-expanded) {
+}
+
+.art-channel.channel-expanded {
+  padding: 2rem 3.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.art-channel.channel-expanded > hgroup > h1 {
+  font-size: 5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.art-channel.channel-expanded > hgroup > h3 {
+  font-size: 3rem;
+  margin: 0;
+  padding: 0;
+}

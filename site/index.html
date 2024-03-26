@@ -117,6 +117,23 @@
           <div
             class="channel occupied"
             data-channel-idx="1"
+            data-hover-sfx="hover_click"
+            data-click-sfx="channel_click,channel_open"
+            data-url="javascript:alert(`...I haven't made this channel yet.`);"
+            data-tooltip="Fursona Art"
+            data-channel-sfx="mii"
+          >
+            <div class="channel-inner-container art-channel">
+              <hgroup>
+                <h1>Fursona Art</h1>
+                <h3>Channel</h3>
+              </hgroup>
+            </div>
+          </div>
+
+          <div
+            class="channel occupied"
+            data-channel-idx="2"
             data-tooltip="Webgarden Greenhouse"
             data-url="/greenhouse"
             data-hover-sfx="hover_click"
@@ -136,23 +153,6 @@
                   scrolling="no"
                 ></iframe>
               </div>
-            </div>
-          </div>
-
-          <div
-            class="channel occupied"
-            data-channel-idx="2"
-            data-url="/sitemap"
-            data-tooltip="Sitemap"
-            data-hover-sfx="hover_click"
-            data-click-sfx="channel_click,channel_open"
-            data-channel-sfx="internet"
-          >
-            <div class="channel-inner-container sitemap-channel">
-              <hgroup>
-                <h1>Sitemap</h1>
-                <h3>Channel</h3>
-              </hgroup>
             </div>
           </div>
 
@@ -178,11 +178,22 @@
           </div>
 
           <div
-            class="channel"
+            class="channel occupied"
             data-channel-idx="4"
+            data-url="/sitemap"
+            data-tooltip="Sitemap"
             data-hover-sfx="hover_click"
             data-click-sfx="channel_click,channel_open"
-          ></div>
+            data-channel-sfx="internet"
+          >
+            <div class="channel-inner-container sitemap-channel">
+              <hgroup>
+                <h1>Sitemap</h1>
+                <h3>Channel</h3>
+              </hgroup>
+            </div>
+          </div>
+
           <div
             class="channel"
             data-channel-idx="5"

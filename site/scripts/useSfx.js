@@ -78,6 +78,7 @@ const useSfx = () => {
     check_mii_out: "https://files.catbox.moe/6quqqw.mp3",
     shop: "https://files.catbox.moe/n21ygc.mp3",
     internet: "https://files.catbox.moe/u1xg3j.mp3",
+    mii: "https://files.catbox.moe/l1j9w2.mp3",
   };
 
   const genSfxPlayer = new SfxPlayer(genSfx);
