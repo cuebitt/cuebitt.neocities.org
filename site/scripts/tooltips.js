@@ -1,29 +1,27 @@
-import { computePosition } from "@floating-ui/dom";
+import { computePosition, flip, shift, offset } from "@floating-ui/dom";
 import { Howl } from "howler";
 import { nanoid } from "nanoid";
 
 // Create tooltips
 const tooltipElems = [];
-document
-  .querySelectorAll(".channel.occupied[data-tooltip]")
-  .forEach((channel) => {
-    const tooltip = document
-      .getElementById("tooltip-template")
-      .content.cloneNode(true);
-    tooltip.querySelector("#tooltip").textContent = channel.dataset.tooltip;
+document.querySelectorAll("[data-tooltip]").forEach((channel) => {
+  const tooltip = document
+    .getElementById("tooltip-template")
+    .content.cloneNode(true);
+  tooltip.querySelector("#tooltip").textContent = channel.dataset.tooltip;
 
-    const id = nanoid();
+  const id = nanoid();
 
-    tooltip.querySelector("#tooltip").id = id;
-    document.body.appendChild(tooltip);
+  tooltip.querySelector("#tooltip").id = id;
+  document.body.appendChild(tooltip);
 
-    channel.setAttribute("aria-describedby", id);
+  channel.setAttribute("aria-describedby", id);
 
-    tooltipElems.push({
-      elem: channel,
-      tooltip: document.getElementById(`${id}`),
-    });
+  tooltipElems.push({
+    elem: channel,
+    tooltip: document.getElementById(`${id}`),
   });
+});
 
 // Tooltip hover sound
 let tooltipAppearSfxReady = false;
@@ -36,7 +34,10 @@ const tooltipAppearSfx = new Howl({
 });
 
 const update = (elem, tooltip) => {
-  computePosition(elem, tooltip).then(({ x, y }) => {
+  computePosition(elem, tooltip, {
+    placement: "bottom",
+    middleware: [flip(), shift({ padding: 5 }), offset(10)],
+  }).then(({ x, y }) => {
     Object.assign(tooltip.style, {
       left: `${x}px`,
       top: `${y}px`,
