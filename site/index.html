@@ -17,6 +17,11 @@
         }
       }
     </script>
+
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/gh/cuebitt/webcomponents@v1.2.0/components/lanyard-status/lanyard-status.min.js"
+    ></script>
   </head>
 
   <!-- TODO -->
@@ -49,7 +54,7 @@
         <button onclick="window.WiiMenuJS.closeChannelCarousel()">
           Cue Menu
         </button>
-        <button>Start</button>
+        <a id="start-btn-link" href="" rel="noopener noreferrer">Start</a>
       </div>
     </div>
 
@@ -63,6 +68,7 @@
             data-channel-idx="0"
             data-tooltip="Disk Channel"
             data-sfx-idx="0"
+            data-url="#"
           >
             <div class="channel-inner-container">
               <p>hello world</p>
@@ -72,12 +78,57 @@
           <div
             class="channel occupied"
             data-channel-idx="1"
-            data-tooltip="Other Channel"
+            data-tooltip="Webgarden Greenhouse"
+            data-sfx-idx="1"
+            data-url="/greenhouse"
           >
-            <div class="channel-inner-container">1</div>
+            <div class="channel-inner-container greenhouse-channel">
+              <hgroup>
+                <h1>Webgarden Greenhouse</h1>
+                <h3>Channel</h3>
+              </hgroup>
+              <div class="iframe-div">
+                <iframe
+                  src="//cuebitt.neocities.org/webgarden.html"
+                  height="250px"
+                  width="250px"
+                  scrolling="no"
+                ></iframe>
+              </div>
+            </div>
           </div>
-          <div class="channel" data-channel-idx="2"></div>
-          <div class="channel" data-channel-idx="3"></div>
+          <div
+            class="channel occupied"
+            data-channel-idx="2"
+            data-tooltip="Web Component Shop"
+            data-sfx-idx="2"
+            data-url="/shop"
+          >
+            <div class="channel-inner-container shop-channel">
+              <hgroup>
+                <h1>Web Component Shop</h1>
+                <h3>Channel</h3>
+              </hgroup>
+
+              <div class="demo-div">
+                <lanyard-status></lanyard-status>
+              </div>
+            </div>
+          </div>
+          <div
+            class="channel occupied"
+            data-channel-idx="3"
+            data-url="/sitemap"
+            data-tooltip="Sitemap"
+            data-sfx-idx="3"
+          >
+            <div class="channel-inner-container sitemap-channel">
+              <hgroup>
+                <h1>Sitemap</h1>
+                <h3>Channel</h3>
+              </hgroup>
+            </div>
+          </div>
 
           <div class="channel" data-channel-idx="4"></div>
           <div class="channel" data-channel-idx="5"></div>

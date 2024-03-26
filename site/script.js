@@ -28,19 +28,32 @@ function offset(element) {
 }
 
 function onChannelClick(e) {
+  if (state.currentChannelSfx) {
+    state.currentChannelSfx.stop();
+    state.currentChannelSfx = null;
+  }
+
   const idx = parseInt(e.target.dataset.channelIdx);
 
   if (state.channelCarousel.index === idx) {
-    if ("sfx-idx" in e.target.dataset) {
-      const idx = e.target.dataset.sfxIdx;
+    if ("sfxIdx" in e.target.dataset) {
+      const sfxIdx = parseInt(e.target.dataset.sfxIdx);
 
-      if (state.channelSfx[idx].state() === "loaded") {
+      if (state.channelSfx[sfxIdx].state() === "loaded") {
         setTimeout(() => {
-          state.channelSfx[idx].play();
+          state.channelSfx[sfxIdx].play();
         }, 500);
       }
     }
   }
+
+  const startBtn = document.getElementById("start-btn-link");
+  if ("url" in e.target.dataset) {
+    startBtn.href = e.target.dataset.url;
+  } else {
+    startBtn.href = "#";
+  }
+
   state.channelCarousel.go(idx);
 
   if (state.channelClickSfx.state() === "loaded") state.channelClickSfx.play();
@@ -55,6 +68,11 @@ function onChannelClick(e) {
 }
 
 const closeChannelCarousel = () => {
+  if (state.currentChannelSfx) {
+    state.currentChannelSfx.stop();
+    state.currentChannelSfx = null;
+  }
+
   // play sfx
   if (state.channelClickSfx.state() === "loaded") state.channelClickSfx.play();
   if (state.channelCloseSfx.state() === "loaded") state.channelCloseSfx.play();
@@ -76,6 +94,9 @@ const state = {
   channelCloseSfx: null,
   dingSfx: null,
   diskChannelSfx: null,
+  shopChannelSfx: null,
+  checkMiiOutChannelSfx: null,
+  internetChannelSfx: null,
   channelSfx: [],
   transformOrigins: [],
   mainMenu: null,
@@ -117,11 +138,9 @@ const init = () => {
 
   state.diskChannelSfx = new Howl({
     src: ["https://files.catbox.moe/g6epxj.mp3"],
-    volume: 0.3,
+    volume: 0.5,
+    html5: true,
     onplay: () => {
-      if (state.currentChannelSfx) {
-        state.currentChannelSfx.stop();
-      }
       state.currentChannelSfx = state.diskChannelSfx;
     },
     onstop: () => {
@@ -132,10 +151,8 @@ const init = () => {
   state.checkMiiOutChannelSfx = new Howl({
     src: ["https://files.catbox.moe/6quqqw.mp3"],
     volume: 0.3,
+    html5: true,
     onplay: () => {
-      if (state.currentChannelSfx) {
-        state.currentChannelSfx.stop();
-      }
       state.currentChannelSfx = state.checkMiiOutChannelSfx;
     },
     onstop: () => {
@@ -143,13 +160,45 @@ const init = () => {
     },
   });
 
-  state.channelSfx = [state.diskChannelSfx, state.checkMiiOutChannelSfx];
+  state.shopChannelSfx = new Howl({
+    src: ["https://files.catbox.moe/n21ygc.mp3"],
+    volume: 0.3,
+    html5: true,
+    onplay: () => {
+      state.currentChannelSfx = state.shopChannelSfx;
+    },
+    onstop: () => {
+      state.currentChannelSfx = null;
+    },
+  });
+
+  state.internetChannelSfx = new Howl({
+    src: ["https://files.catbox.moe/u1xg3j.mp3"],
+    volume: 0.3,
+    html5: true,
+    onplay: () => {
+      state.currentChannelSfx = state.internetChannelSfx;
+    },
+    onstop: () => {
+      state.currentChannelSfx = null;
+    },
+  });
+
+  state.channelSfx = [
+    state.diskChannelSfx,
+    state.checkMiiOutChannelSfx,
+    state.shopChannelSfx,
+    state.internetChannelSfx,
+  ];
 
   // Add the channels to the carousel
   document.querySelectorAll(".channel-inner-container").forEach((element) => {
     const newElem = document.createElement("li");
     newElem.classList.add("splide__slide");
-    newElem.appendChild(element.cloneNode(true));
+
+    const elemClone = element.cloneNode(true);
+    elemClone.classList.add("channel-expanded");
+    newElem.appendChild(elemClone);
 
     state.channelCarousel.add(newElem);
   });
@@ -214,10 +263,24 @@ const init = () => {
       ".channel[data-channel-idx='" + newIdx + "']",
     );
 
-    if (next.dataset.sfxIdx in state.channelSfx) {
-      if (state.channelSfx[next.dataset.sfxIdx].state() === "loaded") {
-        state.channelSfx[next.dataset.sfxIdx].play();
-      }
+    if (state.currentChannelSfx) state.currentChannelSfx.stop();
+
+    const startBtn = document.getElementById("start-btn-link");
+    if ("url" in next.dataset) {
+      startBtn.href = next.dataset.url;
+    } else {
+      startBtn.href = "#";
+    }
+
+    if (
+      next.dataset.sfxIdx >= 0 &&
+      next.dataset.sfxIdx < state.channelSfx.length
+    ) {
+      setTimeout(() => {
+        if (state.channelSfx[next.dataset.sfxIdx].state() === "loaded") {
+          state.channelSfx[next.dataset.sfxIdx].play();
+        }
+      }, 500);
     }
   });
 };
