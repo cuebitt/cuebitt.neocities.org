@@ -61,13 +61,17 @@ function onChannelClick(e) {
 
   const elemCenter = state.transformOrigins[idx];
 
-  state.mainMenu.style.transformOrigin = `${elemCenter.x}px ${elemCenter.y}px`;
-  state.mainMenu.classList.toggle("expanded");
-  state.mainMenu.classList.toggle("pointer-events-none");
-  state.frame.classList.toggle("o-0");
+  state.topSection.style.transformOrigin = `${elemCenter.x}px ${elemCenter.y}px`;
+  state.frame.classList.remove("pointer-events-none");
+  state.topSection.classList.add("expanded");
+  state.frame.classList.remove("o-0");
 }
 
 const closeChannelCarousel = () => {
+  // Clear focus from the menu button to prevent the sound effect from playing
+  // while the channel carousel is hidden
+  document.activeElement?.blur && document.activeElement.blur();
+
   if (state.currentChannelSfx) {
     state.currentChannelSfx.stop();
     state.currentChannelSfx = null;
@@ -79,10 +83,11 @@ const closeChannelCarousel = () => {
 
   // get the center of the element
   const elemCenter = state.transformOrigins[state.channelCarousel.index];
-  state.mainMenu.style.transformOrigin = `${elemCenter.x}px ${elemCenter.y}px`;
 
-  state.mainMenu.classList.remove("expanded");
-  state.mainMenu.classList.remove("pointer-events-none");
+  state.topSection.style.transformOrigin = `${elemCenter.x}px ${elemCenter.y}px`;
+  state.frame.classList.add("pointer-events-none");
+  state.topSection.classList.remove("expanded");
+
   state.frame.classList.add("o-0");
 };
 
@@ -102,6 +107,7 @@ const state = {
   mainMenu: null,
   frame: null,
   currentChannelSfx: null,
+  topSection: null,
 };
 
 const init = () => {
@@ -206,6 +212,7 @@ const init = () => {
   // Add event handlers to all the channels
   state.mainMenu = document.querySelector(".main-menu");
   state.frame = document.querySelector(".frame");
+  state.topSection = document.querySelector(".top-section");
 
   // Transform origins for each channel used to zoom in and out
   state.transformOrigins = new Array(12);
