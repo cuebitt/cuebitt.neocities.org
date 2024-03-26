@@ -46,8 +46,8 @@
   <!-- clean up css classes -->
   <!-- add mobile version -->
   <!-- change "wii" to "cue" in static.png -->
-  <!-- actually add channels -->
-  <!-- make the "cue" and mail buttons do something -->
+  <!-- add fursona art channel -->
+  <!-- style channel divs -->
   <!-- clean up since this is a bit of a mess -->
 
   <body>
@@ -101,7 +101,7 @@
             id="button"
             data-channel-idx="0"
             data-tooltip="About Me Channel"
-            data-url="#"
+            data-url="javascript:alert(`...I haven't made this channel yet.`);"
             data-hover-sfx="hover_click"
             data-click-sfx="channel_click,channel_open"
             data-channel-sfx="disk"
@@ -296,10 +296,7 @@
       document
         .querySelector(".bottom-btn.cue-button")
         .addEventListener("click", () => {
-          const val = Math.floor(Math.random() * 16);
-          console.log(`z${val}`);
-
-          zombieSfx.play(`z${val}`);
+          zombieSfx.play(`z${Math.floor(Math.random() * 16)}`);
         });
     </script>
   </body>
