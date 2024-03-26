@@ -80,6 +80,7 @@ const state = {
   transformOrigins: [],
   mainMenu: null,
   frame: null,
+  currentChannelSfx: null,
 };
 
 const init = () => {
@@ -114,14 +115,35 @@ const init = () => {
 
   // channel carousel sfx
 
-  // disk channel
-
   state.diskChannelSfx = new Howl({
     src: ["https://files.catbox.moe/g6epxj.mp3"],
     volume: 0.3,
+    onplay: () => {
+      if (state.currentChannelSfx) {
+        state.currentChannelSfx.stop();
+      }
+      state.currentChannelSfx = state.diskChannelSfx;
+    },
+    onstop: () => {
+      state.currentChannelSfx = null;
+    },
   });
 
-  state.channelSfx = [state.diskChannelSfx];
+  state.checkMiiOutChannelSfx = new Howl({
+    src: ["https://files.catbox.moe/6quqqw.mp3"],
+    volume: 0.3,
+    onplay: () => {
+      if (state.currentChannelSfx) {
+        state.currentChannelSfx.stop();
+      }
+      state.currentChannelSfx = state.checkMiiOutChannelSfx;
+    },
+    onstop: () => {
+      state.currentChannelSfx = null;
+    },
+  });
+
+  state.channelSfx = [state.diskChannelSfx, state.checkMiiOutChannelSfx];
 
   // Add the channels to the carousel
   document.querySelectorAll(".channel-inner-container").forEach((element) => {
