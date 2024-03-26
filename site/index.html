@@ -3,76 +3,193 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-    <title>Cuebitt's Website</title>
+    <title>Cuebitt's Cue Menu</title>
 
-    <!-- css styleheets -->
-    <link rel="stylesheet" href="global.css" />
-    <style>
-      main {
-        flex: 1;
-      }
-
-      body {
-        margin: 0;
-      }
-    </style>
+    <link rel="stylesheet" href="index.css" />
   </head>
+
+  <!-- TODO -->
+  <!-- finish converting script.js to es module -->
+  <!-- clean up css classes -->
+  <!-- add mobile version -->
+  <!-- change "wii" to "cue" in static.png -->
+  <!-- move script tag from end of body to separate file -->
+  <!-- actually add channels -->
+  <!-- make the "cue" and mail buttons do something -->
+  <!-- clean up since this is a bit of a mess -->
+
   <body>
-    <div class="outer-container">
-      <header class="container">
-        <h1>Cuebitt's Website ~ 🐮😇</h1>
-      </header>
-
-      <main>
-        <div class="flex justify-center">
-          <p style="font-size: 2rem">🚧 Homepage Under Construction 🚧</p>
+    <div id="frame" class="frame o-0">
+      <section
+        class="splide channel-carousel"
+        aria-label="Channel Picker Carousel"
+      >
+        <div class="splide__arrows channel-carousel-arrows">
+          <button class="splide__arrow splide__arrow--prev arrow-l"></button>
+          <button class="splide__arrow splide__arrow--next arrow-r"></button>
         </div>
 
-        <div class="flex justify-center" style="padding: 0 5rem">
-          <p>
-            Hi, I'm Cuebitt. I'm a
-            <span title="Computer Science">CS</span> student and a furry. I
-            haven't actually built my homepage yet so... please see the
-            <a href="/sitemap">sitemap</a> for a directory of this website's
-            content.
-          </p>
+        <div class="splide__track">
+          <ul class="splide__list" id="carousel-list"></ul>
         </div>
-      </main>
+      </section>
 
-      <footer>
-        <hr />
-        <div class="flex flex-column">
-          <section class="flex justify-center">
-            <nav>
-              <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/sitemap">Sitemap</a></li>
-                <li>
-                  <a
-                    href="http://github.com/cuebitt/cuebitt.neocities.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    >Source</a
-                  >
-                </li>
-              </ul>
-            </nav>
-          </section>
-          <section class="flex justify-center">
-            <a
-              href="http://neocities.org"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                alt="Hosted by Neocities"
-                src="https://cdn.jsdelivr.net/gh/neocities/neocities@master/public/img/neocitiesbadge.svg"
-              />
-            </a>
-          </section>
-        </div>
-      </footer>
+      <div class="channel-carousel-footer">
+        <button onclick="window.WiiMenuJS.closeChannelCarousel()">
+          Cue Menu
+        </button>
+        <button>Start</button>
+      </div>
     </div>
+
+    <!-- a 4x3 grid of divs -->
+    <div class="main-menu">
+      <div class="top-section">
+        <div class="channels-grid">
+          <div
+            class="channel occupied"
+            id="button"
+            data-channel-idx="0"
+            data-tooltip="Disc Channel"
+          >
+            <div class="channel-inner-container">
+              <p>hello world</p>
+            </div>
+          </div>
+
+          <div
+            class="channel occupied"
+            data-channel-idx="1"
+            data-tooltip="Other Channel"
+          >
+            <div class="channel-inner-container">1</div>
+          </div>
+          <div class="channel" data-channel-idx="2"></div>
+          <div class="channel" data-channel-idx="3"></div>
+
+          <div class="channel" data-channel-idx="4"></div>
+          <div class="channel" data-channel-idx="5"></div>
+          <div class="channel" data-channel-idx="6"></div>
+          <div class="channel" data-channel-idx="7"></div>
+
+          <div class="channel" data-channel-idx="8"></div>
+          <div class="channel" data-channel-idx="9"></div>
+          <div class="channel" data-channel-idx="10"></div>
+          <div class="channel" data-channel-idx="11"></div>
+        </div>
+      </div>
+
+      <div class="bottom-section">
+        <div class="bottom-header">
+          <p>Cue Menu</p>
+        </div>
+
+        <div class="bottom-buttons">
+          <div class="bottom-button-container left">
+            <button
+              class="bottom-btn cue-button"
+              aria-label="cue button"
+            ></button>
+          </div>
+          <div class="date-label-container">
+            <p id="date-label"></p>
+          </div>
+          <div class="bottom-button-container right">
+            <button
+              class="bottom-btn mail-button"
+              aria-label="mail button"
+            ></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <template id="tooltip-template">
+      <div id="tooltip" class="tooltip" role="tooltip"></div>
+    </template>
+
+    <script type="module" src="script.js"></script>
+
+    <script type="module">
+      import { computePosition } from "https://cdn.jsdelivr.net/npm/@floating-ui/dom@1.6.3/+esm";
+      import { Howl } from "https://cdn.jsdelivr.net/npm/howler@2.2.4/+esm";
+      import { nanoid } from "https://cdn.jsdelivr.net/npm/nanoid@3.1.23/+esm";
+
+      // Init WiiMenuJS
+      WiiMenuJS.init();
+
+      // Init date label
+      // Set the date label's value
+      document.getElementById("date-label").textContent =
+        WiiMenuJS.formatDate();
+
+      // Create tooltips
+      const tooltipElems = [];
+      document
+        .querySelectorAll(".channel.occupied[data-tooltip]")
+        .forEach((channel) => {
+          const tooltip = document
+            .getElementById("tooltip-template")
+            .content.cloneNode(true);
+          tooltip.querySelector("#tooltip").textContent =
+            channel.dataset.tooltip;
+
+          const id = nanoid();
+
+          tooltip.querySelector("#tooltip").id = id;
+          document.body.appendChild(tooltip);
+
+          channel.setAttribute("aria-describedby", id);
+
+          tooltipElems.push({
+            elem: channel,
+            tooltip: document.getElementById(`${id}`),
+          });
+        });
+
+      // Tooltip hover sound
+      let tooltipAppearSfxReady = false;
+      var tooltipAppearSfx = new Howl({
+        src: ["https://files.catbox.moe/3x2h7u.mp3"],
+        volume: 0.3,
+        onload: () => {
+          tooltipAppearSfxReady = true;
+        },
+      });
+
+      const update = (elem, tooltip) => {
+        computePosition(elem, tooltip).then(({ x, y }) => {
+          Object.assign(tooltip.style, {
+            left: `${x}px`,
+            top: `${y}px`,
+          });
+        });
+      };
+
+      function showTooltip(elem, tooltip) {
+        tooltip.style.display = "block";
+        update(elem, tooltip);
+        if (tooltipAppearSfxReady) {
+          tooltipAppearSfx.play();
+        }
+      }
+
+      function hideTooltip(elem, tooltip) {
+        tooltip.style.display = "";
+      }
+
+      tooltipElems.forEach(({ elem, tooltip }) => {
+        [
+          ["mouseenter", showTooltip],
+          ["mouseleave", hideTooltip],
+          ["focus", showTooltip],
+          ["blur", hideTooltip],
+        ].forEach(([event, listener]) => {
+          elem.addEventListener(event, () => {
+            listener(elem, tooltip);
+          });
+        });
+      });
+    </script>
   </body>
 </html>
