@@ -28,12 +28,22 @@ function offset(element) {
 }
 
 function onChannelClick(e) {
-  const idx = parseInt(e.target.getAttribute("data-channel-idx"));
+  const idx = parseInt(e.target.dataset.channelIdx);
+
+  if ("sfx-idx" in e.target.dataset) {
+    const idx = e.target.dataset.sfxIdx;
+
+    if (state.channelSfx[idx].state() === "loaded") {
+      setTimeout(() => {
+        state.channelSfx[idx].play();
+      }, 500);
+    }
+  }
 
   state.channelCarousel.go(idx);
 
-  if (state.channelClickSfxReady) state.channelClickSfx.play();
-  if (state.channelOpenSfxReady) state.channelOpenSfx.play();
+  if (state.channelClickSfx.state() === "loaded") state.channelClickSfx.play();
+  if (state.channelOpenSfx.state() === "loaded") state.channelOpenSfx.play();
 
   const elemCenter = state.transformOrigins[idx];
 
@@ -45,8 +55,8 @@ function onChannelClick(e) {
 
 const closeChannelCarousel = () => {
   // play sfx
-  if (state.channelClickSfxReady) state.channelClickSfx.play();
-  if (state.channelCloseSfxReady) state.channelCloseSfx.play();
+  if (state.channelClickSfx.state() === "loaded") state.channelClickSfx.play();
+  if (state.channelCloseSfx.state() === "loaded") state.channelCloseSfx.play();
 
   // get the center of the element
   const elemCenter = state.transformOrigins[state.channelCarousel.index];
@@ -64,57 +74,37 @@ const state = {
   channelOpenSfx: null,
   channelCloseSfx: null,
   dingSfx: null,
+  diskChannelSfx: null,
+  channelSfx: [],
   transformOrigins: [],
-  hoverClickSfxReady: false,
-  channelClickSfxReady: false,
-  channelOpenSfxReady: false,
-  channelCloseSfxReady: false,
-  dingSfxReady: false,
   mainMenu: null,
   frame: null,
 };
 
 const init = () => {
   // Init the sfx
-  state.hoverClickSfxReady = false;
   state.hoverClickSfx = new Howl({
     src: ["https://files.catbox.moe/0dwdsb.mp3"],
     volume: 0.3,
-    onload: () => {
-      state.hoverClickSfxReady = true;
-    },
   });
-  state.channelClickSfxReady = false;
   state.channelClickSfx = new Howl({
     src: ["https://files.catbox.moe/oghwju.mp3"],
     volume: 0.3,
-    onload: () => {
-      state.channelClickSfxReady = true;
-    },
   });
   state.channelOpenSfxReady = false;
   state.channelOpenSfx = new Howl({
     src: ["https://files.catbox.moe/i8e9d4.mp3"],
     volume: 0.3,
-    onload: () => {
-      state.channelOpenSfxReady = true;
-    },
   });
   state.channelCloseSfxReady = false;
   state.channelCloseSfx = new Howl({
     src: ["https://files.catbox.moe/xtru8e.mp3"],
     volume: 0.25,
-    onload: () => {
-      state.channelCloseSfxReady = true;
-    },
   });
   state.dingSfxReady = false;
   state.dingSfx = new Howl({
     src: ["https://files.catbox.moe/tr0usf.mp3"],
     volume: 0.3,
-    onload: () => {
-      state.dingSfxReady = true;
-    },
   });
 
   state.channelCarousel = new Splide(".splide", {
@@ -123,6 +113,17 @@ const init = () => {
     rewindSpeed: 0,
     drag: false,
   }).mount();
+
+  // channel carousel sfx
+
+  // disk channel
+
+  state.diskChannelSfx = new Howl({
+    src: ["https://files.catbox.moe/g6epxj.mp3"],
+    volume: 0.3,
+  });
+
+  state.channelSfx = [state.diskChannelSfx];
 
   // Add the channels to the carousel
   document.querySelectorAll(".channel-inner-container").forEach((element) => {
@@ -149,7 +150,7 @@ const init = () => {
 
     // hover sfx
     element.addEventListener("mouseover", (e) => {
-      if (state.hoverClickSfxReady) state.hoverClickSfx.play();
+      if (state.hoverClickSfx.state() === "loaded") state.hoverClickSfx.play();
     });
 
     // store the transform origin
@@ -167,23 +168,37 @@ const init = () => {
   // Add event handlers to the bottom buttons
   document.querySelectorAll(".bottom-btn").forEach((element) => {
     element.addEventListener("mouseover", function (e) {
-      if (state.hoverClickSfxReady) state.hoverClickSfx.play();
+      if (state.hoverClickSfx.state() === "loaded") state.hoverClickSfx.play();
     });
 
     element.addEventListener("click", function (e) {
-      if (state.dingSfxReady) state.dingSfx.play();
+      if (state.dingSfx.state() === "loaded") state.dingSfx.play();
     });
   });
 
   // Add sound effects to the carousel buttons
   document.querySelectorAll(".splide__arrow").forEach((element) => {
     element.addEventListener("mouseover", function (e) {
-      if (state.hoverClickSfxReady) state.hoverClickSfx.play();
+      if (state.hoverClickSfx.state() === "loaded") state.hoverClickSfx.play();
     });
 
     element.addEventListener("click", function (e) {
-      if (state.channelClickSfxReady) state.channelClickSfx.play();
+      if (state.channelClickSfx.state() === "loaded")
+        state.channelClickSfx.play();
     });
+  });
+
+  // Play sound effects if specified by channel
+  state.channelCarousel.on("move", (newIdx) => {
+    const next = document.querySelector(
+      ".channel[data-channel-idx='" + newIdx + "']",
+    );
+
+    if (next.dataset.sfxIdx in state.channelSfx) {
+      if (state.channelSfx[next.dataset.sfxIdx].state() === "loaded") {
+        state.channelSfx[next.dataset.sfxIdx].play();
+      }
+    }
   });
 };
 
