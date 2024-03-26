@@ -30,16 +30,17 @@ function offset(element) {
 function onChannelClick(e) {
   const idx = parseInt(e.target.dataset.channelIdx);
 
-  if ("sfx-idx" in e.target.dataset) {
-    const idx = e.target.dataset.sfxIdx;
+  if (state.channelCarousel.index === idx) {
+    if ("sfx-idx" in e.target.dataset) {
+      const idx = e.target.dataset.sfxIdx;
 
-    if (state.channelSfx[idx].state() === "loaded") {
-      setTimeout(() => {
-        state.channelSfx[idx].play();
-      }, 500);
+      if (state.channelSfx[idx].state() === "loaded") {
+        setTimeout(() => {
+          state.channelSfx[idx].play();
+        }, 500);
+      }
     }
   }
-
   state.channelCarousel.go(idx);
 
   if (state.channelClickSfx.state() === "loaded") state.channelClickSfx.play();
@@ -91,17 +92,14 @@ const init = () => {
     src: ["https://files.catbox.moe/oghwju.mp3"],
     volume: 0.3,
   });
-  state.channelOpenSfxReady = false;
   state.channelOpenSfx = new Howl({
     src: ["https://files.catbox.moe/i8e9d4.mp3"],
     volume: 0.3,
   });
-  state.channelCloseSfxReady = false;
   state.channelCloseSfx = new Howl({
     src: ["https://files.catbox.moe/xtru8e.mp3"],
     volume: 0.25,
   });
-  state.dingSfxReady = false;
   state.dingSfx = new Howl({
     src: ["https://files.catbox.moe/tr0usf.mp3"],
     volume: 0.3,
