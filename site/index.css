@@ -16,7 +16,7 @@
   border: 2px solid #b4b4b4;
   font-size: 2rem;
   display: none;
-  z-index: 9999;
+  z-index: 11;
 
   font-family: "Open Sans", sans-serif;
 }
