@@ -1,6 +1,5 @@
 @import url("https://cdn.jsdelivr.net/npm/modern-normalize@2.0.0/modern-normalize.min.css");
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
-@import url("https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css");
 
 /* TOOLTIPS  */
 
@@ -300,25 +299,6 @@ audio {
 
 /* CAROUSEL */
 
-.channel-carousel,
-.splide__track,
-.splide__list {
-  height: 100%;
-  flex: 0 0 80%;
-}
-
-.channel-carousel {
-  background-color: white;
-}
-
-.splide__slide {
-  height: 100%;
-}
-
-.splide__pagination.splide__pagination--ltr {
-  display: none;
-}
-
 .channel-carousel-footer {
   flex: 0 0 20%;
   background-color: #c9c9c1;
@@ -380,32 +360,6 @@ audio {
 .channel-carousel-footer > a:hover,
 .channel-carousel-footer > button:hover {
   transform: scale(1.05);
-}
-
-.channel-carousel-arrows > .splide__arrow {
-  background-color: transparent !important;
-  opacity: 1 !important;
-  border-radius: 0 !important;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  height: 3rem;
-  transition: transform 0.1s;
-  transform: translateY(-50%);
-}
-
-.channel-carousel-arrows > .splide__arrow:hover {
-  transform: translateY(-50%) scale(1.1);
-}
-
-.channel-carousel-arrows > .splide__arrow--prev {
-  margin-left: -0.5rem;
-  background-image: url("/assets/index/img/arrow-l.svg");
-}
-
-.channel-carousel-arrows > .splide__arrow--next {
-  margin-right: -0.5rem;
-  background-image: url("/assets/index/img/arrow-r.svg");
 }
 
 /* CHANNELS */
@@ -637,16 +591,13 @@ audio {
   display: none;
 }
 
-.channel-carousel-container {
-  width: 100%;
-  height: 100%;
-}
-
 .channel-menu-container {
   width: 100%;
   height: 100%;
   padding: 0.75em;
 }
+
+/* temporary, remove when finished adding channel menu components */
 
 .channel-menu-container > hgroup > h1 {
   margin: 0;

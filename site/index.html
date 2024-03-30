@@ -29,8 +29,7 @@
         "imports": {
           "@floating-ui/dom": "https://cdn.jsdelivr.net/npm/@floating-ui/dom@1.6.3/+esm",
           "howler": "https://cdn.jsdelivr.net/npm/howler@2.2.4/+esm",
-          "nanoid": "https://cdn.jsdelivr.net/npm/nanoid@5.0.6/+esm",
-          "@splidejs/splide": "https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/+esm"
+          "nanoid": "https://cdn.jsdelivr.net/npm/nanoid@5.0.6/+esm"
         }
       }
     </script>
@@ -39,6 +38,11 @@
     <script
       type="module"
       src="/components/channels/about/about-channel-carousel.js"
+    ></script>
+
+    <script
+      type="module"
+      src="/components/channel-carousel/channel-carousel.js"
     ></script>
   </head>
 
@@ -52,27 +56,11 @@
 
   <body>
     <div id="frame" class="frame o-0 pointer-events-none">
-      <section
-        class="splide channel-carousel"
-        aria-label="Channel Picker Carousel"
-      >
-        <div class="splide__arrows channel-carousel-arrows">
-          <button
-            class="splide__arrow splide__arrow--prev arrow-l"
-            data-hover-sfx="hover_click"
-            data-click-sfx="channel_click"
-          ></button>
-          <button
-            class="splide__arrow splide__arrow--next arrow-r"
-            data-hover-sfx="hover_click"
-            data-click-sfx="channel_click"
-          ></button>
-        </div>
-
-        <div class="splide__track">
-          <ul class="splide__list" id="carousel-list"></ul>
-        </div>
-      </section>
+      <channel-carousel
+        id="channel-carousel"
+        channels-selector=".channel-inner-container"
+        style="height: 100%"
+      ></channel-carousel>
 
       <div class="channel-carousel-footer">
         <button

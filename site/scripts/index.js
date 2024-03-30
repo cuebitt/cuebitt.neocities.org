@@ -1,10 +1,9 @@
 import { useSfx } from "./useSfx.js";
-import { useCarousel } from "./useCarousel.js";
 import { calculateTransformOrigins, formatDate } from "./util.js";
 
 // hooks
 const [genSfx, channelSfx] = useSfx();
-const carousel = useCarousel(".splide", ".channel-inner-container");
+const carousel = document.getElementById("channel-carousel");
 let carouselIsOpen = false;
 
 // element references
@@ -32,18 +31,17 @@ document.querySelectorAll("[data-click-sfx]").forEach((elem) => {
   });
 });
 
-// Setup carousel events
-carousel.on("move", (newIdx) => {
+carousel.addEventListener("move", (e) => {
   // Stop channel sfx
   channelSfx.stop();
 
   // Set transform origin to the center of the new element
-  const elemCenter = transformOrigins[newIdx];
+  const elemCenter = transformOrigins[e.detail.newIdx];
   topSection.style.transformOrigin = `${elemCenter.x}px ${elemCenter.y}px`;
 
   // play channel sfx if specified
   const channel = document.querySelector(
-    `.channel.occupied[data-channel-idx="${newIdx}"]`,
+    `.channel.occupied[data-channel-idx="${e.detail.newIdx}"]`,
   );
 
   // Delay the sfx until after the transition of the carousel is not open
@@ -64,12 +62,11 @@ carousel.on("move", (newIdx) => {
   }
 });
 
-// Call a slide's deactivateChannel method when it is no longer active
-carousel.on("inactive", (slide) => {
-  if (slide.isClone) return;
+carousel.addEventListener("inactive", (e) => {
+  if (e.detail.isClone) return;
 
   try {
-    slide.slide
+    e.detail.slide.slide
       .querySelector(
         ".channel-inner-container > .channel-carousel-container > *:first-child",
       )
@@ -79,12 +76,11 @@ carousel.on("inactive", (slide) => {
   }
 });
 
-// Call a slide's activateChannel method when it is active
-carousel.on("active", (slide) => {
-  if (slide.isClone) return;
+carousel.addEventListener("active", (e) => {
+  if (e.detail.isClone) return;
 
   try {
-    const currSlide = slide.slide.querySelector(
+    const currSlide = e.detail.slide.slide.querySelector(
       ".channel-inner-container > .channel-carousel-container > *:first-child",
     );
 
@@ -108,7 +104,7 @@ document.querySelectorAll(".channel.occupied").forEach((channel) => {
 
     // play channel sfx if specified
     // if moving to another channel, the sfx will be triggered in the carousel move event
-    carousel.goWrapper(idx);
+    carousel.goToSlide(idx);
 
     // set the start button link destination
     if ("url" in channel.dataset) {
