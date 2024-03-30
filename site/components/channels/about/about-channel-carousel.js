@@ -15,10 +15,10 @@ class AboutChannelCarousel extends HTMLElement {
     this._smallImgSrc = this.getAttribute("small-img-src") || "";
 
     this._css = new CSSStyleSheet();
-    this._css.replaceSync(this.styles());
+    this._css.replaceSync(AboutChannelCarousel.styles());
 
     this._template = document.createElement("template");
-    this._template.innerHTML = this.template();
+    this._template.innerHTML = AboutChannelCarousel.template();
 
     this.render();
     this._connected = true;
@@ -59,7 +59,7 @@ class AboutChannelCarousel extends HTMLElement {
     this._element.classList.remove("animate");
   }
 
-  template() {
+  static template() {
     return /* html */ `
     <div class="outer-container">
 <div class="reflect-container-grid">
@@ -114,7 +114,7 @@ class AboutChannelCarousel extends HTMLElement {
         `;
   }
 
-  styles() {
+  static styles() {
     return /* css */ `
 .reflect-container-grid {
   display: grid;

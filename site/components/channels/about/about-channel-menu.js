@@ -15,10 +15,10 @@ class AboutChannelMenu extends HTMLElement {
     this._imgSrc = this.getAttribute("img-src") || "";
 
     this._css = new CSSStyleSheet();
-    this._css.replaceSync(this.styles());
+    this._css.replaceSync(AboutChannelMenu.styles());
 
     this._template = document.createElement("template");
-    this._template.innerHTML = this.template();
+    this._template.innerHTML = AboutChannelMenu.template();
 
     this.render();
     this._connected = true;
@@ -51,7 +51,7 @@ class AboutChannelMenu extends HTMLElement {
     this._element = this.shadowRoot.querySelector(".outer-container");
   }
 
-  template() {
+  static template() {
     return /* html */ `
 <div class="outer-container">
 
@@ -59,7 +59,7 @@ class AboutChannelMenu extends HTMLElement {
 `;
   }
 
-  styles() {
+  static styles() {
     return /* css */ `
   
   
