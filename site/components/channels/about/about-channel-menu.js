@@ -54,19 +54,93 @@ class AboutChannelMenu extends HTMLElement {
   static template() {
     return /* html */ `
 <div class="outer-container">
+  <div class="main-text">
+    <h1>Info</h1>
+    <p>&</p>
+    <h1>Social Links</h1>
+    <h3>Channel</h3>
+  </div>
+  <div class="cd-background-container">
+    <div class="reflector-src">
+    <div class="reflect dvd bg-dvd">
+      <div class="dvd-inner">
+      </div>
+    </div>
+  </div>
 
+  <div class="reflector">
+    <div class="reflect dvd bg-dvd">
+      <div class="dvd-inner">
+      </div>
+    </div>
+  </div>
+  </div>
 </div>
 `;
   }
 
   static styles() {
     return /* css */ `
-  
+
+    @keyframes dvd-spin {
+      0% {
+        transform: rotateY(0deg);
+      }
+      50%, 100% {
+        transform: rotateY(-360deg);
+      }
+    }
+
+    .reflect {
+      animation-name: dvd-spin;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-out;
+    }
+
+    .main-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      gap: 0.5em;
+    }
+
+    h1, h2, h3, h4, h5, h6, p {
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .main-text {
+      position: relative;
+    }
+
+    .cd-background-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      z-index: -1;
+      opacity: 50%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .bg-dvd {
+  --w: 7em;
+  --h: 7em;
+  --bg-color: #dfcbfa;
+}
   
   .outer-container {
     position: relative;
-    display: flex;
-    justify-content: center;
+    width: 100%;
+    height: 100%;
   }
 
   .reflect-container {
@@ -92,7 +166,7 @@ class AboutChannelMenu extends HTMLElement {
     height: var(--h);
     overflow: hidden;
     border-radius: 50%;
-    border: 2px solid white;
+    border: 2px solid #ffcf33;
     outline: 2px solid var(--bg-color);
   }
   
@@ -112,14 +186,6 @@ class AboutChannelMenu extends HTMLElement {
     z-index: -1;
     border: 2px solid var(--bg-color);
     outline: 2px solid white;
-  }
-  
-  .dvd-inner {
-    display: flex;
-    height: 100%;
-    justify-content: left;
-    align-items: center;
-    padding: 0.1em;
   }
   
   .dvd-shadow {

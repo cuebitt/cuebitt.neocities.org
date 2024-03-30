@@ -37,12 +37,16 @@
     <!-- web components -->
     <script
       type="module"
-      src="/components/channels/about/about-channel-carousel.js"
+      src="/components/channel-carousel/channel-carousel.js"
     ></script>
 
     <script
       type="module"
-      src="/components/channel-carousel/channel-carousel.js"
+      src="/components/channels/about/about-channel-carousel.js"
+    ></script>
+    <script
+      type="module"
+      src="/components/channels/about/about-channel-menu.js"
     ></script>
   </head>
 
@@ -87,7 +91,7 @@
             class="channel occupied"
             id="button"
             data-channel-idx="0"
-            data-tooltip="About Me Channel"
+            data-tooltip="Info & Social Links"
             data-url="javascript:alert(`...I haven't made this channel yet.`);"
             data-hover-sfx="hover_click"
             data-click-sfx="channel_click,channel_open"
@@ -95,10 +99,7 @@
           >
             <div class="channel-inner-container about-me-channel">
               <div class="channel-menu-container">
-                <hgroup>
-                  <h1>About Me<br />+ Social Links</h1>
-                  <h3>Channel</h3>
-                </hgroup>
+                <about-channel-menu></about-channel-menu>
               </div>
 
               <div class="channel-carousel-container">
