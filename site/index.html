@@ -38,7 +38,7 @@
     <!-- web components -->
     <script
       type="module"
-      src="https://cdn.jsdelivr.net/gh/cuebitt/webcomponents@v1.2.0/components/lanyard-status/lanyard-status.min.js"
+      src="/components/channels/about/about-channel-carousel.js"
     ></script>
   </head>
 
@@ -46,9 +46,9 @@
   <!-- clean up css classes -->
   <!-- add mobile version -->
   <!-- change "wii" to "cue" in static.png -->
-  <!-- add fursona art channel -->
   <!-- style channel divs -->
   <!-- clean up since this is a bit of a mess -->
+  <!-- use web components for channels to make them more modular -->
 
   <body>
     <div id="frame" class="frame o-0 pointer-events-none">
@@ -92,10 +92,9 @@
       </div>
     </div>
 
-    <!-- a 4x3 grid of divs -->
     <div class="main-menu">
       <div class="top-section">
-        <div class="channels-grid">
+        <div class="channels-grid disc-channel">
           <div
             class="channel occupied"
             id="button"
@@ -107,10 +106,18 @@
             data-channel-sfx="disk"
           >
             <div class="channel-inner-container about-me-channel">
-              <hgroup>
-                <h1>About Me<br />+ Social Links</h1>
-                <h3>Channel</h3>
-              </hgroup>
+              <div class="channel-menu-container">
+                <hgroup>
+                  <h1>About Me<br />+ Social Links</h1>
+                  <h3>Channel</h3>
+                </hgroup>
+              </div>
+
+              <div class="channel-carousel-container">
+                <about-channel-carousel
+                  small-img-src="assets/misc/img/indigo-tbh.png"
+                ></about-channel-carousel>
+              </div>
             </div>
           </div>
 
@@ -124,10 +131,13 @@
             data-channel-sfx="mii"
           >
             <div class="channel-inner-container art-channel">
-              <hgroup>
-                <h1>Fursona Art</h1>
-                <h3>Channel</h3>
-              </hgroup>
+              <div class="channel-menu-container">
+                <hgroup>
+                  <h1>Fursona Art</h1>
+                  <h3>Channel</h3>
+                </hgroup>
+              </div>
+              <div class="channel-carousel-container"></div>
             </div>
           </div>
 
@@ -141,18 +151,13 @@
             data-channel-sfx="check_mii_out"
           >
             <div class="channel-inner-container greenhouse-channel">
-              <hgroup>
-                <h1>Webgarden Greenhouse</h1>
-                <h3>Channel</h3>
-              </hgroup>
-              <div class="iframe-div">
-                <iframe
-                  src="//cuebitt.neocities.org/webgarden.html"
-                  height="250px"
-                  width="250px"
-                  scrolling="no"
-                ></iframe>
+              <div class="channel-menu-container">
+                <hgroup>
+                  <h1>Webgarden Greenhouse</h1>
+                  <h3>Channel</h3>
+                </hgroup>
               </div>
+              <div class="channel-carousel-container"></div>
             </div>
           </div>
 
@@ -166,14 +171,13 @@
             data-channel-sfx="shop"
           >
             <div class="channel-inner-container shop-channel">
-              <hgroup>
-                <h1>Web Component Shop</h1>
-                <h3>Channel</h3>
-              </hgroup>
-
-              <div class="demo-div">
-                <lanyard-status></lanyard-status>
+              <div class="channel-menu-container">
+                <hgroup>
+                  <h1>Web Component Shop</h1>
+                  <h3>Channel</h3>
+                </hgroup>
               </div>
+              <div class="channel-carousel-container"></div>
             </div>
           </div>
 
@@ -187,10 +191,13 @@
             data-channel-sfx="internet"
           >
             <div class="channel-inner-container sitemap-channel">
-              <hgroup>
-                <h1>Sitemap</h1>
-                <h3>Channel</h3>
-              </hgroup>
+              <div class="channel-menu-container">
+                <hgroup>
+                  <h1>Sitemap</h1>
+                  <h3>Channel</h3>
+                </hgroup>
+              </div>
+              <div class="channel-carousel-container"></div>
             </div>
           </div>
 
@@ -281,9 +288,11 @@
     <script type="module">
       import { Howl } from "howler";
 
+      let last = -1;
+
       const zombieSfx = new Howl({
         src: ["https://files.catbox.moe/yos1c2.mp3"],
-        volume: 0.5,
+        volume: 0.125,
         sprite: {
           z0: [10421, 419],
           z1: [200, 900],
@@ -307,7 +316,15 @@
       document
         .querySelector(".bottom-btn.cue-button")
         .addEventListener("click", () => {
-          zombieSfx.play(`z${Math.floor(Math.random() * 16)}`);
+          // Don't play the same sound effect twice in a row
+          let idx = Math.floor(Math.random() * 16);
+          if (idx === last) {
+            idx = (idx + 1) % 16;
+          }
+
+          zombieSfx.play(`z${idx}`);
+
+          last = idx;
         });
     </script>
   </body>

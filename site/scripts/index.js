@@ -5,6 +5,7 @@ import { calculateTransformOrigins, formatDate } from "./util.js";
 // hooks
 const [genSfx, channelSfx] = useSfx();
 const carousel = useCarousel(".splide", ".channel-inner-container");
+let carouselIsOpen = false;
 
 // element references
 const frame = document.getElementById("frame");
@@ -44,16 +45,59 @@ carousel.on("move", (newIdx) => {
   const channel = document.querySelector(
     `.channel.occupied[data-channel-idx="${newIdx}"]`,
   );
+
+  // Delay the sfx until after the transition of the carousel is not open
   if ("channelSfx" in channel.dataset) {
+    const delay = carouselIsOpen ? 0 : 500;
+
     setTimeout(() => {
+      channelSfx.stop();
       channelSfx.playSound(channel.dataset.channelSfx);
-    }, 500);
+    }, delay);
   }
 
+  // Update the link button
   if ("url" in channel.dataset) {
     startBtnLink.href = channel.dataset.url;
   } else {
     startBtnLink.href = "#";
+  }
+});
+
+// Call a slide's deactivateChannel method when it is no longer active
+carousel.on("inactive", (slide) => {
+  if (slide.isClone) return;
+
+  try {
+    slide.slide
+      .querySelector(
+        ".channel-inner-container > .channel-carousel-container > *:first-child",
+      )
+      .deactivateChannel();
+  } catch (err) {
+    console.error(err);
+  }
+});
+
+// Call a slide's activateChannel method when it is active
+carousel.on("active", (slide) => {
+  if (slide.isClone) return;
+
+  try {
+    const currSlide = slide.slide.querySelector(
+      ".channel-inner-container > .channel-carousel-container > *:first-child",
+    );
+
+    // Deactivate it just in case
+    currSlide.deactivateChannel();
+
+    // Activate after transition if the carousel isn't open yet
+    const delay = carouselIsOpen ? 1 : 500;
+    setTimeout(() => {
+      currSlide.activateChannel();
+    }, delay);
+  } catch (err) {
+    console.error(err);
   }
 });
 
@@ -64,13 +108,7 @@ document.querySelectorAll(".channel.occupied").forEach((channel) => {
 
     // play channel sfx if specified
     // if moving to another channel, the sfx will be triggered in the carousel move event
-    if (carousel.index === idx && "channelSfx" in channel.dataset) {
-      setTimeout(() => {
-        channelSfx.playSound(channel.dataset.channelSfx);
-      }, 500);
-    }
-
-    carousel.go(idx);
+    carousel.goWrapper(idx);
 
     // set the start button link destination
     if ("url" in channel.dataset) {
@@ -79,7 +117,7 @@ document.querySelectorAll(".channel.occupied").forEach((channel) => {
       startBtnLink.href = "#";
     }
 
-    // get the center of the element
+    // Set the transform origin and open the carousel
     const elemCenter = transformOrigins[idx];
 
     topSection.style.transformOrigin = `${elemCenter.x}px ${elemCenter.y}px`;
@@ -87,6 +125,8 @@ document.querySelectorAll(".channel.occupied").forEach((channel) => {
     topSection.classList.add("expanded");
 
     frame.classList.remove("o-0");
+
+    carouselIsOpen = true;
   });
 });
 
@@ -98,6 +138,7 @@ document.querySelector(".menu-button").addEventListener("click", (e) => {
   // Stop playing any sounds
   channelSfx.stop();
 
+  // Set the transform origin and close the carousel
   const elemCenter = transformOrigins[carousel.index];
 
   topSection.style.transformOrigin = `${elemCenter.x}px ${elemCenter.y}px`;
@@ -105,4 +146,6 @@ document.querySelector(".menu-button").addEventListener("click", (e) => {
   topSection.classList.remove("expanded");
 
   frame.classList.add("o-0");
+
+  carouselIsOpen = false;
 });
