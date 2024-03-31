@@ -4,18 +4,14 @@
   "description": "my Neocities website!",
   "scripts": {
     "dev": "servor site/ --reload --static",
-    "prepare": "husky",
-    "lint": "eslint site"
+    "prepare": "husky && husky install",
+    "lint": "eslint . --cache --fix",
+    "pretest": "pnpm run lint"
   },
   "author": "cuebitt",
   "devDependencies": {
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-config-semistandard": "^17.0.0",
-    "eslint-config-standard": "^17.0.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-n": "^15.0.0",
-    "eslint-plugin-promise": "^6.0.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
     "prettier": "3.2.5",
@@ -23,6 +19,7 @@
     "servor": "^4.0.2"
   },
   "lint-staged": {
-    "**/*": "prettier --write --ignore-unknown"
+    "*.js": "eslint --cache --fix",
+    "*.{js,css,md}": "prettier --write"
   }
 }

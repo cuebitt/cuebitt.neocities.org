@@ -72,11 +72,11 @@ carousel.addEventListener("inactive", (e) => {
   if (e.detail.isClone) return;
 
   try {
-    e.detail.slide.slide
-      .querySelector(
-        ".channel-inner-container > .channel-carousel-container > *:first-child",
-      )
-      .deactivateChannel();
+    const currSlide = e.detail.slide.slide.querySelector(
+      ".channel-inner-container > .channel-carousel-container > *:first-child",
+    );
+
+    currSlide.deactivateChannel();
   } catch (err) {
     console.error(err);
   }
@@ -103,11 +103,11 @@ carousel.addEventListener("active", (e) => {
   }
 });
 
-carousel.addEventListener("arrowclick", (e) => {
+carousel.addEventListener("arrowclick", () => {
   genSfx.playSound("channel_click");
 });
 
-carousel.addEventListener("arrowhover", (e) => {
+carousel.addEventListener("arrowhover", () => {
   genSfx.playSound("hover_click");
 });
 
@@ -141,9 +141,10 @@ document.querySelectorAll(".channel.occupied").forEach((channel) => {
 });
 
 // Setup Cue Menu button (close carousel)
-document.querySelector(".menu-button").addEventListener("click", (e) => {
+document.querySelector(".menu-button").addEventListener("click", () => {
   // "unfocus" the button if necessary
-  document.activeElement?.blur && document.activeElement.blur();
+  if (document.activeElement && document.activeElement.blur)
+    document.activeElement.blur();
 
   // Stop playing any sounds
   channelSfx.stop();
