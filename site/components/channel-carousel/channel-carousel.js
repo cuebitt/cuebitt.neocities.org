@@ -27,8 +27,14 @@ class ChannelCarousel extends HTMLElement {
     this._template = document.createElement("template");
     this._template.innerHTML = ChannelCarousel.template();
 
-    this.render();
-    this._connected = true;
+    document.addEventListener(
+      "DOMContentLoaded",
+      () => {
+        this.render();
+        this._connected = true;
+      },
+      false,
+    );
   }
 
   static get observedAttributes() {
@@ -47,6 +53,10 @@ class ChannelCarousel extends HTMLElement {
     }
 
     this.render();
+  }
+
+  refresh() {
+    if (this._carousel) this._carousel.refresh();
   }
 
   render() {
