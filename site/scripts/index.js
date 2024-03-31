@@ -2,7 +2,7 @@ import { useSfx } from "./useSfx.js";
 import { calculateTransformOrigins, formatDate } from "./util.js";
 
 // hooks
-const [genSfx, channelSfx] = useSfx();
+const [genSfx, channelSfx, zombieSfx] = useSfx();
 const carousel = document.getElementById("channel-carousel");
 let carouselIsOpen = false;
 
@@ -30,6 +30,12 @@ document.querySelectorAll("[data-click-sfx]").forEach((elem) => {
     genSfx.playSound(elem.dataset.clickSfx);
   });
 });
+
+document
+  .querySelector(".bottom-btn.cue-button")
+  .addEventListener("click", () => {
+    zombieSfx.playSound();
+  });
 
 carousel.addEventListener("move", (e) => {
   // Stop channel sfx

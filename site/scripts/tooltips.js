@@ -1,6 +1,11 @@
-import { computePosition, flip, shift, offset } from "@floating-ui/dom";
-import { Howl } from "howler";
-import { nanoid } from "nanoid";
+import {
+  computePosition,
+  flip,
+  shift,
+  offset,
+} from "https://cdn.jsdelivr.net/npm/@floating-ui/dom@1.6.3/+esm";
+import { Howl } from "https://cdn.jsdelivr.net/npm/howler@2.2.4/+esm";
+import { nanoid } from "https://cdn.jsdelivr.net/npm/nanoid@5.0.6/+esm";
 
 // Create tooltips
 const tooltipElems = [];

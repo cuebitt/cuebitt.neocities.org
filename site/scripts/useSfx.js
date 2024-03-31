@@ -1,4 +1,4 @@
-import { Howl } from "howler";
+import { Howl } from "https://cdn.jsdelivr.net/npm/howler@2.2.4/+esm";
 
 class SfxPlayer {
   /**
@@ -84,7 +84,43 @@ const useSfx = () => {
   const genSfxPlayer = new SfxPlayer(genSfx);
   const channelSfxPlayer = new SfxPlayer(channelSfx, false, true);
 
-  return [genSfxPlayer, channelSfxPlayer];
+  const zombieSfx = new Howl({
+    src: ["https://files.catbox.moe/yos1c2.mp3"],
+    volume: 0.125,
+    sprite: {
+      z0: [10421, 419],
+      z1: [200, 900],
+      z2: [1148, 745],
+      z3: [1994, 511],
+      z4: [2488, 469],
+      z5: [2974, 511],
+      z6: [3493, 573],
+      z7: [4071, 662],
+      z8: [4934, 737],
+      z9: [5780, 947],
+      z10: [6752, 527],
+      z11: [7305, 921],
+      z12: [8276, 737],
+      z13: [8997, 611],
+      z14: [9709, 310],
+      z15: [10052, 310],
+    },
+  });
+
+  const zombieSfxPlayer = {
+    last: -1,
+    playSound: () => {
+      let idx = Math.floor(Math.random() * 16);
+      if (idx === zombieSfxPlayer.last) {
+        idx = (idx + 1) % 16;
+      }
+
+      zombieSfx.play(`z${idx}`);
+      zombieSfxPlayer.last = idx;
+    },
+  };
+
+  return [genSfxPlayer, channelSfxPlayer, zombieSfxPlayer];
 };
 
 export { useSfx };
