@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cuebitt's Info and Links</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.colors.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="outer-container">
+      <main class="container">
+        <article class="grid inner-container rounded">
+          <!-- left col -->
+          <div class="container">
+            <div style="width: 100%; margin-bottom: 2em">
+              <div
+                class="container avatar-container"
+                data-tooltip="Profile Photo by BraDesu"
+                data-placement="bottom"
+              >
+                <img
+                  src="assets/pfp-bradesu.png"
+                  alt="profile photo by BraDesu"
+                  id="pfp-img"
+                  class="hvr-bob"
+                />
+              </div>
+            </div>
+
+            <hgroup>
+              <h1 class="montserrat-fnt-bold">Cuebitt</h1>
+              <p class="asap-fnt">
+                22yrs,
+                <span
+                  data-tooltip="[he] made [his] website so you could learn all about [him]."
+                  >he/him/his,</span
+                >
+                gay 🏳️‍🌈,
+                <span data-tooltip="holy cow (species)">furry 😇🐮,</span>
+                vegan🌱
+              </p>
+            </hgroup>
+
+            <p>
+              I'm Cuebitt, the one and only. I'm a<span class="spoiler"
+                >n unemployed</span
+              >
+              software developer and a gay furry. I like to make websites (like
+              this one!), write open source software, and collect fountain pens.
+            </p>
+          </div>
+
+          <!-- right col -->
+          <div class="social-links-container">
+            <div class="social-links montserrat-fnt">
+              <a
+                href="https://bsky.app/profile/cuebitt.dev"
+                target="_blank"
+                rel="noopener noreferrer"
+                role="button"
+                class="social-link hvr-grow-shadow"
+              >
+                <span>Bluesky</span>
+                <i class="bi bi-cloud-fill"></i>
+              </a>
+              <a
+                href="https://t.me/cuebitt"
+                target="_blank"
+                rel="noopener noreferrer"
+                role="button"
+                class="social-link hvr-grow-shadow"
+              >
+                <span>Telegram</span>
+                <i class="bi bi-telegram"></i>
+              </a>
+              <button class="social-link hvr-grow-shadow" id="discord-btn">
+                <span>Discord</span>
+                <i class="bi bi-discord"></i>
+              </button>
+              <button class="social-link hvr-grow-shadow" id="nso-btn">
+                <span>Nintendo Switch Online</span>
+                <i class="bi bi-nintendo-switch"></i>
+              </button>
+              <a
+                href="https://www.youtube.com/watch?v=ry4RVGnIQKU"
+                target="_blank"
+                rel="noopener noreferrer"
+                role="button"
+                class="social-link hvr-grow-shadow"
+              >
+                <span>Twitter/X</span>
+                <i class="bi bi-twitter-x"></i>
+              </a>
+              <a
+                href="http://github.com/cuebitt"
+                target="_blank"
+                rel="noopener noreferrer"
+                role="button"
+                class="social-link hvr-grow-shadow"
+              >
+                <span>GitHub</span>
+                <i class="bi bi-github"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+      </main>
+
+      <footer class="container">
+        <div style="display: flex; flex-direction: column">
+          <section style="display: flex; justify-content: center">
+            <nav class="footer-nav">
+              <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/sitemap">Sitemap</a></li>
+                <li>
+                  <a
+                    href="http://github.com/cuebitt/cuebitt.neocities.org"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Source</a
+                  >
+                </li>
+              </ul>
+            </nav>
+          </section>
+          <section style="display: flex; justify-content: center">
+            <a
+              href="http://neocities.org"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                alt="Hosted by Neocities"
+                src="https://cdn.jsdelivr.net/gh/neocities/neocities@master/public/img/neocitiesbadge.svg"
+              />
+            </a>
+          </section>
+        </div>
+      </footer>
+    </div>
+
+    <dialog id="discord-modal">
+      <article class="modal-box">
+        <header
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          "
+        >
+          <h1>Discord</h1>
+          <form method="dialog" style="float: right">
+            <button aria-label="close dialog" style="padding: 0.75em">
+              <i class="bi bi-x-circle-fill"></i>
+            </button>
+          </form>
+        </header>
+        <div>
+          <div>
+            <div>
+              <p>You can find me on Discord as:</p>
+              <pre><code>cuebitt</code></pre>
+              <p>
+                (formerly known as<span><code>cuebitt#2209</code></span
+                >)
+              </p>
+            </div>
+          </div>
+        </div>
+      </article>
+    </dialog>
+
+    <dialog id="nso-modal">
+      <article class="modal-box">
+        <header
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          "
+        >
+          <h1>Nintendo Switch Online</h1>
+          <form method="dialog" style="float: right">
+            <button aria-label="close dialog" style="padding: 0.75em">
+              <i class="bi bi-x-circle-fill"></i>
+            </button>
+          </form>
+        </header>
+        <div>
+          <div>
+            <p>My Nintendo Switch Online friend code is:</p>
+            <pre><code>SW-4871-6119-5311</code></pre>
+            <a
+              class="link"
+              href="https://lounge.nintendo.com/friendcode/4871-6119-5311/DVd2pYxgyV"
+              rel="noopener noreferrer"
+              target="_blank"
+              >Click here to open in the Nintendo Switch Online app 🔗</a
+            >
+            <p>I mainly play Splatoon 3 🦑🐙.</p>
+          </div>
+        </div>
+      </article>
+    </dialog>
+
+    <script type="module" src="script.js"></script>
+  </body>
+</html>
