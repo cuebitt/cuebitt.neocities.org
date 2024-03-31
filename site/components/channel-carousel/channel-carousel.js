@@ -55,10 +55,6 @@ class ChannelCarousel extends HTMLElement {
     this.render();
   }
 
-  refresh() {
-    if (this._carousel) this._carousel.refresh();
-  }
-
   render() {
     this.shadowRoot.innerHTML = "";
 
@@ -183,19 +179,18 @@ class ChannelCarousel extends HTMLElement {
 
   static template() {
     return /* html */ `
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css"
+      />
 
-<section
+      <section
         class="splide channel-carousel"
         aria-label="Channel Picker Carousel"
       >
         <div class="splide__arrows channel-carousel-arrows">
-          <button
-            class="splide__arrow splide__arrow--prev arrow-l"
-          ></button>
-          <button
-            class="splide__arrow splide__arrow--next arrow-r"
-          ></button>
+          <button class="splide__arrow splide__arrow--prev arrow-l"></button>
+          <button class="splide__arrow splide__arrow--next arrow-r"></button>
         </div>
 
         <div class="splide__track">
@@ -207,50 +202,50 @@ class ChannelCarousel extends HTMLElement {
 
   static styles() {
     return /* css */ `
-.channel-carousel,
-.splide__track,
-.splide__list {
-  height: 100%;
-  flex: 0 0 80%;
-}
+      .channel-carousel,
+      .splide__track,
+      .splide__list {
+        height: 100%;
+        flex: 0 0 80%;
+      }
 
-.channel-carousel {
-  background-color: white;
-}
+      .channel-carousel {
+        background-color: white;
+      }
 
-.splide__slide {
-  height: 100%;
-}
+      .splide__slide {
+        height: 100%;
+      }
 
-.splide__pagination.splide__pagination--ltr {
-  display: none;
-}
+      .splide__pagination.splide__pagination--ltr {
+        display: none;
+      }
 
-.channel-carousel-arrows > .splide__arrow {
-  background-color: transparent !important;
-  opacity: 1 !important;
-  border-radius: 0 !important;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  height: 3rem;
-  transition: transform 0.1s;
-  transform: translateY(-50%);
-}
+      .channel-carousel-arrows > .splide__arrow {
+        background-color: transparent !important;
+        opacity: 1 !important;
+        border-radius: 0 !important;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        height: 3rem;
+        transition: transform 0.1s;
+        transform: translateY(-50%);
+      }
 
-.channel-carousel-arrows > .splide__arrow:hover {
-  transform: translateY(-50%) scale(1.1);
-}
+      .channel-carousel-arrows > .splide__arrow:hover {
+        transform: translateY(-50%) scale(1.1);
+      }
 
-.channel-carousel-arrows > .splide__arrow--prev {
-  margin-left: -0.5rem;
-  background-image: url("/assets/index/img/arrow-l.svg");
-}
+      .channel-carousel-arrows > .splide__arrow--prev {
+        margin-left: -0.5rem;
+        background-image: url("/assets/index/img/arrow-l.svg");
+      }
 
-.channel-carousel-arrows > .splide__arrow--next {
-  margin-right: -0.5rem;
-  background-image: url("/assets/index/img/arrow-r.svg");
-}
+      .channel-carousel-arrows > .splide__arrow--next {
+        margin-right: -0.5rem;
+        background-image: url("/assets/index/img/arrow-r.svg");
+      }
     `;
   }
 }
