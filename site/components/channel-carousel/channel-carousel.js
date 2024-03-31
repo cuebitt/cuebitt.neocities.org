@@ -136,7 +136,7 @@ class ChannelCarousel extends HTMLElement {
         this.dispatchEvent(arrowEvent);
       });
 
-      arrow.addEventListener("mouseenter", () => {
+      arrow.addEventListener("mouseover", () => {
         const arrowEvent = new CustomEvent("arrowhover", {
           detail: {
             direction: arrow.classList.contains("splide__arrow--prev")

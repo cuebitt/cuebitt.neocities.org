@@ -97,6 +97,14 @@ carousel.addEventListener("active", (e) => {
   }
 });
 
+carousel.addEventListener("arrowclick", (e) => {
+  genSfx.playSound("channel_click");
+});
+
+carousel.addEventListener("arrowhover", (e) => {
+  genSfx.playSound("hover_click");
+});
+
 // Setup channel click events
 document.querySelectorAll(".channel.occupied").forEach((channel) => {
   channel.addEventListener("click", () => {
