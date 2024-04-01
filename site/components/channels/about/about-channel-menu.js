@@ -58,7 +58,6 @@ class AboutChannelMenu extends HTMLElement {
           <h1>Info</h1>
           <p>&</p>
           <h1>Social Links</h1>
-          <h3>Channel</h3>
         </div>
         <div class="cd-background-container">
           <div class="reflector-src">
