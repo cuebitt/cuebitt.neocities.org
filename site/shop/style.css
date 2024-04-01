@@ -1,21 +1,63 @@
+/* style the button used to open the about modal like a link */
 .buttonlink {
   margin: calc(var(--pico-nav-link-spacing-vertical) * -1)
     calc(var(--pico-nav-link-spacing-horizontal) * -1);
+  border: none;
 }
 
 .buttonlink:is(:hover, :active, :focus) {
   --pico-background-color: transparent;
 }
 
-body {
-  --wc-toast-background: aquamarine;
+.picture-container {
+  height: 8em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-wc-toast.left {
-  left: 2em;
+.card-bottom-buttons {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 1em;
 }
 
-wc-toast {
-  border-radius: 0.5em;
-  color: black;
+.card-bottom-buttons > button,
+.card-bottom-buttons > a {
+  width: 3em;
+  height: 3em;
+
+  text-align: center;
+  vertical-align: middle;
+}
+
+.item-card {
+  display: flex;
+  flex-direction: column;
+  max-width: 20em;
+  margin: 0 auto;
+  margin-bottom: var(--pico-block-spacing-vertical);
+}
+
+.item-desc-section {
+  flex-grow: 1;
+}
+
+.cart-btn {
+  width: 5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+
+.search-bar {
+  padding: 0 30%;
+  margin-top: -2em;
+  margin-bottom: 1em;
+}
+
+#cart-table {
+  width: 100%;
 }
