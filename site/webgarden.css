@@ -1,6 +1,26 @@
 @import url("https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000");
 @import url("https://cdn.jsdelivr.net/gh/animate-css/animate.css@main/source/attention_seekers/tada.css");
 
+/* utility */
+
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.outer-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 /* Fonts */
 .grandstander {
   font-family: "Grandstander", cursive;

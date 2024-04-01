@@ -7,8 +7,8 @@
 
     <!-- css stylesheets -->
     <link
-      href="https://cdn.jsdelivr.net/npm/modern-normalize@2.0.0/modern-normalize.min.css"
       rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
     />
     <style>
       .flex {
@@ -29,41 +29,36 @@
         min-height: 100vh;
       }
 
-      .container {
-        margin-bottom: 1rem;
-        padding: 0 2rem;
-      }
-
       main {
         flex: 1;
-      }
-
-      nav > ul {
-        list-style-type: none;
-        padding: 0;
-      }
-
-      nav > ul > li {
-        display: inline-block;
-        padding: 0 0.5rem;
-      }
-
-      ul.sitemap-tree > li {
-        font-size: 2rem;
       }
     </style>
   </head>
   <body>
     <div class="outer-container">
       <header class="container">
-        <h1 style="font-size: 3rem">Cuebitt's Website ~ 🐮😇</h1>
+        <nav>
+          <ul>
+            <li>
+              <h1>Cuebitt's Website ~ 🐮😇</h1>
+            </li>
+          </ul>
+          <ul>
+            <li>
+              <a href="/">Home</a>
+            </li>
+            <li>
+              <a href="/about">About</a>
+            </li>
+          </ul>
+        </nav>
       </header>
       <main class="container">
         <ul class="sitemap-tree">
           <li>
             <a href="/">Homepage</a>
             <ul>
-              <li style="font-size: 1rem; margin: 0.5rem 0">
+              <li>
                 It's the homepage, obviously. I think you know what this is.
               </li>
             </ul>
@@ -72,7 +67,7 @@
           <li>
             <a href="/about">About</a>
             <ul>
-              <li style="font-size: 1rem; margin: 0.5rem 0">
+              <li>
                 All of my social media links and a little bit about me.
               </li>
             </ul>
@@ -81,7 +76,7 @@
           <li>
             <a href="/shop">Web Component Shop</a>
             <ul>
-              <li style="font-size: 1rem; margin: 0.5rem 0">
+              <li>
                 A gallery of Web Components you can add to your website! I
                 styled it like a shop, but all the stuff on there is free.
               </li>
@@ -90,7 +85,7 @@
           <li>
             <a href="/greenhouse">Webgarden Greenhouse</a>
             <ul>
-              <li style="font-size: 1rem; margin: 0.5rem 0">
+              <li>
                 My
                 <a
                   href="https://webgardens.neocities.org"
@@ -99,6 +94,15 @@
                   >Webgarden</a
                 >
                 greenhouse!
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <a href="/attribution">Attribution + Credit</a>
+            <ul>
+              <li>
+                A list of all the resources I used to make this website.
               </li>
             </ul>
           </li>
