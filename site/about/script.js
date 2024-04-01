@@ -1,13 +1,25 @@
 import confetti from "https://esm.sh/canvas-confetti@1.6.0";
 
 // Add event handlers to dialog buttons
+const nsoModal = document.getElementById("nso-modal");
 document.getElementById("nso-btn").addEventListener("click", () => {
-  document.getElementById("nso-modal").showModal();
+  nsoModal.showModal();
 });
+document
+  .querySelector("#nso-modal > article > header > button[rel=prev]")
+  .addEventListener("click", () => {
+    nsoModal.close();
+  });
 
+const discordModal = document.getElementById("discord-modal");
 document.getElementById("discord-btn").addEventListener("click", () => {
-  document.getElementById("discord-modal").showModal();
+  discordModal.showModal();
 });
+document
+  .querySelector("#discord-modal > article > header > button[rel=prev]")
+  .addEventListener("click", () => {
+    discordModal.close();
+  });
 
 // Add event handler (confetti) to the profile photo
 document.querySelector(".avatar-container").addEventListener("click", (e) => {
