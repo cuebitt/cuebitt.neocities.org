@@ -37,7 +37,7 @@ const helpList = (ids, items) => {
   const helpLinks = new Map();
   ids.forEach((id) => {
     const helpItemSrc = items.get(id).source;
-    const helpUrl = `https://github.com/${helpItemSrc.user}/${helpItemSrc.repository}/tree/main/${helpItemSrc.helpPath}`;
+    const helpUrl = `https://github.com/${helpItemSrc.user}/${helpItemSrc.repository}/tree/${helpItemSrc.tag}/${helpItemSrc.helpPath}`;
 
     helpLinks.set(helpUrl.split("/").slice(-2).join("/"), helpUrl);
   });
