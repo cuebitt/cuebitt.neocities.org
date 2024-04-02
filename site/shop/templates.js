@@ -1,90 +1,13 @@
 // these portions don't really need to be web components since they're just
 // static templates and I want them to inherit the styles from the main site
 
-// Constructs an item card template for each item in the shopItems.json file.
-const itemCard = (id, item, clickHandler) => {
-  const content = /* html */ `
-    <header>
-      <strong id="item-name-header">${item.itemName}</strong>
-    </header>
-
-    <section class="container picture-container">
-      <img id="item-img" src="${item.imgUrl}" alt="${item.imgAlt}" />
-    </section>
-
-    <section class="item-desc-section">
-      <p id="item-desc">${item.desc}</p>
-    </section>
-
-    <footer class="card-bottom-buttons">
-      <a
-        href="https://github.com/${item.source.user}/${item.source
-          .repository}/tree/main/${item.source.filePath}"
-        id="src-link"
-        role="button"
-        target="_blank"
-        rel="noopener noreferrer"
-        style="width: 3rem"
-        class="secondary"
-        data-tooltip="Source Code"
-        aria-label="source code"
-        ><i class="bi bi-code-slash"></i
-      ></a>
-      <button
-        aria-label="add to cart"
-        data-tooltip="Add to Cart"
-        id="add-to-cart-btn"
-      >
-        <i class="bi bi-bag-plus"></i>
-      </button>
-    </footer>
-    `;
-
-  // Construct item card
-  const itemCardItem = document.createElement("article");
-  itemCardItem.innerHTML = content;
-  itemCardItem.classList.add("item-card");
-
-  // Set the id of the item card
-  itemCardItem.id = id;
-
-  // Set "add to cart" handler
-  itemCardItem
-    .querySelector("#add-to-cart-btn")
-    .addEventListener("click", () => {
-      clickHandler(id);
-    });
-
-  return itemCardItem;
-};
-
-const itemCartTableRow = ([id, item], onRemoved) => {
-  const content = /* html */ `
-      <th scope="row">${item.itemName}</th>
-    <td>${item.source.user}</td>
-    <td>$0.00</td>
-    <td>
-      <button
-        data-tooltip="Remove from Cart"
-        data-placement="left"
-        id="remove-button"
-      >
-        <i class="bi bi-trash"></i>
-      </button>
-    </td>
-  `;
-
-  const itemCartRow = document.createElement("tr");
-  itemCartRow.innerHTML = content;
-  itemCartRow.id = id;
-
-  itemCartRow.querySelector("#remove-button").addEventListener("click", () => {
-    onRemoved(id);
-  });
-
-  return itemCartRow;
-};
-
+/**
+ * Creates a list of script tags for the items in the shopping cart
+ * @param {string[]} ids Iterable of item ids
+ * @param {Object[]} items Map of item ids to item objects
+ * @param {boolean} minify Whether to use minified versions of the scripts
+ * @returns {string[]} Array of script tags as strings
+ */
 const scriptTagsText = (ids, items, minify) => {
   const cdnLinks = new Set();
   ids.forEach((id) => {
@@ -104,6 +27,12 @@ const scriptTagsText = (ids, items, minify) => {
   return [...cdnLinks];
 };
 
+/**
+ * Generates a list of help links for the items in the shopping cart
+ * @param {string[]} ids Iterable of item ids
+ * @param {Object[]} items Map of item ids to item objects
+ * @returns {HTMLLIElement[]} Array of list items with help links
+ */
 const helpList = (ids, items) => {
   const helpLinks = new Map();
   ids.forEach((id) => {
@@ -128,4 +57,59 @@ const helpList = (ids, items) => {
   });
 };
 
-export { itemCard, itemCartTableRow, scriptTagsText, helpList };
+/**
+ * Creates a new item card element using a template
+ * @param {string} templateSelector CSS selector for the template element
+ * @param {*} id the item's id
+ * @param {*} item the item's information from shopItems.json
+ * @param {*} clickHandler function to handle the add to cart button's click event
+ * @returns {HTMLArticleElement} the item card element
+ */
+const createItemCard = (templateSelector, id, item, clickHandler) => {
+  const template = document.querySelector(templateSelector);
+  const itemCardItem = template.content.cloneNode(true);
+
+  itemCardItem.querySelector(".item-card").id = id;
+
+  itemCardItem.querySelector("#item-name-header").textContent = item.itemName;
+  itemCardItem.querySelector("#item-img").src = item.imgUrl;
+  itemCardItem.querySelector("#item-img").alt = item.imgAlt;
+  itemCardItem.querySelector("#item-desc").textContent = item.desc;
+
+  itemCardItem.querySelector("#src-link").href =
+    `https://github.com/${item.source.user}/${item.source.repository}/tree/main/${item.source.filePath}`;
+
+  itemCardItem
+    .querySelector("#add-to-cart-btn")
+    .addEventListener("click", () => {
+      clickHandler(id);
+    });
+
+  return itemCardItem;
+};
+
+/**
+ * Creates a new cart item table row element using a template
+ * @param {string} templateSelector CSS selector for the template element
+ * @param {*} id the item's id
+ * @param {*} item the item's information from shopItems.json
+ * @param {*} clickHandler function to handle the remove from cart button's click event
+ * @returns {HTMLArticleElement} the item table row element
+ */
+const createCartItemTableRow = (templateSelector, id, item, clickHandler) => {
+  const template = document.querySelector(templateSelector);
+  const itemCartRow = template.content.cloneNode(true);
+
+  itemCartRow.querySelector(".item-table-row").id = id;
+
+  itemCartRow.querySelector("#item-name").textContent = item.itemName;
+  itemCartRow.querySelector("#item-author").textContent = item.source.user;
+
+  itemCartRow.querySelector("#remove-button").addEventListener("click", () => {
+    clickHandler(id);
+  });
+
+  return itemCartRow;
+};
+
+export { createCartItemTableRow, scriptTagsText, helpList, createItemCard };

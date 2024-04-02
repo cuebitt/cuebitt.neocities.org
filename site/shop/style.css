@@ -9,6 +9,22 @@
   --pico-background-color: transparent;
 }
 
+/* styles for the wc-toast component */
+body {
+  --wc-toast-background: aquamarine;
+}
+
+wc-toast.left {
+  left: 2em;
+}
+
+wc-toast {
+  border-radius: 0.5em;
+  color: black;
+}
+
+/* other styles */
+
 .picture-container {
   height: 8em;
   display: flex;

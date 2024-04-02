@@ -1,7 +1,6 @@
 <!doctype html>
 <!-- 
     todo
-    - (re)add a toast for when the cart is updated
     - clean up javascript
     - add a click to copy button to the checkout dialog
     - link to versioned help documentation instead of the main branch
@@ -23,8 +22,13 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
-
     <link rel="stylesheet" href="style.css" />
+
+    <!-- web components -->
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/gh/ComcastSamples/wc-toast@main/wc-toast.min.js"
+    ></script>
   </head>
   <body>
     <header class="container">
@@ -138,12 +142,20 @@
                 >Bootstrap Icons</a
               >
             </li>
+            <li>
+              <a
+                href="https://github.com/ComcastSamples/wc-toast"
+                target="_blank"
+                rel="noopener noreferrer"
+                >ComcastSamples/wc-toast</a
+              >
+            </li>
           </ul>
           <p>
             The dependencies above are used to create this web page, but not the
             components themselves. The web components provided do not have any
             dependencies, though future ones might. Any future components with
-            dependencies will be clearly labelled as such.
+            dependencies will be clearly labeled as such.
           </p>
         </section>
         <section>
@@ -253,6 +265,74 @@
         </section>
       </article>
     </dialog>
+
+    <!-- templates -->
+    <template id="item-card-template">
+      <article class="item-card">
+        <header>
+          <!-- item.itemName in textContent -->
+          <strong id="item-name-header"></strong>
+        </header>
+
+        <section class="container picture-container">
+          <!-- item.imgURL in src and item.imgAlt in alt -->
+          <img id="item-img" />
+        </section>
+
+        <section class="item-desc-section">
+          <!-- item.desc in textContent -->
+          <p id="item-desc"></p>
+        </section>
+
+        <footer class="card-bottom-buttons">
+          <!-- item.source.user, item.source.respository, and item.source.filePath in href -->
+          <a
+            id="src-link"
+            role="button"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="width: 3rem"
+            class="secondary"
+            data-tooltip="Source Code"
+            aria-label="source code"
+            ><i class="bi bi-code-slash"></i
+          ></a>
+          <button
+            aria-label="add to cart"
+            data-tooltip="Add to Cart"
+            id="add-to-cart-btn"
+          >
+            <i class="bi bi-bag-plus"></i>
+          </button>
+        </footer>
+      </article>
+    </template>
+
+    <template id="item-table-row-template">
+      <tr class="item-table-row">
+        <!-- item.itemName in textContent -->
+        <th scope="row" id="item-name"></th>
+        <!-- item.source.user in textContent -->
+        <td id="item-author"></td>
+        <td>$0.00</td>
+        <td>
+          <button
+            data-tooltip="Remove from Cart"
+            data-placement="left"
+            id="remove-button"
+          >
+            <i class="bi bi-trash"></i>
+          </button>
+        </td>
+      </tr>
+    </template>
+
+    <wc-toast id="wc-toast" duration="3" class="left close"
+      ><p
+        id="wc-toast-contents"
+        style="vertical-align: middle; margin: 0; color: black"
+      ></p
+    ></wc-toast>
 
     <script type="module" src="init.js"></script>
   </body>

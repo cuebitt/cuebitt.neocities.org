@@ -1,6 +1,6 @@
 import {
-  itemCard,
-  itemCartTableRow,
+  createItemCard,
+  createCartItemTableRow,
   scriptTagsText,
   helpList,
 } from "./templates.js";
@@ -30,7 +30,10 @@ getShopItems().then((data) => {
   // MapIterator's map method isn't supported by Safari, so cast to an array first
   const shopItems = [...window.WebComponentShop.shopItems.entries()].map(
     ([id, item]) =>
-      itemCard(id, item, (id) => {
+      createItemCard("#item-card-template", id, item, (id) => {
+        document.querySelector("#wc-toast-contents").textContent =
+          `Added ${item.itemName} to the cart!`;
+        document.querySelector("#wc-toast").open();
         window.WebComponentShop.shoppingCart.add(id);
       }),
   );
@@ -71,10 +74,15 @@ const renderCheckoutTable = (ids, items, onRemove) => {
         return ids.has(id);
       })
       .map((item) =>
-        itemCartTableRow(item, () => {
-          onRemove(item[0]);
-          cartTableBody.querySelector(`#${item[0]}`).remove();
-        }),
+        createCartItemTableRow(
+          "#item-table-row-template",
+          item[0],
+          item[1],
+          () => {
+            onRemove(item[0]);
+            cartTableBody.querySelector(`#${item[0]}`).remove();
+          },
+        ),
       )
       .forEach((item) => cartTableBody.appendChild(item));
   }
@@ -105,9 +113,14 @@ document.querySelector("#search-bar").addEventListener("input", (e) => {
     document.querySelector("#shop-items-container").innerHTML = "";
     window.WebComponentShop.filteredShopItems
       .map((id) =>
-        itemCard(id, window.WebComponentShop.shopItems.get(id), (id) => {
-          window.WebComponentShop.shoppingCart.add(id);
-        }),
+        createItemCard(
+          "#item-card-template",
+          id,
+          window.WebComponentShop.shopItems.get(id),
+          (id) => {
+            window.WebComponentShop.shoppingCart.add(id);
+          },
+        ),
       )
       .forEach((item) =>
         document.querySelector("#shop-items-container").appendChild(item),
