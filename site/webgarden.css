@@ -67,16 +67,13 @@
   0% {
     transform: translateY(1px);
   }
-  50% {
-    transform: translateY(-4px);
-  }
   100% {
-    transform: translateY(1px);
+    transform: translateY(-4px);
   }
 }
 
 .float-element {
-  animation: float 3s ease-in-out infinite alternate;
+  animation: float 2s ease-in-out infinite alternate;
 }
 
 /* Tada */
@@ -144,10 +141,15 @@ main > p {
   left: 0;
   display: flex;
   justify-content: center;
+  width: 250px;
+  height: 45px;
 }
 
 .halo-inner {
   position: relative;
+  width: 250px;
+  height: 45px;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="250" height="45" viewBox="0 0 66.146 18.521" ><ellipse cx="33.073" cy="9.26" fill="none" rx="31.795" ry="5.983" style=" opacity: 1; fill: %23000; fill-opacity: 0; stroke: %23e1be4c; stroke-width: 5; stroke-dasharray: none; stroke-opacity: 1; " /><ellipse cx="33.073" cy="9.26" fill="none" rx="31.795" ry="5.983" style=" opacity: 1; fill: %23000; fill-opacity: 0; stroke: %23ffcf33; stroke-width: 2.55564; stroke-dasharray: none; stroke-opacity: 1; " /></svg>');
 }
 
 .halo-container > svg {
