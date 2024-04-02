@@ -14,17 +14,16 @@
   font-style: normal;
 }
 
-.spoiler:hover {
-  background-color: var(--pico-secondary-background);
-  color: var(--pico-muted-color);
-  cursor: pointer;
-}
-
 .spoiler {
   background-color: var(--pico-primary-background);
-  color: var(--pico-primary-color);
-  border-radius: 0.1em;
   color: transparent;
+  user-select: none;
+}
+
+.spoiler:hover,
+.spoiler:active {
+  background-color: inherit;
+  color: inherit;
 }
 
 .asap-fnt {
