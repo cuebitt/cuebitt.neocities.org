@@ -77,3 +77,7 @@ wc-toast {
 #cart-table {
   width: 100%;
 }
+
+.script-tags-container {
+  position: relative;
+}

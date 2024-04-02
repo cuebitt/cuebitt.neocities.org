@@ -5,6 +5,8 @@ import {
   helpList,
 } from "./templates.js";
 
+const Prism = window.Prism;
+
 window.WebComponentShop = {
   shopItems: new Map(),
   filteredShopItems: [],
@@ -177,8 +179,13 @@ document.querySelector("#checkout-btn").addEventListener("click", () => {
     window.WebComponentShop.shopItems,
   );
 
-  document.querySelector("#generated-script-tags").textContent =
-    scriptTagsTextContent.join("\n");
+  // document.querySelector("#generated-script-tags").textContent =
+  //   scriptTagsTextContent.join("\n");
+  document.querySelector("#generated-script-tags").innerHTML = Prism.highlight(
+    scriptTagsTextContent.join("\n"),
+    Prism.languages.html,
+    "html",
+  );
   helpListLinks.forEach((link) => helpListElem.appendChild(link));
 });
 document.querySelector("#minify-checkbox").addEventListener("change", (e) => {
@@ -196,8 +203,19 @@ document
   });
 
 const checkoutModal = document.querySelector("#checkout-modal");
+let copyTimeoutId = null;
 document
   .querySelector("#checkout-modal > article > header > button[rel=prev]")
   .addEventListener("click", () => {
     checkoutModal.close();
   });
+document.querySelector("#tag-copy-btn").addEventListener("click", () => {
+  navigator.clipboard.writeText(
+    document.querySelector("#generated-script-tags").textContent,
+  );
+  document.querySelector("#tag-copy-btn").dataset.tooltip = "Copied!";
+  if (copyTimeoutId) clearTimeout(copyTimeoutId);
+  copyTimeoutId = setTimeout(() => {
+    document.querySelector("#tag-copy-btn").dataset.tooltip = "Click to copy!";
+  }, 2000);
+});
