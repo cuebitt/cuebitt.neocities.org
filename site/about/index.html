@@ -34,6 +34,11 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
 
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/gh/cuebitt/webcomponents@v1.3.1/components/lanyard-status/lanyard-status.min.js"
+    ></script>
+
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -61,8 +66,7 @@
               <h1 class="montserrat-fnt-bold">Cuebitt</h1>
               <p class="asap-fnt">
                 <span id="age-text"></span>,
-                <span id="pronouns-text" aria-busy="true"></span>,
-                gay 🏳️‍🌈,
+                <span id="pronouns-text" aria-busy="true"></span>, gay 🏳️‍🌈,
                 <span data-tooltip="holy cow (species)">furry 😇🐮,</span>
                 vegan🌱
               </p>
@@ -175,17 +179,18 @@
           <button aria-label="Close" rel="prev"></button>
           <h1>Discord</h1>
         </header>
+        <div style="display: flex; justify-content: center; margin-bottom: 1em;">
+          <span style="border-radius: 0.5em; overflow: hidden;">
+            <lanyard-status></lanyard-status>
+          </span>
+        </div>
         <div>
-          <div>
-            <div>
-              <p>You can find me on Discord as:</p>
-              <pre><code>cuebitt</code></pre>
-              <p>
-                (formerly known as<span><code>cuebitt#2209</code></span
-                >)
-              </p>
-            </div>
-          </div>
+          <p>You can find me on Discord as:</p>
+          <pre><code>cuebitt</code></pre>
+          <p>
+            (formerly known as<span><code>cuebitt#2209</code></span
+            >)
+          </p>
         </div>
       </article>
     </dialog>
