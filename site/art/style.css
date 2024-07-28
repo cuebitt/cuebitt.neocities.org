@@ -174,5 +174,6 @@ figcaption {
 .art-grid figure {
   max-width: 15rem;
   min-width: 15rem;
+  height: min-content;
   margin: 0 0.5rem;
 }
