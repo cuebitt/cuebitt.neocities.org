@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Art Gallery</title>
+
+    <!-- meta tags for discord embed -->
+    <meta property="og:title" content="Cuebitt @ Neocities" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://cuebitt.neocities.org" />
+    <meta
+      property="og:image"
+      content="http://cuebitt.neocities.org/assets/indigo-tbh.png"
+    />
+    <meta
+      property="og:description"
+      content="Cuebitt's super cool website on Neocities! Mooooooo."
+    />
+
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.colors.min.css"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+
+    <style>
+      .flex {
+        display: flex;
+      }
+
+      .flex-column {
+        flex-direction: column;
+      }
+
+      .justify-center {
+        justify-content: center;
+      }
+
+      .outer-container {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      header {
+        padding: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Cuebitt's Fursona Art</h1>
+    </header>
+    <main class="container">
+      <div class="grid">
+        <div>
+          <h2>Ref Sheet</h2>
+
+          <figure id="ref-figure">
+            <div id="ref-container">
+              <img
+                src="https://lh3.googleusercontent.com/d/1eaQEs6f3so3GHTT1ei3OeBrub39m_07D"
+                alt="Ref sheet"
+                id="ref-sheet"
+              />
+
+              <div id="ref-overlay"></div>
+            </div>
+
+            <figcaption>
+              <a
+                href="https://karpetshark.tumblr.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                >karpetshark</a
+              >, Nov 2023
+            </figcaption>
+          </figure>
+        </div>
+
+        <article>
+          <header>Colors (click to copy)</header>
+          <div class="color-swatches">
+            <div
+              class="color-swatch"
+              style="--swatch-color: #ffffeb"
+              data-color="#ffffeb"
+              onclick="copySwatch(this)"
+            >
+              <span class="swatch-upper-label">Fur (Main)</span>
+              <div class="swatch-circle"></div>
+            </div>
+
+            <div
+              class="color-swatch"
+              style="--swatch-color: #ffcf34"
+              data-color="#ffcf34"
+              onclick="copySwatch(this)"
+            >
+              <span class="swatch-upper-label">Halo, Eyes</span>
+              <div class="swatch-circle"></div>
+            </div>
+
+            <div
+              class="color-swatch"
+              style="--swatch-color: #ffacd1"
+              data-color="#ffacd1"
+              onclick="copySwatch(this)"
+            >
+              <span class="swatch-upper-label">Nose</span>
+              <div class="swatch-circle"></div>
+            </div>
+
+            <div
+              class="color-swatch"
+              style="--swatch-color: #e0ccfa"
+              data-color="#e0ccfa"
+              onclick="copySwatch(this)"
+            >
+              <span class="swatch-upper-label">Spots</span>
+              <div class="swatch-circle"></div>
+            </div>
+
+            <div
+              class="color-swatch"
+              style="--swatch-color: #bc8dfa"
+              data-color="#bc8dfa"
+              onclick="copySwatch(this)"
+            >
+              <span class="swatch-upper-label">Eyebrows</span>
+              <div class="swatch-circle"></div>
+            </div>
+
+            <div
+              class="color-swatch"
+              style="--swatch-color: #a57cb0"
+              data-color="#a57cb0"
+              onclick="copySwatch(this)"
+            >
+              <span class="swatch-upper-label">Hair (Stripe)</span>
+              <div class="swatch-circle"></div>
+            </div>
+
+            <div
+              class="color-swatch"
+              style="--swatch-color: #55106d"
+              data-color="#55106d"
+              onclick="copySwatch(this)"
+            >
+              <span class="swatch-upper-label">Hooves</span>
+              <div class="swatch-circle"></div>
+            </div>
+
+            <div
+              class="color-swatch"
+              style="--swatch-color: #6d88b1"
+              data-color="#6d88b1"
+              onclick="copySwatch(this)"
+            >
+              <span class="swatch-upper-label">Watch (Band)</span>
+              <div class="swatch-circle"></div>
+            </div>
+
+            <div
+              class="color-swatch"
+              style="--swatch-color: #185991"
+              data-color="#185991"
+              onclick="copySwatch(this)"
+            >
+              <span class="swatch-upper-label">Watch (Frame)</span>
+              <div class="swatch-circle"></div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="grid">
+        <article>
+          <header>Basics</header>
+
+          <div class="grid">
+            <div class="details-grid">
+              <span><b>Name:</b></span>
+              <span>Indigo</span>
+
+              <span><b>Species</b></span>
+              <span data-tooltip="yes, I'm very funny.">Holy Cow</span>
+
+              <span><b>Pronouns:</b></span>
+              <span>he/him/his</span>
+            </div>
+
+            <div class="description-container">
+              <p>
+                <em>
+                  "I was <span data-tooltip="and killed obv">hit</span> by the
+                  <a
+                    href="https://en.wikipedia.org/wiki/Truck-kun"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Isekai Truck</a
+                  >. Now I'm a furry! Moo."
+                </em>
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <article>
+          <header>Other Details</header>
+          <ul>
+            <li>
+              Can be drawn with 4 or 5 fingers per hand, depending on artist's
+              preference.
+            </li>
+            <li>
+              Should never be drawn with farmed animal details (ear tag, nose
+              ring, etc).
+            </li>
+            <li>Character's name is Indigo, my username is Cuebitt.</li>
+            <li>Indigo is canonically dead 😇.</li>
+          </ul>
+        </article>
+      </div>
+
+      <hr />
+
+      <h1 style="margin-bottom: 2rem">Art Gallery</h1>
+      <div class="container">
+        <div class="art-grid">
+          <figure>
+            <img
+              src="https://lh3.googleusercontent.com/d/181z_OHvdrEvtLB6TjASqm4mrQWvEuh3S"
+              alt="Profile photo"
+            />
+            <figcaption>
+              <a
+                href="https://karpetshark.tumblr.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                >karpetshark</a
+              >, Nov 2023
+            </figcaption>
+          </figure>
+
+          <figure>
+            <img
+              src="https://lh3.googleusercontent.com/d/1cc0mw7qoR5jHfve13YpqD5ODqHSDqJVO/"
+              alt="Waist up shot"
+            />
+            <figcaption>
+              <a href="https://closetvoid.carrd.co">Closetvoid</a>, Dec 2023
+            </figcaption>
+          </figure>
+
+          <figure>
+            <img
+              src="https://lh3.googleusercontent.com/d/1HS4dQYwLpooHkvVk46jOj3ieEr_hq2j8"
+              alt="Full body sticky note sketch"
+            />
+
+            <figcaption>
+              <a
+                href="http://twitter.com/outcaststars"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Outcast Stars</a
+              >
+              , Feb 2024
+            </figcaption>
+          </figure>
+
+          <figure>
+            <img
+              src="https://lh3.googleusercontent.com/d/1BOhXWJnwKJtN5pk29qiEkU3U5fYOv3mh"
+              alt="Anime glasses flash bust shot"
+            />
+
+            <figcaption>
+              <a
+                href="http://jayedtskier.carrd.co"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Jayed Skier</a
+              >
+              , Feb 2024
+            </figcaption>
+          </figure>
+
+          <figure>
+            <img
+              src="https://lh3.googleusercontent.com/d/1eyl94vRBmbG4Wye2SCvyjgJBzYpUAZAS"
+              alt="Full body colored sketch, splatoon outfit"
+            />
+
+            <figcaption>
+              <a
+                href="https://www.twitch.tv/mrlabrador"
+                target="_blank"
+                rel="noopener noreferrer"
+                >MrLabrador</a
+              >, Jan 2024
+            </figcaption>
+          </figure>
+
+          <figure>
+            <img
+              src="https://lh3.googleusercontent/d/1tpHNByHu79fZZnV8vcU8sRe9BIxgdzcG"
+              alt="Telegram sticker, Hi Stranger butt pose"
+            />
+
+            <figcaption>
+              <a
+                href="http://twitch.tv/emufur"
+                target="_blank"
+                rel="noopener noreferrer"
+                >EmuFur</a
+              >
+              , Feb 2024
+            </figcaption>
+          </figure>
+
+          <figure>
+            <img
+              src="https://lh3.googleusercontent.com/file/d/1Thds83QNLSWmRfo72JKkJHvcq6iS8g1c"
+              alt="Bust shot, black and white. Muscle-y."
+            />
+
+            <figcaption>
+              <a
+                href="https://bsky.app/profile/makebork.bsky.social"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Makebork</a
+              >
+              , Feb 2024
+            </figcaption>
+          </figure>
+
+          <figure>
+            <img
+              src="https://lh3.googleusercontent.com/file/d/15RIQ1EHcsbA5_gl--tqJV5mJNyU1FBG1"
+              alt="Page doll. Drinking taro boba tea."
+            />
+
+            <figcaption>
+              <a
+                href="https://vgen.co/Coywolfy"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Coywolfy</a
+              >
+              , Mar 2024
+            </figcaption>
+          </figure>
+
+          <figure>
+            <img
+              src="https://lh3.googleusercontent.com/file/d/1AEK8eeReXyjul27eKhplG6aneMTuf4cL"
+              alt="Winking headshot"
+            />
+
+            <figcaption>
+              <a
+                href="https://bradesu.carrd.co"
+                target="_blank"
+                rel="noopener noreferrer"
+                >BraDesu</a
+              >
+              , Mar 2024
+            </figcaption>
+          </figure>
+
+          <figure>
+            <img
+              src="https://lh3.googleusercontent.com/file/d/1TDja63JMIh2CXI59VRllyFIBU_NH_s7J"
+              alt="From above angle, sitting in grass."
+            />
+
+            <figcaption>
+              <a
+                href="https://www.twitch.tv/jamejarrs"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Jamejarrs</a
+              >
+              , Apr 2024
+            </figcaption>
+          </figure>
+
+          <figure>
+            <img
+              src="https://lh3.googleusercontent.com/file/d/1EZ3a4RT3Qf4EvJSiGKYdQAKmyG3p6DIj"
+              alt="Con badge"
+            />
+
+            <figcaption>
+              <a
+                href="https://x.com/grufflomanz"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Gruffl0</a
+              >
+              , Jul 2024
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </main>
+
+    <footer class="container">
+      <hr />
+      <div class="flex flex-column">
+        <section class="flex justify-center">
+          <nav>
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="/sitemap">Sitemap</a></li>
+              <li>
+                <a
+                  href="http://github.com/cuebitt/cuebitt.neocities.org"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Source</a
+                >
+              </li>
+            </ul>
+          </nav>
+        </section>
+        <section class="flex justify-center">
+          <a
+            href="http://neocities.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              alt="Hosted by Neocities"
+              src="https://cdn.jsdelivr.net/gh/neocities/neocities@master/public/img/neocitiesbadge.svg"
+            />
+          </a>
+        </section>
+      </div>
+    </footer>
+
+    <script>
+      function copySwatch(e) {
+        const color = e.dataset.color;
+        navigator.clipboard.writeText(color);
+      }
+    </script>
+  </body>
+</html>

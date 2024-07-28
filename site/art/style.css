@@ -1,0 +1,178 @@
+figure {
+  position: relative;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  border: 0.25rem solid #ffcf34;
+}
+
+figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+figcaption {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: var(--pico-color-yellow-50);
+  padding: 0.25em !important;
+  border-radius: 0.5em 0 0 0;
+  font-size: small;
+}
+
+.color-swatches {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 1rem;
+}
+
+.color-swatch {
+  width: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.swatch-upper-label {
+  text-align: center;
+}
+
+.color-swatch[data-color]::after {
+  content: attr(data-color);
+  background-color: var(--swatch-color);
+  text-align: center;
+}
+
+[data-theme="light"],
+:root:not([data-theme="dark"]) {
+  .color-swatch[data-color]::after {
+    text-shadow:
+      rgb(255, 255, 255) 2px 0px 0px,
+      rgb(255, 255, 255) 1.755165px 0.958851px 0px,
+      rgb(255, 255, 255) 1.080605px 1.682942px 0px,
+      rgb(255, 255, 255) 0.141474px 1.99499px 0px,
+      rgb(255, 255, 255) -0.832294px 1.818595px 0px,
+      rgb(255, 255, 255) -1.602287px 1.196944px 0px,
+      rgb(255, 255, 255) -1.979985px 0.28224px 0px,
+      rgb(255, 255, 255) -1.872913px -0.701566px 0px,
+      rgb(255, 255, 255) -1.307287px -1.513605px 0px,
+      rgb(255, 255, 255) -0.421592px -1.95506px 0px,
+      rgb(255, 255, 255) 0.567324px -1.917849px 0px,
+      rgb(255, 255, 255) 1.41734px -1.411081px 0px,
+      rgb(255, 255, 255) 1.920341px -0.558831px 0px;
+  }
+}
+
+@media only screen and (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    .color-swatch[data-color]::after {
+      text-shadow:
+        rgb(0, 0, 0) 2px 0px 0px,
+        rgb(0, 0, 0) 1.755165px 0.958851px 0px,
+        rgb(0, 0, 0) 1.080605px 1.682942px 0px,
+        rgb(0, 0, 0) 0.141474px 1.99499px 0px,
+        rgb(0, 0, 0) -0.832294px 1.818595px 0px,
+        rgb(0, 0, 0) -1.602287px 1.196944px 0px,
+        rgb(0, 0, 0) -1.979985px 0.28224px 0px,
+        rgb(0, 0, 0) -1.872913px -0.701566px 0px,
+        rgb(0, 0, 0) -1.307287px -1.513605px 0px,
+        rgb(0, 0, 0) -0.421592px -1.95506px 0px,
+        rgb(0, 0, 0) 0.567324px -1.917849px 0px,
+        rgb(0, 0, 0) 1.41734px -1.411081px 0px,
+        rgb(0, 0, 0) 1.920341px -0.558831px 0px;
+    }
+  }
+}
+
+/* Dark color scheme (Forced) */
+/* Enabled if forced with data-theme="dark" */
+[data-theme="dark"] {
+  :root:not([data-theme]) {
+    .color-swatch[data-color]::after {
+      text-shadow:
+        rgb(0, 0, 0) 2px 0px 0px,
+        rgb(0, 0, 0) 1.755165px 0.958851px 0px,
+        rgb(0, 0, 0) 1.080605px 1.682942px 0px,
+        rgb(0, 0, 0) 0.141474px 1.99499px 0px,
+        rgb(0, 0, 0) -0.832294px 1.818595px 0px,
+        rgb(0, 0, 0) -1.602287px 1.196944px 0px,
+        rgb(0, 0, 0) -1.979985px 0.28224px 0px,
+        rgb(0, 0, 0) -1.872913px -0.701566px 0px,
+        rgb(0, 0, 0) -1.307287px -1.513605px 0px,
+        rgb(0, 0, 0) -0.421592px -1.95506px 0px,
+        rgb(0, 0, 0) 0.567324px -1.917849px 0px,
+        rgb(0, 0, 0) 1.41734px -1.411081px 0px,
+        rgb(0, 0, 0) 1.920341px -0.558831px 0px;
+    }
+  }
+}
+
+.swatch-circle {
+  border-radius: 9999px;
+  width: 3rem;
+  height: 3rem;
+  margin: 0 auto;
+  background-color: var(--swatch-color);
+}
+
+#ref-container {
+  position: relative;
+}
+
+#ref-figure {
+  margin-top: 2rem;
+}
+
+#ref-overlay {
+  position: absolute;
+  top: 5%;
+  left: 40%;
+  width: 20%;
+  height: 15%;
+  background-color: #ecf0ff;
+  pointer-events: none;
+}
+
+#color-switch {
+  background-color: var(--pico-primary);
+  border: var(--pico-border-width) solid var(--pico-primary);
+  margin-inline-start: 0.5em;
+}
+
+.description-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.details-grid > span {
+  width: min-content;
+  white-space: nowrap;
+}
+
+.art-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.art-grid figure {
+  max-width: 15rem;
+  min-width: 15rem;
+  margin: 0 0.5rem;
+}
