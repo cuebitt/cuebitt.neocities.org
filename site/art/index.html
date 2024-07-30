@@ -73,7 +73,7 @@
                 alt="Ref sheet"
                 id="ref-sheet"
               />
-
+              <!-- I hadn't decided on my fursona's name when my ref sheet was being made, so this covers up the placeholder -->
               <div id="ref-overlay"></div>
             </div>
 
@@ -200,8 +200,8 @@
               <span>he/him/his</span>
             </div>
 
-            <div class="description-container">
-              <p>
+            <div class="description-container" id="quotes">
+              <p class="hide">
                 <em>
                   "I was <span data-tooltip="and killed obv">hit</span> by the
                   <a
@@ -211,6 +211,17 @@
                     >Isekai Truck</a
                   >. Now I'm a furry! Moo."
                 </em>
+              </p>
+
+              <p class="hide">
+                Horns above my ears, halo on my head, you can't kill me, I'm
+                already dead.
+              </p>
+
+              <p class="hide">And just like that, Indigo died.</p>
+
+              <p class="hide">
+                I wouldn't be surprised if we never saw Indigo again.
               </p>
             </div>
           </div>
@@ -227,6 +238,7 @@
               Should never be drawn with farmed animal details (ear tag, nose
               ring, etc).
             </li>
+            <li>Face spots should be consistent with ref sheet.</li>
             <li>Character's name is Indigo, my username is Cuebitt.</li>
             <li>Indigo is canonically dead 😇.</li>
           </ul>
@@ -452,11 +464,6 @@
       </div>
     </footer>
 
-    <script>
-      function copySwatch(e) {
-        const color = e.dataset.color;
-        navigator.clipboard.writeText(color);
-      }
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
