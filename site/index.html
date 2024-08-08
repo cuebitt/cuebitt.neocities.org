@@ -1,185 +1,150 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cuebitt On Neocities</title>
 
-    <!-- meta tags for discord embed -->
-    <meta property="og:title" content="Cuebitt @ Neocities" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="http://cuebitt.neocities.org" />
-    <meta
-      property="og:image"
-      content="http://cuebitt.neocities.org/public/indigo-tbh.png"
-    />
-    <meta
-      property="og:description"
-      content="Cuebitt's super cool website on Neocities! Mooooooo."
-    />
-    <meta name="theme-color" content="##ffffeb" />
-    <meta name="twitter:card" content="summary_large_image" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cuebitt On Neocities</title>
 
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  <!-- meta tags for discord embed -->
+  <meta property="og:title" content="Cuebitt @ Neocities" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="http://cuebitt.neocities.org" />
+  <meta property="og:image" content="http://cuebitt.neocities.org/public/indigo-tbh.png" />
+  <meta property="og:description" content="Cuebitt's super cool website on Neocities! Mooooooo." />
+  <meta name="theme-color" content="##ffffeb" />
+  <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- I'm not sure if I actually need a reset, but just in case: -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.min.css"
-      integrity="sha512-4xo8blKMVCiXpTaLzQSLSw3KFOVPWhm/TRtuPVc4WG6kUgjH6J03IBuG7JZPkcWMxJ5huwaBpOpnwYElP/m6wg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/css.gg/icons/icons.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/IanLunn/Hover@master/css/hover-min.css"
-    />
-    <link rel="stylesheet" href="index.css" />
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 
-    <!-- Web Components -->
-    <script
-      type="module"
-      src="https://cdn.jsdelivr.net/gh/cuebitt/webcomponents@v1.3.1/components/lanyard-status/lanyard-status.min.js"
-    ></script>
-    <script
-      type="module"
-      src="https://cdn.jsdelivr.net/gh/cuebitt/webcomponents@v1.3.1/components/increasr-frame/increasr-frame.min.js"
-    ></script>
-  </head>
-  <body>
-    <div id="container">
-      <div class="inner-grid">
-        <div id="headerArea">
-          <header id="header">
-            <img
-              src="homepage/img/header_logo.png"
-              alt="Cuebitt written in blue block letters"
-            />
-          </header>
-          <nav id="navbar">
-            <ul>
-              <li><a href="#" class="hvr-grow">Home</a></li>
-              <li><a href="#" class="hvr-grow">Link</a></li>
-              <li><a href="#" class="hvr-grow">Link</a></li>
-              <li><a href="#" class="hvr-grow">Link</a></li>
-              <li><a href="#" class="hvr-grow">Link</a></li>
-              <li><a href="#" class="hvr-grow">Link</a></li>
-            </ul>
-          </nav>
-        </div>
+  <!-- I'm not sure if I actually need a reset, but just in case: -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.min.css"
+    integrity="sha512-4xo8blKMVCiXpTaLzQSLSw3KFOVPWhm/TRtuPVc4WG6kUgjH6J03IBuG7JZPkcWMxJ5huwaBpOpnwYElP/m6wg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://cdn.jsdelivr.net/npm/css.gg/icons/icons.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/IanLunn/Hover@master/css/hover-min.css" />
 
-        <aside id="leftSidebar">
-          <h2>i am Cuebitt</h2>
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/animate-css/animate.css@main/source/attention_seekers/tada.css">
+  <link rel="stylesheet" href="index.css" />
 
-          <span
-            style="display: flex; flex-direction: row; justify-content: center"
-          >
-            <div class="pfp-wrapper hvr-grow">
-              <img
-                src="https://lh3.googleusercontent.com/d/1AEK8eeReXyjul27eKhplG6aneMTuf4cL"
-                alt="profile photo by BraDesu"
-                id="pfp"
-              />
-            </div>
+  <!-- Web Components -->
+  <script type="module"
+    src="https://cdn.jsdelivr.net/gh/cuebitt/webcomponents@v1.3.1/components/lanyard-status/lanyard-status.min.js"></script>
+  <script type="module"
+    src="https://cdn.jsdelivr.net/gh/cuebitt/webcomponents@v1.3.1/components/increasr-frame/increasr-frame.min.js"></script>
+</head>
+
+<body>
+  <div id="container">
+    <div class="inner-grid">
+      <div id="headerArea">
+        <header id="header">
+          <img src="homepage/img/header_logo.png" alt="Cuebitt written in blue block letters" id="header-logo" />
+        </header>
+        <nav id="navbar">
+          <ul>
+            <li><a href="#" class="hvr-grow">Home</a></li>
+            <li><a href="#" class="hvr-grow">Link</a></li>
+            <li><a href="#" class="hvr-grow">Link</a></li>
+            <li><a href="#" class="hvr-grow">Link</a></li>
+            <li><a href="#" class="hvr-grow">Link</a></li>
+            <li><a href="#" class="hvr-grow">Link</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <aside id="leftSidebar">
+        <h2>i am Cuebitt</h2>
+
+        <span style="display: flex; flex-direction: row; justify-content: center">
+          <div class="pfp-wrapper hvr-grow">
+            <img src="https://lh3.googleusercontent.com/d/1AEK8eeReXyjul27eKhplG6aneMTuf4cL"
+              alt="profile photo by BraDesu" id="pfp" />
+          </div>
+        </span>
+
+        <ul>
+          <li>23yrs</li>
+          <li>
+            <span id="pronouns-text" title="via pronoundb.org">loading...</span>
+          </li>
+          <li>gay 🏳️‍🌈</li>
+          <li>furry 😇🐮</li>
+          <li>vegan🌱</li>
+        </ul>
+
+        <h2>Cowz Bop</h2>
+        <div class="card">
+          <span class="yt-player-wrapper">
+            <div id="yt-player"></div>
           </span>
 
-          <ul>
-            <li>23yrs</li>
-            <li>
-              <span id="pronouns-text" title="via pronoundb.org"
-                >loading...</span
-              >
-            </li>
-            <li>gay 🏳️‍🌈</li>
-            <li>furry 😇🐮</li>
-            <li>vegan🌱</li>
-          </ul>
+          <div class="music-player-title">
+            <marquee scrollamount="4" id="music-player-scroller">
+              <span id="music-player-title"></span> -
+              <em><span id="music-player-artist"></span></em>
+            </marquee>
+          </div>
 
-          <h2>Cowz Bop</h2>
-          <div class="card">
-            <span class="yt-player-wrapper">
-              <div id="yt-player"></div>
-            </span>
-
-            <div class="music-player-title">
-              <marquee scrollamount="4" id="music-player-scroller">
-                <span id="music-player-title"></span> -
-                <em><span id="music-player-artist"></span></em>
-              </marquee>
+          <section class="music-player-controls-wrapper">
+            <div class="music-player-slider">
+              <input type="range" value="0" min="0" step="1" id="duration-slider" disabled />
+              <span id="music-current-time">0:00</span>
             </div>
 
-            <section class="music-player-controls-wrapper">
-              <div class="music-player-slider">
-                <input
-                  type="range"
-                  value="0"
-                  min="0"
-                  step="1"
-                  id="duration-slider"
-                  disabled
-                />
-                <span id="music-current-time">0:00</span>
-              </div>
+            <div class="music-player-controls">
+              <button id="music-prev-btn" disabled>
+                <i class="gg-play-track-prev-r"></i>
+              </button>
+              <button id="play-pause-btn" disabled>
+                <i id="play-pause-icon" class="gg-play-button-r"></i>
+              </button>
+              <button id="music-next-btn" disabled>
+                <i class="gg-play-track-next-r"></i>
+              </button>
+            </div>
+          </section>
+        </div>
+      </aside>
+      <main>
+        <h1>hello world</h1>
 
-              <div class="music-player-controls">
-                <button id="music-prev-btn" disabled>
-                  <i class="gg-play-track-prev-r"></i>
-                </button>
-                <button id="play-pause-btn" disabled>
-                  <i id="play-pause-icon" class="gg-play-button-r"></i>
-                </button>
-                <button id="music-next-btn" disabled>
-                  <i class="gg-play-track-next-r"></i>
-                </button>
-              </div>
-            </section>
-          </div>
-        </aside>
-        <main>
-          <h1>hello world</h1>
+        <div>
+          <p>
+            I'm Cuebitt! Welcome to my
+            <span style="font-size: 0.5em">co</span>website.
+          </p>
 
-          <div>
-            <p>
-              I'm Cuebitt! Welcome to my
-              <span style="font-size: 0.5em">co</span>website.
-            </p>
+          <p>aaa</p>
+        </div>
 
-            <p>aaa</p>
-          </div>
+        <div id="widgets-wrapper">
+          <div id="lanyard-wrapper"><lanyard-status user-id="987555201969971210"></lanyard-status></div>
+          <increasr-frame site-key="cuebitt"></increasr-frame>
+        </div>
+      </main>
+      <aside id="rightSidebar">
+        <h2>Changelog</h2>
+        <div class="card" style="overflow-y: auto">
+          <h3>2024-07-06</h3>
+          <ul>
+            <li>
+              Swapped to
+              <a href="https://goblin-heart.net/sadgrl/projects/layout-builder/" target="_blank"
+                rel="noopener noreferrer">sadgrl's layout builder</a>
+            </li>
+            <li>Added a music player</li>
+          </ul>
+        </div>
+      </aside>
 
-          <div id="widgets-wrapper">
-            <div id="lanyard-wrapper"><lanyard-status user-id="987555201969971210"></lanyard-status></div>
-            <increasr-frame site-key="cuebitt"></increasr-frame>
-          </div>
-        </main>
-        <aside id="rightSidebar">
-          <h2>Changelog</h2>
-          <div class="card" style="overflow-y: auto">
-            <h3>2024-07-06</h3>
-            <ul>
-              <li>
-                Swapped to
-                <a
-                  href="https://goblin-heart.net/sadgrl/projects/layout-builder/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >sadgrl's layout builder</a
-                >
-              </li>
-              <li>Added a music player</li>
-            </ul>
-          </div>
-        </aside>
-
-        <footer id="footer">&copy; 2024 Cuebitt. All rights reserved.</footer>
-      </div>
+      <footer id="footer">&copy; 2024 Cuebitt. All rights reserved.</footer>
     </div>
+  </div>
 
-    <script src="homepage/music-player.js" id="music-player-script"></script>
-    <script src="homepage/script.js"></script>
-  </body>
+  <script src="homepage/music-player.js" id="music-player-script"></script>
+  <script src="homepage/script.js"></script>
+</body>
+
 </html>

@@ -77,12 +77,22 @@ header {
   background-repeat: no-repeat;
   background-position: center;
   position: relative;
+
+  display: flex;
+  justify-content: center;
 }
 
 header img {
-  width: 100%;
+  width: auto;
   height: 100%;
   object-fit: contain;
+  margin: 0 auto;
+}
+
+header img:hover,
+header img:focus,
+header img:active {
+  animation: 1s linear tada;
 }
 
 /* navigation section!! */
@@ -146,6 +156,7 @@ header img {
 #lanyard-wrapper {
   border-radius: 1em;
   overflow: hidden;
+  border: 2px solid white;
 }
 
 /* this colors BOTH sidebars
@@ -290,6 +301,11 @@ feel free to play around with the order!
   gap: 0.25em;
   width: 100%;
   align-items: center;
+}
+
+#duration-slider {
+  margin: 0 0.5em;
+  flex-shrink: 1;
 }
 
 .music-player-controls button {
