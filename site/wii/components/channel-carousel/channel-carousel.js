@@ -239,12 +239,12 @@ class ChannelCarousel extends HTMLElement {
 
       .channel-carousel-arrows > .splide__arrow--prev {
         margin-left: -0.5rem;
-        background-image: url("/assets/index/img/arrow-l.svg");
+        background-image: url("assets/img/arrow-l.svg");
       }
 
       .channel-carousel-arrows > .splide__arrow--next {
         margin-right: -0.5rem;
-        background-image: url("/assets/index/img/arrow-r.svg");
+        background-image: url("assets/img/arrow-r.svg");
       }
     `;
   }

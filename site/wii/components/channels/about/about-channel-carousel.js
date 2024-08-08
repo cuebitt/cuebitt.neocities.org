@@ -7,13 +7,9 @@ class AboutChannelCarousel extends HTMLElement {
     this._css = null;
     this._element = null;
     this._connected = false;
-
-    this._smallImgSrc = null;
   }
 
   connectedCallback() {
-    this._smallImgSrc = this.getAttribute("small-img-src") || "";
-
     this._css = new CSSStyleSheet();
     this._css.replaceSync(AboutChannelCarousel.styles());
 
@@ -25,19 +21,11 @@ class AboutChannelCarousel extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ["small-img-src"];
+    return [];
   }
 
   attributeChangedCallback(name, oldVal, newVal) {
     if (!this._connected || oldVal === newVal) return;
-
-    switch (name) {
-      case "small-img-src":
-        this._smallImgSrc = newVal;
-        break;
-      default:
-        return;
-    }
 
     this.render();
   }
@@ -78,7 +66,7 @@ class AboutChannelCarousel extends HTMLElement {
                 <div class="dvd-inner">
                   <div
                     class="top"
-                    style="background-image: url(${this._smallImgSrc})"
+                    style="background-image: url(/public/indigo-tbh.png)"
                   ></div>
                   <div class="bottom">
                     <p>Cuebitt</p>

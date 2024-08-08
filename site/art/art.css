@@ -1,0 +1,111 @@
+#main-grid {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 1em;
+}
+
+.sticky {
+  position: sticky;
+  top: 4em;
+}
+
+nav ul li {
+  padding: 0.5em;
+}
+
+#header-logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1em;
+  margin: 0 2em;
+}
+
+#header-logo img {
+  width: 64px;
+  height: 64px;
+}
+
+#header-logo h1,
+#header-logo h2 {
+  margin: 0;
+}
+
+.halo-border {
+  border-radius: 0.5em;
+  border: 2px solid #ffcf34;
+}
+
+.art-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.art-grid figure {
+  max-width: 10rem;
+  min-width: 10rem;
+  height: min-content;
+  margin: 0 0.5rem;
+
+  position: relative;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  border: 0.25rem solid #ffcf34;
+}
+
+.art-grid figure figcaption {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: #fdf1b4;
+  padding: 0.25em !important;
+  border-radius: 0.5em 0 0 0;
+  font-size: small;
+}
+
+#ref-container {
+  position: relative;
+  width: 30em;
+  height: auto;
+}
+
+#ref-wrapper {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#ref-overlay {
+  position: absolute;
+  top: 5%;
+  left: 40%;
+  width: 20%;
+  height: 15%;
+  background-color: #ecf0ff;
+  pointer-events: none;
+}
+
+/* Image Modal */
+
+#image-modal-figure {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+#image-modal-figure figcaption {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  border: 1px solid white;
+  border-top-left-radius: 0.5em;
+  padding: 0.1em;
+  font-size: smaller;
+  background-color: #fdf1b4;
+}
