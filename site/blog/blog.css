@@ -1,0 +1,114 @@
+/*
+  wiMDy by Cuebitt (cuebitt.neocities.org)
+
+  a simple, barebones markdown blog system for Neocities
+*/
+
+.container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+@media (min-width: 576px) {
+  .container {
+    max-width: 510px;
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: 700px;
+  }
+}
+@media (min-width: 1024px) {
+  .container {
+    max-width: 850px;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+header {
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+header h1 {
+  margin: 0;
+}
+
+nav ul {
+  display: flex;
+  list-style-type: none;
+  flex-direction: row;
+  font-size: larger;
+  font-weight: bold;
+  gap: 1em;
+}
+
+footer {
+  padding: 1rem;
+}
+
+footer p {
+  text-align: center;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+main {
+  flex-grow: 1;
+}
+
+hr {
+  width: 100%;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.archive-wrapper {
+  overflow-y: auto;
+  height: 100%;
+  width: 100%;
+}
+
+#archive-list {
+  font-size: x-large;
+}
+
+#post-subtitle {
+  font-style: italic;
+  margin: 0;
+}
+
+#post-title {
+  margin: 0.25em 0;
+}
+
+#post-heading {
+  margin-bottom: 3rem;
+}
+
+pre {
+  width: fit-content;
+  margin: 0 auto;
+}
+
+p:has(> img) {
+  text-align: center;
+}
