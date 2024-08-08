@@ -5,69 +5,10 @@
     <title>Cuebitt's Webgarden Plant</title>
     <link rel="stylesheet" href="webgarden.css" />
     <style>
-      html,
-      body,
-      div,
-      span,
-      applet,
-      object,
-      iframe,
       h1,
       h2,
-      h3,
-      h4,
-      h5,
-      h6,
-      p,
-      blockquote,
-      pre,
-      a,
-      abbr,
-      acronym,
-      address,
-      big,
-      cite,
-      code,
-      del,
-      dfn,
-      em,
-      font,
-      img,
-      ins,
-      kbd,
-      q,
-      s,
-      samp,
-      small,
-      strike,
-      strong,
-      sub,
-      sup,
-      tt,
-      var,
-      b,
-      u,
-      i,
-      center,
-      dl,
-      dt,
-      dd,
-      ol,
-      ul,
-      li,
-      fieldset,
-      form,
-      label,
-      legend,
-      caption {
+      p {
         margin: 0;
-        padding: 0;
-        border: 0;
-        outline: 0;
-        font-size: 100%;
-        vertical-align: baseline;
-        background: transparent;
-        box-sizing: border-box;
       }
 
       html {
@@ -75,15 +16,20 @@
       }
 
       body {
-        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QAnAAhAOfqVCpiAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4QUOESEcvIkaLwAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAAVklEQVRo3u3XsREAIAgEQbBTqrBXm9EiDBzG/ZxgA4LLmmtH59Vc+2av70c0HwAAAAAAAAAAQOOlHtADnhgAAAAAAAAAQA/oAT3giQEAAAAAAAAAvgMc2Ww6ppL/I/QAAAAASUVORK5CYII=);;
+        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QAnAAhAOfqVCpiAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4QUOESEcvIkaLwAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAAVklEQVRo3u3XsREAIAgEQbBTqrBXm9EiDBzG/ZxgA4LLmmtH59Vc+2av70c0HwAAAAAAAAAAQOOlHtADnhgAAAAAAAAAQA/oAT3giQEAAAAAAAAAvgMc2Ww6ppL/I/QAAAAASUVORK5CYII=);
         background-repeat: repeat;
       }
     </style>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/modern-normalize@2.0.0/modern-normalize.min.css"
+    />
   </head>
 
   <body>
-    <div class="plant">
-      <div class="outer-container">
+    <div class="container">
+      <div class="plant">
         <div class="halo-container">
           <div class="halo-inner float-element"></div>
         </div>
@@ -102,7 +48,7 @@
               </a>
             </div>
           </header>
-          <main>
+          <main class="flex flex-column">
             <p class="nunito-sans">
               programming, web dev resources, blog, & more!
             </p>
@@ -115,16 +61,19 @@
                 >cuebitt.neocities.org</a
               >
             </p>
-          </main>
-          <footer>
-            <div class="tbh-image hvr-horizontal-shake" onclick="doConfetti()">
-            </div>
-          </footer>
-        </div>
 
-        <div id="copy-area" class="hide copy-area">
-          <textarea id="copy-text" rows="8"></textarea>
+            <img
+              class="hvr-horizontal-shake"
+              id="cuebitt-garden-indigo-tbh"
+              src="/public/indigo-tbh.png"
+              alt="tbh creature"
+            />
+          </main>
         </div>
+      </div>
+
+      <div id="copy-area" class="hide copy-area">
+        <textarea id="copy-text" rows="8"></textarea>
       </div>
     </div>
 
