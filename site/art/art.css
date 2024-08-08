@@ -90,6 +90,30 @@ nav ul li {
   pointer-events: none;
 }
 
+#other-videos-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  justify-content: center;
+}
+
+#warning-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#warning-p {
+  text-align: center;
+  font-size: 1.5em;
+  vertical-align: middle;
+}
+
+.warning-p-siren {
+  flex-shrink: 1;
+  font-size: 3em;
+}
 /* Image Modal */
 
 #image-modal-figure {
