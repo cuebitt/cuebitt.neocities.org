@@ -199,12 +199,6 @@ main > p {
   position: relative;
 }
 
-body {
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
-}
-
 .hide {
   display: none !important;
 }
