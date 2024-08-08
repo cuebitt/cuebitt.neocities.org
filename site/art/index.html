@@ -1,469 +1,413 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Art Gallery</title>
 
-    <!-- meta tags for discord embed -->
-    <meta property="og:title" content="Cuebitt @ Neocities" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="http://cuebitt.neocities.org" />
-    <meta
-      property="og:image"
-      content="http://cuebitt.neocities.org/public/indigo-tbh.png"
-    />
-    <meta
-      property="og:description"
-      content="Cuebitt's super cool website on Neocities! Mooooooo."
-    />
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Indigo - Halopedia</title>
 
-    <meta name="twitter:card" content="summary_large_image" />
+	<!-- meta tags for discord embed -->
+	<meta property="og:title" content="Cuebitt @ Neocities" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="http://cuebitt.neocities.org" />
+	<meta property="og:image" content="http://cuebitt.neocities.org/public/indigo-tbh.png" />
+	<meta property="og:description" content="Cuebitt's super cool website on Neocities! Mooooooo." />
+	<meta name="theme-color" content="##ffffeb" />
+	<meta name="twitter:card" content="summary_large_image" />
 
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.colors.min.css"
-    />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+	<link rel="stylesheet" href="art.css">
+</head>
 
-    <link rel="stylesheet" href="style.css" />
+<body>
+	<header>
+		<div id="header-logo">
+			<img src="img/ball_anim.webp" alt="Spinning globe with Indigo's face on it">
+			<hgroup>
+				<h1>Halopedia</h1>
+				<h2>The Cow Encyclopedia</h2>
+			</hgroup>
+		</div>
+	</header>
 
-    <style>
-      .flex {
-        display: flex;
-      }
+	<div id="main-grid" class="container">
+		<aside>
+			<div class="sticky">
+				<strong>Contents</strong>
+				<hr>
+				<nav>
+					<ul>
+						<li>
+							<a href="#background">Background</a>
+						</li>
+						<li>
+							<a href="#ref">Ref Sheet</a>
+						</li>
+						<li>
+							<a href="#colors">Color Swatches</a>
+						</li>
+						<li>
+							<a href="#other">Other Details</a>
+						</li>
+						<li>
+							<a href="#gallery">Gallery</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</aside>
+		<main>
+			<a id="background">
+				<h3>Background</h3>
+			</a>
 
-      .flex-column {
-        flex-direction: column;
-      }
+			<hr>
+			<p>
+				Indigo was hit and killed by the <a href="https://en.wikipedia.org/wiki/Truck-kun" target="_blank"
+					rel="noopener noreferrer">Isekai Truck</a> one day and <a
+					href="https://www.youtube.com/shorts/gD1zzRw9yoE" target="_blank" rel="noopener noreferrer">got
+					flewed
+					out</a> into the furry afterlife. Being dead doesn't seem to bother him, though.
+			</p>
 
-      .justify-center {
-        justify-content: center;
-      }
+			<a id="ref">
+				<h3>Ref Sheet</h3>
+			</a>
+			<hr>
+			<section>
+				<div id="ref-wrapper">
+					<div id="ref-container">
+						<img src="https://lh3.googleusercontent.com/d/1eaQEs6f3so3GHTT1ei3OeBrub39m_07D" alt="Indigo Ref Sheet" data-artist="karpetshark">
+						<div id="ref-overlay"></div>
+					</div>
 
-      .outer-container {
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-      }
 
-      header {
-        padding: 2rem;
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <h1>Cuebitt's Fursona Art</h1>
-    </header>
-    <main class="container">
-      <div class="grid">
-        <div>
-          <h2>Ref Sheet</h2>
+				</div>
+			</section>
 
-          <figure id="ref-figure">
-            <div id="ref-container">
-              <img
-                src="https://lh3.googleusercontent.com/d/1eaQEs6f3so3GHTT1ei3OeBrub39m_07D"
-                alt="Ref sheet"
-                id="ref-sheet"
-              />
-              <!-- I hadn't decided on my fursona's name when my ref sheet was being made, so this covers up the placeholder -->
-              <div id="ref-overlay"></div>
-            </div>
+			<a id="colors">
+				<h3>Color Swatches</h3>
+			</a>
+			<hr>
+			<article>
+				<header>Colors <small>(click to copy)</small></header>
+				<div style="display: flex; gap: 0.5em;">
+					<table style="font-size: medium;">
+						<tr>
+							<th scope="col">Swatch</th>
+							<th scope="col">Location</th>
+							<th scope="col">Hex</th>
+						</tr>
+						<tr onclick="copySwatch('#ffffeb')">
+							<td style="background-color: #ffffeb;"></td>
+							<td>Fur (Main)</td>
+							<td><code>#ffffeb</code></td>
+						</tr>
+						<tr onclick="copySwatch('#ffcf34')">
+							<td style="background-color: #ffcf34;"></td>
+							<td>Halo, Eyes</td>
+							<td><code>#ffcf34</code></td>
 
-            <figcaption>
-              <a
-                href="https://karpetshark.tumblr.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                >karpetshark</a
-              >, Nov 2023
-            </figcaption>
-          </figure>
-        </div>
+						</tr>
 
-        <article>
-          <header>Colors (click to copy)</header>
-          <div class="color-swatches">
-            <div
-              class="color-swatch"
-              style="--swatch-color: #ffffeb"
-              data-color="#ffffeb"
-              onclick="copySwatch(this)"
-            >
-              <span class="swatch-upper-label">Fur (Main)</span>
-              <div class="swatch-circle"></div>
-            </div>
+						<tr onclick="copySwatch('#ffacd1')">
+							<td style="background-color: #ffacd1;"></td>
+							<td>Nose</td>
+							<td><code>#ffacd1</code></td>
+						</tr>
 
-            <div
-              class="color-swatch"
-              style="--swatch-color: #ffcf34"
-              data-color="#ffcf34"
-              onclick="copySwatch(this)"
-            >
-              <span class="swatch-upper-label">Halo, Eyes</span>
-              <div class="swatch-circle"></div>
-            </div>
+						<tr onclick="copySwatch('#e0ccfa')">
+							<td style="background-color: #e0ccfa;"></td>
+							<td>Spots</td>
+							<td><code>#e0ccfa</code></td>
+						</tr>
 
-            <div
-              class="color-swatch"
-              style="--swatch-color: #ffacd1"
-              data-color="#ffacd1"
-              onclick="copySwatch(this)"
-            >
-              <span class="swatch-upper-label">Nose</span>
-              <div class="swatch-circle"></div>
-            </div>
 
-            <div
-              class="color-swatch"
-              style="--swatch-color: #e0ccfa"
-              data-color="#e0ccfa"
-              onclick="copySwatch(this)"
-            >
-              <span class="swatch-upper-label">Spots</span>
-              <div class="swatch-circle"></div>
-            </div>
+					</table>
 
-            <div
-              class="color-swatch"
-              style="--swatch-color: #bc8dfa"
-              data-color="#bc8dfa"
-              onclick="copySwatch(this)"
-            >
-              <span class="swatch-upper-label">Eyebrows</span>
-              <div class="swatch-circle"></div>
-            </div>
+					<table style="font-size: medium;">
+						<tr>
+							<th scope="col">Swatch</th>
+							<th scope="col">Location</th>
+							<th scope="col">Hex</th>
+						</tr>
 
-            <div
-              class="color-swatch"
-              style="--swatch-color: #a57cb0"
-              data-color="#a57cb0"
-              onclick="copySwatch(this)"
-            >
-              <span class="swatch-upper-label">Hair (Stripe)</span>
-              <div class="swatch-circle"></div>
-            </div>
+						<tr onclick="copySwatch('#bc8dfa')">
+							<td style="background-color: #bc8dfa;"></td>
+							<td>Eyebrows</td>
+							<td><code>#bc8dfa</code></td>
+						</tr>
 
-            <div
-              class="color-swatch"
-              style="--swatch-color: #55106d"
-              data-color="#55106d"
-              onclick="copySwatch(this)"
-            >
-              <span class="swatch-upper-label">Hooves</span>
-              <div class="swatch-circle"></div>
-            </div>
+						<tr onclick="copySwatch('#a57cb0')">
+							<td style="background-color: #a57cb0;"></td>
+							<td>Hair (Stripe)</td>
+							<td><code>#a57cb0</code></td>
+						</tr>
 
-            <div
-              class="color-swatch"
-              style="--swatch-color: #6d88b1"
-              data-color="#6d88b1"
-              onclick="copySwatch(this)"
-            >
-              <span class="swatch-upper-label">Watch (Band)</span>
-              <div class="swatch-circle"></div>
-            </div>
+						<tr onclick="copySwatch('#55106d')">
+							<td style="background-color: #55106d;"></td>
+							<td>Hooves</td>
+							<td><code>#55106d</code></td>
+						</tr>
 
-            <div
-              class="color-swatch"
-              style="--swatch-color: #185991"
-              data-color="#185991"
-              onclick="copySwatch(this)"
-            >
-              <span class="swatch-upper-label">Watch (Frame)</span>
-              <div class="swatch-circle"></div>
-            </div>
-          </div>
-        </article>
-      </div>
+						<tr onclick="copySwatch('#6d88b1')">
+							<td style="background-color: #6d88b1;"></td>
+							<td>Watch (Band)</td>
+							<td><code>#6d88b1</code></td>
+						</tr>
 
-      <div class="grid">
-        <article>
-          <header>Basics</header>
+						<tr onclick="copySwatch('#185991')">
+							<td style="background-color: #185991;"></td>
+							<td>Watch (Frame)</td>
+							<td><code>#185991</code></td>
+						</tr>
+						</tr>
+					</table>
+				</div>
+			</article>
 
-          <div class="grid">
-            <div class="details-grid">
-              <span><b>Name:</b></span>
-              <span>Indigo</span>
+			<a id="other">
+				<h3>Other Details</h3>
+			</a>
+			<hr>
+			<ul>
 
-              <span><b>Species</b></span>
-              <span data-tooltip="yes, I'm very funny.">Holy Cow</span>
+				<li>
+					Can be drawn with 4 or 5 fingers per hand, depending on artist's
+					preference.
+				</li>
+				<li>
+					Should never be drawn with farmed animal details (ear tag, nose
+					ring, etc).
+				</li>
+				<li>Face spots should be consistent with ref sheet.</li>
+				<li>Character's name is Indigo, my username is Cuebitt.</li>
+			</ul>
 
-              <span><b>Pronouns:</b></span>
-              <span>he/him/his</span>
-            </div>
+			<a id="gallery">
+				<h3>Gallery</h3>
+			</a>
+			<hr>
 
-            <div class="description-container" id="quotes">
-              <p class="hide">
-                <em>
-                  "I was <span data-tooltip="and killed obv">hit</span> by the
-                  <a
-                    href="https://en.wikipedia.org/wiki/Truck-kun"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    >Isekai Truck</a
-                  >. Now I'm a furry! Moo."
-                </em>
-              </p>
+			<div class="container">
+				<div class="art-grid">
+					<figure>
+						<img src="https://lh3.googleusercontent.com/d/181z_OHvdrEvtLB6TjASqm4mrQWvEuh3S"
+							alt="Profile photo" data-artist="karpetshark">
+						<figcaption>
+							<a href="https://karpetshark.tumblr.com" target="_blank"
+								rel="noopener noreferrer">karpetshark</a>, Nov
+							2023
+						</figcaption>
+					</figure>
 
-              <p class="hide">
-                Horns above my ears, halo on my head, you can't kill me, I'm
-                already dead.
-              </p>
+					<figure>
+						<img src="https://lh3.googleusercontent.com/d/1cc0mw7qoR5jHfve13YpqD5ODqHSDqJVO"
+							alt="Waist up shot" data-artist="karpetshark">
+						<figcaption>
+							<a href="https://closetvoid.carrd.co">Closetvoid</a>, Dec 2023
+						</figcaption>
+					</figure>
 
-              <p class="hide">And just like that, Indigo died.</p>
+					<figure>
+						<img src="https://lh3.googleusercontent.com/d/1HS4dQYwLpooHkvVk46jOj3ieEr_hq2j8"
+							alt="Full body sticky note sketch" data-artist="Outcast Stars">
 
-              <p class="hide">
-                I wouldn't be surprised if we never saw Indigo again.
-              </p>
-            </div>
-          </div>
-        </article>
+						<figcaption>
+							<a href="http://twitter.com/outcaststars" target="_blank" rel="noopener noreferrer">Outcast
+								Stars</a>, Feb 2024
+						</figcaption>
+					</figure>
 
-        <article>
-          <header>Other Details</header>
-          <ul>
-            <li>
-              Can be drawn with 4 or 5 fingers per hand, depending on artist's
-              preference.
-            </li>
-            <li>
-              Should never be drawn with farmed animal details (ear tag, nose
-              ring, etc).
-            </li>
-            <li>Face spots should be consistent with ref sheet.</li>
-            <li>Character's name is Indigo, my username is Cuebitt.</li>
-            <li>Indigo is canonically dead 😇.</li>
-          </ul>
-        </article>
-      </div>
+					<figure>
+						<img src="https://lh3.googleusercontent.com/d/1BOhXWJnwKJtN5pk29qiEkU3U5fYOv3mh"
+							alt="Anime glasses flash bust shot" data-artist="Jayed Skier">
 
-      <hr />
+						<figcaption>
+							<a href="http://jayedtskier.carrd.co" target="_blank" rel="noopener noreferrer">Jayed
+								Skier</a>, Feb 2024
+						</figcaption>
+					</figure>
 
-      <h1 style="margin-bottom: 2rem">Art Gallery</h1>
-      <div class="container">
-        <div class="art-grid">
-          <figure>
-            <img
-              src="https://lh3.googleusercontent.com/d/181z_OHvdrEvtLB6TjASqm4mrQWvEuh3S"
-              alt="Profile photo"
-            />
-            <figcaption>
-              <a
-                href="https://karpetshark.tumblr.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                >karpetshark</a
-              >, Nov 2023
-            </figcaption>
-          </figure>
+					<figure>
+						<img src="https://lh3.googleusercontent.com/d/1eyl94vRBmbG4Wye2SCvyjgJBzYpUAZAS"
+							alt="Full body colored sketch, splatoon outfit" data-artist="MrLabrador">
 
-          <figure>
-            <img
-              src="https://lh3.googleusercontent.com/d/1cc0mw7qoR5jHfve13YpqD5ODqHSDqJVO"
-              alt="Waist up shot"
-            />
-            <figcaption>
-              <a href="https://closetvoid.carrd.co">Closetvoid</a>, Dec 2023
-            </figcaption>
-          </figure>
+						<figcaption>
+							<a href="https://www.twitch.tv/mrlabrador" target="_blank"
+								rel="noopener noreferrer">MrLabrador</a>, Jan 2024
+						</figcaption>
+					</figure>
 
-          <figure>
-            <img
-              src="https://lh3.googleusercontent.com/d/1HS4dQYwLpooHkvVk46jOj3ieEr_hq2j8"
-              alt="Full body sticky note sketch"
-            />
+					<figure>
+						<img src="https://lh3.googleusercontent.com/d/1tpHNByHu79fZZnV8vcU8sRe9BIxgdzcG"
+							alt="Telegram sticker, Hi Stranger butt pose" data-artist="EmuFur">
 
-            <figcaption>
-              <a
-                href="http://twitter.com/outcaststars"
-                target="_blank"
-                rel="noopener noreferrer"
-                >Outcast Stars</a
-              >
-              , Feb 2024
-            </figcaption>
-          </figure>
+						<figcaption>
+							<a href="http://twitch.tv/emufur" target="_blank" rel="noopener noreferrer">EmuFur</a>, Feb
+							2024
+						</figcaption>
+					</figure>
 
-          <figure>
-            <img
-              src="https://lh3.googleusercontent.com/d/1BOhXWJnwKJtN5pk29qiEkU3U5fYOv3mh"
-              alt="Anime glasses flash bust shot"
-            />
+					<figure>
+						<img src="https://lh3.googleusercontent.com/d/1Thds83QNLSWmRfo72JKkJHvcq6iS8g1c"
+							alt="Bust shot, black and white. Muscle-y." data-artist="Makebork">
 
-            <figcaption>
-              <a
-                href="http://jayedtskier.carrd.co"
-                target="_blank"
-                rel="noopener noreferrer"
-                >Jayed Skier</a
-              >
-              , Feb 2024
-            </figcaption>
-          </figure>
+						<figcaption>
+							<a href="https://bsky.app/profile/makebork.bsky.social" target="_blank"
+								rel="noopener noreferrer">Makebork</a>, Feb 2024
+						</figcaption>
+					</figure>
 
-          <figure>
-            <img
-              src="https://lh3.googleusercontent.com/d/1eyl94vRBmbG4Wye2SCvyjgJBzYpUAZAS"
-              alt="Full body colored sketch, splatoon outfit"
-            />
+					<figure>
+						<img src="https://lh3.googleusercontent.com/d/15RIQ1EHcsbA5_gl--tqJV5mJNyU1FBG1"
+							alt="Page doll. Drinking taro boba tea." data-artist="Coywolfy">
 
-            <figcaption>
-              <a
-                href="https://www.twitch.tv/mrlabrador"
-                target="_blank"
-                rel="noopener noreferrer"
-                >MrLabrador</a
-              >, Jan 2024
-            </figcaption>
-          </figure>
+						<figcaption>
+							<a href="https://vgen.co/Coywolfy" target="_blank" rel="noopener noreferrer">Coywolfy</a>,
+							Mar 2024
+						</figcaption>
+					</figure>
 
-          <figure>
-            <img
-              src="https://lh3.googleusercontent.com/d/1tpHNByHu79fZZnV8vcU8sRe9BIxgdzcG"
-              alt="Telegram sticker, Hi Stranger butt pose"
-            />
+					<figure>
+						<img src="https://lh3.googleusercontent.com/d/1AEK8eeReXyjul27eKhplG6aneMTuf4cL"
+							alt="Winking headshot" data-artist="BraDesu">
 
-            <figcaption>
-              <a
-                href="http://twitch.tv/emufur"
-                target="_blank"
-                rel="noopener noreferrer"
-                >EmuFur</a
-              >
-              , Feb 2024
-            </figcaption>
-          </figure>
+						<figcaption>
+							<a href="https://bradesu.carrd.co" target="_blank" rel="noopener noreferrer">BraDesu</a>,
+							Mar 2024
+						</figcaption>
+					</figure>
 
-          <figure>
-            <img
-              src="https://lh3.googleusercontent.com/d/1Thds83QNLSWmRfo72JKkJHvcq6iS8g1c"
-              alt="Bust shot, black and white. Muscle-y."
-            />
+					<figure>
+						<img src="https://lh3.googleusercontent.com/d/1TDja63JMIh2CXI59VRllyFIBU_NH_s7J"
+							alt="From above angle, sitting in grass." data-artist="Jamejarrs">
 
-            <figcaption>
-              <a
-                href="https://bsky.app/profile/makebork.bsky.social"
-                target="_blank"
-                rel="noopener noreferrer"
-                >Makebork</a
-              >
-              , Feb 2024
-            </figcaption>
-          </figure>
+						<figcaption>
+							<a href="https://www.twitch.tv/jamejarrs" target="_blank"
+								rel="noopener noreferrer">Jamejarrs</a>, Apr 2024
+						</figcaption>
+					</figure>
 
-          <figure>
-            <img
-              src="https://lh3.googleusercontent.com/d/15RIQ1EHcsbA5_gl--tqJV5mJNyU1FBG1"
-              alt="Page doll. Drinking taro boba tea."
-            />
+					<figure>
+						<img src="https://lh3.googleusercontent.com/d/1EZ3a4RT3Qf4EvJSiGKYdQAKmyG3p6DIj" alt="Con badge"
+							data-artist="Gruffl0">
 
-            <figcaption>
-              <a
-                href="https://vgen.co/Coywolfy"
-                target="_blank"
-                rel="noopener noreferrer"
-                >Coywolfy</a
-              >
-              , Mar 2024
-            </figcaption>
-          </figure>
+						<figcaption>
+							<a href="https://x.com/grufflomanz" target="_blank" rel="noopener noreferrer">Gruffl0</a>,
+							Jul 2024
+						</figcaption>
+					</figure>
+				</div>
+			</div>
+		</main>
+		<aside>
+			<div class="sticky">
+				<article>
+					<header>
+						Indigo
+					</header>
 
-          <figure>
-            <img
-              src="https://lh3.googleusercontent.com/d/1AEK8eeReXyjul27eKhplG6aneMTuf4cL"
-              alt="Winking headshot"
-            />
+					<section>
+						<img src="https://lh3.googleusercontent.com/d/181z_OHvdrEvtLB6TjASqm4mrQWvEuh3S"
+							alt="Indigo Headshot" data-artist="karpetshark" class="halo-border">
+					</section>
 
-            <figcaption>
-              <a
-                href="https://bradesu.carrd.co"
-                target="_blank"
-                rel="noopener noreferrer"
-                >BraDesu</a
-              >
-              , Mar 2024
-            </figcaption>
-          </figure>
+					<hr>
 
-          <figure>
-            <img
-              src="https://lh3.googleusercontent.com/d/1TDja63JMIh2CXI59VRllyFIBU_NH_s7J"
-              alt="From above angle, sitting in grass."
-            />
+					<table class="striped" style="font-size: medium;">
+						<tr>
+							<th scope="row">Name</th>
+							<td>Indigo</td>
+						</tr>
+						<tr>
+							<th scope="row">Pronouns</th>
+							<td><span data-tooltip="[he] has [his] own wiki page about [him]">he/him/his</span></td>
+						</tr>
+						<tr>
+							<th scope="row">Species</th>
+							<td><span data-tooltip="yes i am very funny.">Holy Cow</span></td>
+						</tr>
+					</table>
+				</article>
+			</div>
+		</aside>
+	</div>
 
-            <figcaption>
-              <a
-                href="https://www.twitch.tv/jamejarrs"
-                target="_blank"
-                rel="noopener noreferrer"
-                >Jamejarrs</a
-              >
-              , Apr 2024
-            </figcaption>
-          </figure>
 
-          <figure>
-            <img
-              src="https://lh3.googleusercontent.com/d/1EZ3a4RT3Qf4EvJSiGKYdQAKmyG3p6DIj"
-              alt="Con badge"
-            />
 
-            <figcaption>
-              <a
-                href="https://x.com/grufflomanz"
-                target="_blank"
-                rel="noopener noreferrer"
-                >Gruffl0</a
-              >
-              , Jul 2024
-            </figcaption>
-          </figure>
-        </div>
-      </div>
-    </main>
+	<footer>
+		<hr>
+		<div style="display: flex; flex-direction: column;">
+			<section style="display: flex; justify-content: center;">
+				<nav>
+					<ul>
+						<li><a href="/">Home</a></li>
+						<li><a href="/sitemap">Sitemap</a></li>
+						<li>
+							<a href="http://github.com/cuebitt/cuebitt.neocities.org" target="_blank"
+								rel="noopener noreferrer">Source</a>
+						</li>
+					</ul>
+				</nav>
+			</section>
+			<section style="display: flex; justify-content: center;">
+				<a href="http://neocities.org" target="_blank" rel="noopener noreferrer">
+					<img alt="Hosted by Neocities"
+						src="https://cdn.jsdelivr.net/gh/neocities/neocities@master/public/img/neocitiesbadge.svg">
+				</a>
+			</section>
+		</div>
+	</footer>
 
-    <footer class="container">
-      <hr />
-      <div class="flex flex-column">
-        <section class="flex justify-center">
-          <nav>
-            <ul>
-              <li><a href="/">Home</a></li>
-              <li><a href="/sitemap">Sitemap</a></li>
-              <li>
-                <a
-                  href="http://github.com/cuebitt/cuebitt.neocities.org"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >Source</a
-                >
-              </li>
-            </ul>
-          </nav>
-        </section>
-        <section class="flex justify-center">
-          <a
-            href="http://neocities.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              alt="Hosted by Neocities"
-              src="https://cdn.jsdelivr.net/gh/neocities/neocities@master/public/img/neocitiesbadge.svg"
-            />
-          </a>
-        </section>
-      </div>
-    </footer>
+	<dialog id="image-modal">
+		<article>
+			<header>
+				<form method="dialog">
+					<button aria-label="Close" rel="prev"></button>
+				</form>
 
-    <script src="script.js"></script>
-  </body>
+				<h6></h6>
+			</header>
+
+			<figure id="image-modal-figure" class="halo-border">
+				<img src="" alt="" id="image-modal-image">
+
+				<figcaption id="image-modal-caption"></figcaption>
+			</figure>
+		</article>
+	</dialog>
+
+	<script>
+		const img_modal = document.getElementById("image-modal");
+		const img_modal_img = document.getElementById("image-modal-image");
+		const img_modal_caption = document.getElementById("image-modal-caption");
+
+		function openImageModal(img_src, img_alt, artist_name) {
+			img_modal_img.src = img_src;
+			img_modal_img.alt = img_alt;
+
+			img_modal_caption.textContent = "by " + artist_name;
+
+			img_modal.showModal();
+		}
+
+		[].slice.call(document.getElementsByTagName("img")).forEach(element => {
+			if ('artist' in element.dataset) {
+
+				element.addEventListener("click", (e) => {
+					openImageModal(e.target.src, e.target.alt, e.target.dataset.artist);
+				})
+			}
+		});
+
+		function copySwatch(color) {
+			navigator.clipboard.writeText(color);
+			alert('Copied!');
+		};
+	</script>
+</body>
+
 </html>
