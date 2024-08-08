@@ -6,7 +6,7 @@ author: Cuebitt
 
 ![it fucken WIMDY](https://files.catbox.moe/v55czy.png)
 
-I've been meaning to add a blog to my Neocities site for quite a while now (I've had "blog" listed in my [Webgarden Pot](/webgarden/) for months now. oops!). So I searched for a suitable solution, and I didn't really find one that I liked. So, in the spirit of needlessly reinventing the wheel, I made my own hacked together solution.
+I've been meaning to add a blog to my Neocities site for quite a while now (I've had "blog" listed in my [Webgarden Pot](/greenhouse/) for months now. oops!). So I searched for a suitable solution, and I didn't really find one that I liked. So, in the spirit of needlessly reinventing the wheel, I made my own hacked together solution.
 
 ## Existing Solutions
 
