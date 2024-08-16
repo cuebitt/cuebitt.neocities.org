@@ -11,11 +11,10 @@ import remarkFrontmatter from "https://esm.sh/remark-frontmatter@5?bundle";
 import remarkGfm from "https://esm.sh/remark-gfm@4?bundle";
 import rehypeStringify from "https://esm.sh/rehype-stringify@10?bundle";
 import rehypeHighlight from "https://esm.sh/rehype-highlight@6?bundle";
+import rehypeSanitize from "https://esm.sh/rehype-sanitize@6?bundle";
 
 import { matter } from "https://esm.sh/vfile-matter@5";
 import { unified } from "https://esm.sh/unified@11";
-
-import DOMPurify from "https://esm.sh/dompurify@3.1.6";
 
 // browser query parameters proxy
 const PARAMS = new Proxy(new URLSearchParams(window.location.search), {
@@ -59,6 +58,7 @@ const getPost = async (post_file) => {
     .use(remarkRehype)
     .use(rehypeStringify)
     .use(rehypeHighlight)
+    .use(rehypeSanitize)
     .process(postText);
 
   return {
@@ -116,7 +116,7 @@ if (PARAMS.post) {
 
     // sanitize and render post content
     loader_wrapper.classList.add("hidden");
-    blog_post.innerHTML = DOMPurify.sanitize(post.content);
+    blog_post.innerHTML = post.content;
   });
 } else {
   archive_list.classList.remove("hidden");
