@@ -1,9 +1,10 @@
 /*
 	wiMDy - A simple markdown blog renderer
 	by Cuebitt (cuebitt.neocities.org) <3
+
+  Supports GFM, frontmatter, and syntax highlighting
 */
 
-// this is (a lot) more npm dependencies than i'm comfortable with, but I'll fix that later
 import remarkParse from "https://esm.sh/remark-parse@11?bundle";
 import remarkRehype from "https://esm.sh/remark-rehype@11?bundle";
 import remarkFrontmatter from "https://esm.sh/remark-frontmatter@5?bundle";
@@ -28,6 +29,8 @@ const blog_post = document.getElementById("blog-post");
 const blog_post_heading = document.getElementById("post-heading");
 const blog_post_title = document.getElementById("post-title");
 const blog_post_subtitle = document.getElementById("post-subtitle");
+
+const loader_wrapper = document.getElementById("loader-wrapper");
 
 // unified plugin to parse frontmatter
 function MatterPlugin() {
@@ -112,6 +115,7 @@ if (PARAMS.post) {
     blog_post_subtitle.textContent = subtitle.join(", ");
 
     // sanitize and render post content
+    loader_wrapper.classList.add("hidden");
     blog_post.innerHTML = DOMPurify.sanitize(post.content);
   });
 } else {
@@ -120,6 +124,7 @@ if (PARAMS.post) {
 
   // generate archive list and append it to the DOM
   generateArchiveList().then((posts) => {
+    loader_wrapper.classList.add("hidden");
     posts.forEach((post) => {
       archive_list.appendChild(post);
     });
