@@ -57,8 +57,8 @@ const getPost = async (post_file) => {
     .use(MatterPlugin)
     .use(remarkRehype)
     .use(rehypeStringify)
-    .use(rehypeHighlight)
     .use(rehypeSanitize)
+    .use(rehypeHighlight)
     .process(postText);
 
   return {

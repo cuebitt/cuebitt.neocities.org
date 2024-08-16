@@ -73,7 +73,7 @@ You can now access the blog post at `(your site name).neocities.org/blog.html?po
 
 You can also optionally add metadata to the blog post Markdown file via YAML frontmatter. To do so, add this at the beginning of the Markdown file:
 
-```
+```yaml
 ---
 title: Title Here
 author: Author Here
