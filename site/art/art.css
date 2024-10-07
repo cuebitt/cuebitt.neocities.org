@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
   grid-template-rows: 1fr;
-  gap: 0px 1em;
+  gap: 0 1em;
 }
 
 .sticky {
@@ -22,6 +22,12 @@ nav ul li {
   margin: 0 2em;
 }
 
+.art-grid figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 #header-logo img {
   width: 64px;
   height: 64px;
@@ -39,8 +45,7 @@ nav ul li {
 
 .art-grid {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   justify-content: center;
   gap: 1rem;
   margin-top: 2rem;
@@ -50,19 +55,12 @@ nav ul li {
 .art-grid figure {
   width: 15rem;
   height: 15rem;
-
   position: relative;
   border-radius: 0.5rem;
   overflow: hidden;
   border: 0.25rem solid #ffcf34;
-  background-color: rgba(111, 120, 135, 0.0375);
+  background-color: rgb(111 120 135 / 3.75%);
   box-shadow: var(--pico-box-shadow);
-}
-
-.art-grid figure img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
 }
 
 .art-grid figure figcaption {
@@ -71,7 +69,7 @@ nav ul li {
   right: 0;
   background-color: #fdf1b4;
   padding: 0.25em !important;
-  border-radius: 0.5em 0 0 0;
+  border-radius: 0.5em 0 0;
   font-size: small;
 }
 
@@ -122,6 +120,7 @@ nav ul li {
   flex-shrink: 1;
   font-size: 3em;
 }
+
 /* Image Modal */
 
 #image-modal-figure {

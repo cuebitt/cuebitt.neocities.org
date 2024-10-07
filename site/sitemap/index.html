@@ -1,105 +1,115 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sitemap</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sitemap</title>
+    <!-- css stylesheets -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
+    <style>
+      .flex {
+        display: flex;
+      }
 
-  <!-- css stylesheets -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
-  <style>
-    .flex {
-      display: flex;
-    }
+      .flex-column {
+        flex-direction: column;
+      }
 
-    .flex-column {
-      flex-direction: column;
-    }
+      .justify-center {
+        justify-content: center;
+      }
 
-    .justify-center {
-      justify-content: center;
-    }
+      .outer-container {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
 
-    .outer-container {
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
+      main {
+        flex: 1;
+      }
+    </style>
+  </head>
 
-    main {
-      flex: 1;
-    }
-  </style>
-</head>
-
-<body>
-  <div class="outer-container">
-    <header class="container">
-      <nav>
-        <ul>
-          <li>
-            <h1>Cuebitt's Website ~ 🐮😇</h1>
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <a href="/">Home</a>
-          </li>
-
-        </ul>
-      </nav>
-    </header>
-    <main class="container">
-      <ul class="sitemap-tree">
-        <li>
-          <a href="/">Homepage</a>
+  <body>
+    <div class="outer-container">
+      <header class="container">
+        <nav>
           <ul>
             <li>
-              It's the homepage, obviously. I think you know what this is.
+              <h1>Cuebitt's Website ~ 🐮😇</h1>
             </li>
           </ul>
-        </li>
-
-        <li>
-          <a href="/art/">Fursona Art</a>
           <ul>
-            <li>Art that I've commissioned of my fursona 🐮😇.</li>
+            <li>
+              <a href="/">Home</a>
+            </li>
           </ul>
-        </li>
-
-        <li>
-          <a href="/attribution/">Attribution + Credit</a>
-          <ul>
-            <li>A list of all the resources I used to make this website.</li>
-          </ul>
-        </li>
-      </ul>
-    </main>
-    <footer>
-      <hr />
-      <div class="flex flex-column">
-        <section class="flex justify-center">
-          <nav>
+        </nav>
+      </header>
+      <main class="container">
+        <ul class="sitemap-tree">
+          <li>
+            <a href="/">Homepage</a>
             <ul>
-              <li><a href="/">Home</a></li>
-              <li><a href="/sitemap">Sitemap</a></li>
               <li>
-                <a href="http://github.com/cuebitt/cuebitt.neocities.org" target="_blank"
-                  rel="noopener noreferrer">Source</a>
+                It's the homepage, obviously. I think you know what this is.
               </li>
             </ul>
-          </nav>
-        </section>
-        <section class="flex justify-center">
-          <a href="http://neocities.org" target="_blank" rel="noopener noreferrer">
-            <img alt="Hosted by Neocities"
-              src="https://cdn.jsdelivr.net/gh/neocities/neocities@master/public/img/neocitiesbadge.svg" />
-          </a>
-        </section>
-      </div>
-    </footer>
-  </div>
-</body>
+          </li>
 
+          <li>
+            <a href="/art/">Fursona Art</a>
+            <ul>
+              <li>Art that I've commissioned of my fursona 🐮😇.</li>
+            </ul>
+          </li>
+
+          <li>
+            <a href="/attribution/">Attribution + Credit</a>
+            <ul>
+              <li>A list of all the resources I used to make this website.</li>
+            </ul>
+          </li>
+        </ul>
+      </main>
+      <footer>
+        <hr />
+        <div class="flex flex-column">
+          <section class="flex justify-center">
+            <nav>
+              <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/sitemap">Sitemap</a></li>
+                <li>
+                  <a
+                    href="http://github.com/cuebitt/cuebitt.neocities.org"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Source</a
+                  >
+                </li>
+              </ul>
+            </nav>
+          </section>
+          <section class="flex justify-center">
+            <a
+              href="http://neocities.org"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                alt="Hosted by Neocities"
+                src="https://cdn.jsdelivr.net/gh/neocities/neocities@master/public/img/neocitiesbadge.svg"
+              />
+            </a>
+          </section>
+        </div>
+      </footer>
+    </div>
+  </body>
 </html>
