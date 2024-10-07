@@ -1,82 +1,94 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <title>Cuebitt's Webgarden Plant</title>
+    <link rel="stylesheet" href="webgarden.css" />
+    <style>
+      h1,
+      h2,
+      p {
+        margin: 0;
+      }
 
-<head>
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-  <title>Cuebitt's Webgarden Plant</title>
-  <link rel="stylesheet" href="webgarden.css" />
-  <style>
-    h1,
-    h2,
-    p {
-      margin: 0;
-    }
+      html {
+        height: 100%;
+      }
 
-    html {
-      height: 100%;
-    }
+      body {
+        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QAnAAhAOfqVCpiAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4QUOESEcvIkaLwAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAAVklEQVRo3u3XsREAIAgEQbBTqrBXm9EiDBzG/ZxgA4LLmmtH59Vc+2av70c0HwAAAAAAAAAAQOOlHtADnhgAAAAAAAAAQA/oAT3giQEAAAAAAAAAvgMc2Ww6ppL/I/QAAAAASUVORK5CYII=);
+        background-repeat: repeat;
+      }
+    </style>
 
-    body {
-      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QAnAAhAOfqVCpiAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4QUOESEcvIkaLwAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAAVklEQVRo3u3XsREAIAgEQbBTqrBXm9EiDBzG/ZxgA4LLmmtH59Vc+2av70c0HwAAAAAAAAAAQOOlHtADnhgAAAAAAAAAQA/oAT3giQEAAAAAAAAAvgMc2Ww6ppL/I/QAAAAASUVORK5CYII=);
-      background-repeat: repeat;
-    }
-  </style>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/modern-normalize@2.0.0/modern-normalize.min.css"
+    />
+  </head>
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/modern-normalize@2.0.0/modern-normalize.min.css" />
-</head>
-
-<body>
-  <div class="container">
-    <div class="plant">
-      <div class="halo-container">
-        <div class="halo-inner float-element"></div>
-      </div>
-      <div class="inner-container bg-purple-blob">
-        <header>
-          <div class="hvr-tada">
-            <a href="http://cuebitt.neocities.org" target="_blank" rel="noopener noreferrer">
-              <h1 class="grandstander header stroke-text-yellow">Cuebitt</h1>
-              <h2 class="grandstander subheader stroke-text-yellow">
-                on Neocities!
-              </h2>
-            </a>
-          </div>
-        </header>
-        <p class="nunito-sans" style="text-align: center;">
-          a holy cow on the internet :)
-        </p>
-        <main class="flex flex-column">
-
-
-          <p class="nunito-sans">
-            <a href="http://cuebitt.neocities.org" target="_blank" rel="noopener noreferrer">cuebitt.neocities.org</a>
+  <body>
+    <div class="container">
+      <div class="plant">
+        <div class="halo-container">
+          <div class="halo-inner float-element"></div>
+        </div>
+        <div class="inner-container bg-purple-blob">
+          <header>
+            <div class="hvr-tada">
+              <a
+                href="http://cuebitt.neocities.org"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <h1 class="grandstander header stroke-text-yellow">Cuebitt</h1>
+                <h2 class="grandstander subheader stroke-text-yellow">
+                  on Neocities!
+                </h2>
+              </a>
+            </div>
+          </header>
+          <p class="nunito-sans" style="text-align: center">
+            a holy cow on the internet :)
           </p>
+          <main class="flex flex-column">
+            <p class="nunito-sans">
+              <a
+                href="http://cuebitt.neocities.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                >cuebitt.neocities.org</a
+              >
+            </p>
 
-          <img class="hvr-horizontal-shake" id="cuebitt-garden-indigo-tbh" src="/public/indigo-tbh.png"
-            alt="tbh creature" />
-        </main>
+            <img
+              class="hvr-horizontal-shake"
+              id="cuebitt-garden-indigo-tbh"
+              src="/public/indigo-tbh.png"
+              alt="tbh creature"
+            />
+          </main>
+        </div>
+      </div>
+
+      <div id="copy-area" class="hide copy-area">
+        <textarea id="copy-text" rows="8"></textarea>
       </div>
     </div>
 
-    <div id="copy-area" class="hide copy-area">
-      <textarea id="copy-text" rows="8"></textarea>
-    </div>
-  </div>
+    <script type="module">
+      import confetti from "https://cdn.skypack.dev/canvas-confetti";
 
-  <script type="module">
-    import confetti from "https://cdn.skypack.dev/canvas-confetti";
+      document.getElementById("cuebitt-garden-indigo-tbh").onclick = () =>
+        confetti({ startVelocity: 20, spread: 60, origin: { x: 0.5, y: 1 } });
 
-    document.getElementById("cuebitt-garden-indigo-tbh").onclick = () =>
-      confetti({ startVelocity: 20, spread: 60, origin: { x: 0.5, y: 1 } });
-
-    // If the page is opened directly (not iframe), show a textarea
-    if (window === window.top) {
-      document.querySelector("#copy-area").classList.remove("hide");
-      document.querySelector("#copy-text").textContent = /* html */ `
+      // If the page is opened directly (not iframe), show a textarea
+      if (window === window.top) {
+        document.querySelector("#copy-area").classList.remove("hide");
+        document.querySelector("#copy-text").textContent = /* html */ `
         <iframe src="//cuebitt.neocities.org/webgarden.html" height="250px" width="250px" scrolling="no" loading="lazy"></iframe>
         `.trim();
-    }
-  </script>
-</body>
-
+      }
+    </script>
+  </body>
 </html>
