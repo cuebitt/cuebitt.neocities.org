@@ -140,3 +140,7 @@ nav ul li {
   font-size: smaller;
   background-color: #fdf1b4;
 }
+
+.hover-unblur:not(:hover) {
+  filter: blur(5px);
+}
