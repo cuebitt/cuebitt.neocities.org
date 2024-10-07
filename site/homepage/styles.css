@@ -57,11 +57,16 @@ main {
 }
 
 #pfp-img {
-  width: 10em;
-  height: 10em;
-  border-radius: 9999px;
+  width: 12rem;
+  height: 12rem;
+  border-radius: 50%;
   outline: 3px solid var(--pico-color-amber-150);
   outline-offset: 2px;
+  transition: border-radius 0.5s ease-out;
+}
+
+#pfp-img:hover {
+  border-radius: 10px;
 }
 
 .avatar-container {
