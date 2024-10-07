@@ -21,6 +21,15 @@ document
     discordModal.close()
   })
 
+const vrcModal = document.getElementById('vrc-modal')
+document.getElementById('vrc-btn').addEventListener('click', () => {
+  vrcModal.showModal()
+})
+document
+  .querySelector('#vrc-modal > article > header > button[rel=prev]')
+  .addEventListener('click', () => {
+    vrcModal.close()
+  })
 // Add event handler (confetti) to the profile photo
 document.querySelector('.avatar-container').addEventListener('click', (e) => {
   const box = e.target.getBoundingClientRect()
