@@ -1,170 +1,223 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cuebitt's Info and Links</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cuebitt On Neocities</title>
+    <meta property="og:title" content="Cuebitt's Links" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://cuebitt.neocities.org" />
+    <meta
+      property="og:image"
+      content="http://cuebitt.neocities.org/public/indigo-tbh.png"
+    />
+    <meta
+      property="og:description"
+      content="Cuebitt's social media links and contact information!"
+    />
+    <meta name="theme-color" content="#dfcbfa" />
+    <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- meta tags for discord embed -->
-  <meta property="og:title" content="Cuebitt @ Neocities" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="http://cuebitt.neocities.org" />
-  <meta property="og:image" content="http://cuebitt.neocities.org/public/indigo-tbh.png" />
-  <meta property="og:description" content="Cuebitt's super cool website on Neocities! Mooooooo." />
-  <meta name="theme-color" content="##ffffeb" />
-  <meta name="twitter:card" content="summary_large_image" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
 
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.colors.min.css"
+    />
 
-  <!-- I'm not sure if I actually need a reset, but just in case: -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.min.css"
-    integrity="sha512-4xo8blKMVCiXpTaLzQSLSw3KFOVPWhm/TRtuPVc4WG6kUgjH6J03IBuG7JZPkcWMxJ5huwaBpOpnwYElP/m6wg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link href="https://cdn.jsdelivr.net/npm/css.gg/icons/icons.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/IanLunn/Hover@master/css/hover-min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
 
-  <link rel="stylesheet"
-    href="https://cdn.jsdelivr.net/gh/animate-css/animate.css@main/source/attention_seekers/tada.css">
-  <link rel="stylesheet" href="index.css" />
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/gh/cuebitt/webcomponents@v1.3.1/components/lanyard-status/lanyard-status.min.js"
+    ></script>
 
-  <!-- Web Components -->
-  <script type="module"
-    src="https://cdn.jsdelivr.net/gh/cuebitt/webcomponents@v1.3.1/components/lanyard-status/lanyard-status.min.js"></script>
-  <script type="module"
-    src="https://cdn.jsdelivr.net/gh/cuebitt/webcomponents@v1.3.1/components/increasr-frame/increasr-frame.min.js"></script>
-</head>
-
-<body>
-  <div id="container">
-    <div class="inner-grid">
-      <div id="headerArea">
-        <header id="header">
-          <img src="homepage/img/header_logo.png" alt="Cuebitt written in blue block letters" id="header-logo" />
-        </header>
-        <nav id="navbar">
-          <ul>
-            <li><a href="#" class="hvr-grow">Home</a></li>
-            <li><a href="/about/" class="hvr-grow">About Me</a></li>
-            <li><a href="/art/" class="hvr-grow">Fursona Art</a></li>
-            <li><a href="/greenhouse/" class="hvr-grow">Webgarden Greenhouse</a></li>
-            <li><a href="/blog.html" class="hvr-grow">Blog</a></li>
-            <li><a href="/sitemap/" class="hvr-grow">Sitemap</a></li>
-          </ul>
-        </nav>
-      </div>
-
-      <aside id="leftSidebar">
-        <h2>i am Cuebitt</h2>
-
-        <span style="display: flex; flex-direction: row; justify-content: center">
-          <div class="pfp-wrapper hvr-grow">
-            <img src="https://lh3.googleusercontent.com/d/1AEK8eeReXyjul27eKhplG6aneMTuf4cL"
-              alt="profile photo by BraDesu" id="pfp" />
-          </div>
-        </span>
-
-        <ul>
-          <li>23yrs</li>
-          <li>
-            <span id="pronouns-text" title="via pronoundb.org">loading...</span>
-          </li>
-          <li>gay 🏳️‍🌈</li>
-          <li>furry 😇🐮</li>
-          <li>vegan🌱</li>
-        </ul>
-
-        <h2>Cowz Bop</h2>
-        <div class="card">
-          <span class="yt-player-wrapper">
-            <div id="yt-player"></div>
-          </span>
-
-          <div class="music-player-title">
-            <marquee scrollamount="4" id="music-player-scroller">
-              <span id="music-player-title"></span> -
-              <em><span id="music-player-artist"></span></em>
-            </marquee>
-          </div>
-
-          <section class="music-player-controls-wrapper">
-            <div class="music-player-slider">
-              <input type="range" value="0" min="0" step="1" id="duration-slider" disabled />
-              <span id="music-current-time">0:00</span>
+    <link rel="stylesheet" href="homepage/styles.css" />
+  </head>
+  <body>
+    <div class="outer-container">
+      <main class="container">
+        <article class="grid inner-container rounded">
+          <!-- left col -->
+          <div class="container">
+            <div style="width: 100%; margin-bottom: 2em">
+              <div
+                class="container avatar-container"
+                data-tooltip="Profile Photo by BraDesu"
+                data-placement="bottom"
+              >
+                <img
+                  src="homepage/assets/pfp-bradesu.png"
+                  alt="profile photo by BraDesu"
+                  id="pfp-img"
+                  class="hvr-bob"
+                />
+              </div>
             </div>
 
-            <div class="music-player-controls">
-              <button id="music-prev-btn" disabled>
-                <i class="gg-play-track-prev-r"></i>
+            <hgroup>
+              <h1 class="montserrat-fnt-bold">Cuebitt</h1>
+              <p class="asap-fnt">
+                <span id="age-text"></span>,
+                <span id="pronouns-text" aria-busy="true"></span>, gay 🏳️‍🌈,
+                <span data-tooltip="holy cow (species)">furry 😇🐮,</span>
+                vegan🌱
+              </p>
+            </hgroup>
+
+            <p>
+              I'm Cuebitt, the one and only. I'm a<span
+                class="spoiler"
+                onclick=""
+                >n unemployed</span
+              >
+              software developer and a gay furry. I like to make websites (like
+              this one!), write open source software, and collect fountain pens.
+            </p>
+          </div>
+
+          <!-- right col -->
+          <div class="social-links-container">
+            <div class="social-links montserrat-fnt">
+              <a
+                href="https://bsky.app/profile/cuebitt.rip"
+                target="_blank"
+                rel="noopener noreferrer"
+                role="button"
+                class="social-link hvr-grow-shadow"
+              >
+                <span>Bluesky</span>
+                <i class="bi bi-cloud-fill"></i>
+              </a>
+              <a
+                href="https://t.me/cuebitt"
+                target="_blank"
+                rel="noopener noreferrer"
+                role="button"
+                class="social-link hvr-grow-shadow"
+              >
+                <span>Telegram</span>
+                <i class="bi bi-telegram"></i>
+              </a>
+              <button class="social-link hvr-grow-shadow" id="discord-btn">
+                <span>Discord</span>
+                <i class="bi bi-discord"></i>
               </button>
-              <button id="play-pause-btn" disabled>
-                <i id="play-pause-icon" class="gg-play-button-r"></i>
+              <button class="social-link hvr-grow-shadow" id="nso-btn">
+                <span>Nintendo Switch Online</span>
+                <i class="bi bi-nintendo-switch"></i>
               </button>
-              <button id="music-next-btn" disabled>
-                <i class="gg-play-track-next-r"></i>
-              </button>
+              <a
+                href="https://www.youtube.com/watch?v=ry4RVGnIQKU"
+                target="_blank"
+                rel="noopener noreferrer"
+                role="button"
+                class="social-link hvr-grow-shadow"
+              >
+                <span>Twitter/X</span>
+                <i class="bi bi-twitter-x"></i>
+              </a>
+              <a
+                href="http://github.com/cuebitt"
+                target="_blank"
+                rel="noopener noreferrer"
+                role="button"
+                class="social-link hvr-grow-shadow"
+              >
+                <span>GitHub</span>
+                <i class="bi bi-github"></i>
+              </a>
             </div>
+          </div>
+        </article>
+      </main>
+
+      <footer class="container">
+        <div style="display: flex; flex-direction: column">
+          <section style="display: flex; justify-content: center">
+            <nav class="footer-nav">
+              <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/sitemap">Sitemap</a></li>
+                <li>
+                  <a
+                    href="http://github.com/cuebitt/cuebitt.neocities.org"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Source</a
+                  >
+                </li>
+              </ul>
+            </nav>
+          </section>
+          <section style="display: flex; justify-content: center">
+            <a
+              href="http://neocities.org"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                alt="Hosted by Neocities"
+                src="https://cdn.jsdelivr.net/gh/neocities/neocities@master/public/img/neocitiesbadge.svg"
+              />
+            </a>
           </section>
         </div>
-      </aside>
-      <main style="height: 100%; display: flex; flex-direction: column;">
-        <h1>hello world</h1>
-
-        <div style="flex-grow: 1;">
-          <p>
-            I'm Cuebitt! Welcome to my
-            <span style="font-size: 0.5em">co</span>website.
-          </p>
-
-          <p>
-            I'm a software developer and a furry. I'm very interested in retro tech, web design, and fountain pens.
-          </p>
-
-          <p>
-            I'm making a blogging system you can add to your Neocities site, called wiMDy! You can check out a demo of it <a href="/blog.html">here</a>.
-          </p>
-
-          <p>
-            Pardon my dust. This website is perpetually under construction. The homepage will be finished soon&trade;.
-          </p>
-        </div>
-
-        <hr>
-        <div id="widgets-wrapper">
-          <span style="position: relative;">
-            <increasr-frame site-key="cuebitt"></increasr-frame>
-            <img style="position: absolute; right: -3em; top: 0;" id="increasr-point" src="homepage/img/pointleft.gif" alt="hand pointing left">
-          </span>
-          <div id="lanyard-wrapper"><lanyard-status user-id="987555201969971210"></lanyard-status></div>
-        </div>
-      </main>
-      <aside id="rightSidebar">
-        <h2>Changelog</h2>
-        <div class="card" style="overflow-y: auto">
-          <h3>2024-08-06</h3>
-          <ul>
-            <li>
-              Swapped to
-              <a href="https://goblin-heart.net/sadgrl/projects/layout-builder/" target="_blank"
-                rel="noopener noreferrer">sadgrl's layout builder</a>
-            </li>
-            <li>Added a music player</li>
-          </ul>
-
-          <h3>2024-08-08</h3>
-          <ul>
-            <li>Added a wiki-style fursona art page</li>
-            <li>Added a blog page</li>
-          </ul>
-        </div>
-      </aside>
-
-      <footer id="footer">&copy; 2024 Cuebitt</footer>
+      </footer>
     </div>
-  </div>
 
-  <script src="homepage/music-player.js" id="music-player-script"></script>
-  <script src="homepage/script.js"></script>
-</body>
+    <dialog id="discord-modal">
+      <article class="modal-box">
+        <header>
+          <button aria-label="Close" rel="prev"></button>
+          <h1>Discord</h1>
+        </header>
+        <div style="display: flex; justify-content: center; margin-bottom: 1em;">
+          <span style="border-radius: 0.5em; overflow: hidden;">
+            <lanyard-status></lanyard-status>
+          </span>
+        </div>
+        <div>
+          <p>You can find me on Discord as:</p>
+          <pre><code>cuebitt</code></pre>
+          <p>
+            (formerly known as<span><code>cuebitt#2209</code></span
+            >)
+          </p>
+        </div>
+      </article>
+    </dialog>
 
+    <dialog id="nso-modal">
+      <article class="modal-box">
+        <header>
+          <button aria-label="Close" rel="prev"></button>
+          <h1>Nintendo Switch Online</h1>
+        </header>
+        <div>
+          <div>
+            <p>My Nintendo Switch Online friend code is:</p>
+            <pre><code>SW-4871-6119-5311</code></pre>
+            <a
+              class="link"
+              href="https://lounge.nintendo.com/friendcode/4871-6119-5311/DVd2pYxgyV"
+              rel="noopener noreferrer"
+              target="_blank"
+              >Click here to open in the Nintendo Switch Online app 🔗</a
+            >
+            <p>I mainly play Splatoon 3 🦑🐙.</p>
+          </div>
+        </div>
+      </article>
+    </dialog>
+
+    <script type="module" src="homepage/script.js"></script>
+  </body>
 </html>
