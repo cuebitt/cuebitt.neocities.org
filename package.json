@@ -7,7 +7,7 @@
     "lint": "standard ./site --fix",
     "prepare": "husky",
     "stylelint": "stylelint --fix **/*.css site/**/*.css",
-    "format": "prettier --write **/*.{css,html} site/**/*.{css,html}"
+    "format": "prettier --write site/**/*.{css,html}"
   },
   "author": "cuebitt",
   "devDependencies": {
