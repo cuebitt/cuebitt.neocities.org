@@ -71,4 +71,27 @@ function setupImageModal () {
   })
 }
 
+function rgbToHex (r, g, b) {
+  return (
+    '#' +
+    ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase()
+  )
+}
+
+function setupSwatchCopy () {
+  Array.from(document.querySelectorAll('.swatch-copy')).forEach((element) => {
+    const rgbColor = window
+      .getComputedStyle(element)
+      .getPropertyValue('background-color')
+    const rgbVals = rgbColor.match(/\d+/g).map(Number)
+    const hexColor = rgbToHex(rgbVals[0], rgbVals[1], rgbVals[2])
+
+    element.addEventListener('click', () => {
+      navigator.clipboard.writeText(hexColor)
+      window.alert('Copied!')
+    })
+  })
+}
+
 makeArtGallery().then(() => setupImageModal())
+setupSwatchCopy()

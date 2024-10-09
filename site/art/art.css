@@ -144,3 +144,21 @@ nav ul li {
 .hover-unblur:not(:hover) {
   filter: blur(5px);
 }
+
+.swatch-table {
+  font-size: medium;
+  border-width: 1px;
+  border-radius: var(--pico-border-radius);
+  overflow: hidden;
+  box-shadow: var(--pico-card-box-shadow);
+}
+
+.swatch-table tr:not(:has(th)) {
+  height: 2.5rem;
+  font-size: small;
+  text-wrap: nowrap;
+}
+
+.swatch-table tr th {
+  font-weight: bold;
+}

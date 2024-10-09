@@ -118,78 +118,65 @@
           <h3>Color Swatches</h3>
         </a>
         <hr />
-        <article>
-          <header>Colors <small>(click to copy)</small></header>
-          <div style="display: flex; gap: 0.5em">
-            <table style="font-size: medium">
-              <tr>
-                <th scope="col">Swatch</th>
-                <th scope="col">Location</th>
-                <th scope="col">Hex</th>
-              </tr>
-              <tr onclick="copySwatch('#ffffeb')">
-                <td style="background-color: #ffffeb"></td>
-                <td>Fur (Main)</td>
-                <td><code>#ffffeb</code></td>
-              </tr>
-              <tr onclick="copySwatch('#ffcf34')">
-                <td style="background-color: #ffcf34"></td>
-                <td>Halo, Eyes</td>
-                <td><code>#ffcf34</code></td>
-              </tr>
+        <table class="swatch-table striped">
+          <tr>
+            <th scope="col">Swatch</th>
+            <th scope="col">Location</th>
+            <th scope="col">Hex</th>
+          </tr>
+          <tr>
+            <td style="background-color: #ffffeb" class="swatch-copy"></td>
+            <td>Fur (Main)</td>
+            <td><code>#ffffeb</code></td>
+          </tr>
+          <tr>
+            <td style="background-color: #ffcf34" class="swatch-copy"></td>
+            <td>Halo, Eyes</td>
+            <td><code>#ffcf34</code></td>
+          </tr>
 
-              <tr onclick="copySwatch('#ffacd1')">
-                <td style="background-color: #ffacd1"></td>
-                <td>Nose</td>
-                <td><code>#ffacd1</code></td>
-              </tr>
+          <tr>
+            <td style="background-color: #ffacd1" class="swatch-copy"></td>
+            <td>Nose</td>
+            <td><code>#ffacd1</code></td>
+          </tr>
 
-              <tr onclick="copySwatch('#e0ccfa')">
-                <td style="background-color: #e0ccfa"></td>
-                <td>Spots</td>
-                <td><code>#e0ccfa</code></td>
-              </tr>
-            </table>
+          <tr>
+            <td style="background-color: #e0ccfa" class="swatch-copy"></td>
+            <td>Spots</td>
+            <td><code>#e0ccfa</code></td>
+          </tr>
 
-            <table style="font-size: medium">
-              <tr>
-                <th scope="col">Swatch</th>
-                <th scope="col">Location</th>
-                <th scope="col">Hex</th>
-              </tr>
+          <tr>
+            <td style="background-color: #bc8dfa" class="swatch-copy"></td>
+            <td>Eyebrows</td>
+            <td><code>#bc8dfa</code></td>
+          </tr>
 
-              <tr onclick="copySwatch('#bc8dfa')">
-                <td style="background-color: #bc8dfa"></td>
-                <td>Eyebrows</td>
-                <td><code>#bc8dfa</code></td>
-              </tr>
+          <tr>
+            <td style="background-color: #a57cb0" class="swatch-copy"></td>
+            <td>Hair (Stripe)</td>
+            <td><code>#a57cb0</code></td>
+          </tr>
 
-              <tr onclick="copySwatch('#a57cb0')">
-                <td style="background-color: #a57cb0"></td>
-                <td>Hair (Stripe)</td>
-                <td><code>#a57cb0</code></td>
-              </tr>
+          <tr>
+            <td style="background-color: #55106d" class="swatch-copy"></td>
+            <td>Hooves</td>
+            <td><code>#55106d</code></td>
+          </tr>
 
-              <tr onclick="copySwatch('#55106d')">
-                <td style="background-color: #55106d"></td>
-                <td>Hooves</td>
-                <td><code>#55106d</code></td>
-              </tr>
+          <tr>
+            <td style="background-color: #6d88b1" class="swatch-copy"></td>
+            <td>Watch (Band)</td>
+            <td><code>#6d88b1</code></td>
+          </tr>
 
-              <tr onclick="copySwatch('#6d88b1')">
-                <td style="background-color: #6d88b1"></td>
-                <td>Watch (Band)</td>
-                <td><code>#6d88b1</code></td>
-              </tr>
-
-              <tr onclick="copySwatch('#185991')">
-                <td style="background-color: #185991"></td>
-                <td>Watch (Frame)</td>
-                <td><code>#185991</code></td>
-              </tr>
-            </table>
-          </div>
-        </article>
+          <tr>
+            <td style="background-color: #185991" class="swatch-copy"></td>
+            <td>Watch (Frame)</td>
+            <td><code>#185991</code></td>
+          </tr>
+        </table>
 
         <a id="other">
           <h3>Other Details</h3>
@@ -386,7 +373,8 @@
               <tr>
                 <th scope="row">Pronouns</th>
                 <td>
-                  <span data-tooltip="[he] has [his] own wiki page about [him]"
+                  <span
+                    data-tooltip="[he] has [his] own wiki page about [himself]"
                     >he/him/his</span
                   >
                 </td>
@@ -455,12 +443,6 @@
       </article>
     </dialog>
 
-    <script>
-      function copySwatch(color) {
-        navigator.clipboard.writeText(color);
-        alert("Copied!");
-      }
-    </script>
     <script src="script.js"></script>
   </body>
 </html>
