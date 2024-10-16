@@ -62,11 +62,12 @@ main {
   border-radius: 50%;
   outline: 3px solid var(--pico-color-amber-150);
   outline-offset: 2px;
-  transition: border-radius 0.5s ease-out;
+  transition: border-radius 0.25s ease;
 }
 
 #pfp-img:hover {
   border-radius: 10px;
+  transition: border-radius 0.25s ease;
 }
 
 .avatar-container {
@@ -78,6 +79,7 @@ main {
   padding: 2em;
   background-color: var(--pico-secondary-background);
   width: 100%;
+  border: 0.5vw solid var(--pico-color-indigo-200);
 }
 
 .rounded {
@@ -149,6 +151,12 @@ main {
   color: var(--pico-primary-color);
 }
 
+:root {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 /* Light color scheme (Default) */
 
 /* Can be forced with data-theme="light" */
@@ -158,6 +166,8 @@ main {
   --pico-primary-background: var(--pico-color-indigo-250);
   --pico-primary-hover-background: var(--pico-color-indigo-550);
   --pico-secondary-background: var(--pico-color-indigo-50);
+
+  background-image: url("assets/bg-light.svg");
 }
 
 /* Dark color scheme (Auto) */
@@ -170,6 +180,12 @@ main {
     --pico-primary-hover-background: var(--pico-color-violet-450);
     --pico-secondary-background: var(--pico-color-violet-650);
     --pico-muted-color: var(--pico-color-zinc-300);
+
+    background-image: url("assets/bg-dark.svg");
+  }
+
+  .inner-container {
+    border: 0.5vw solid var(--pico-color-indigo-500);
   }
 }
 
@@ -182,6 +198,14 @@ main {
   --pico-primary-hover-background: var(--pico-color-violet-450);
   --pico-secondary-background: var(--pico-color-indigo-650);
   --pico-muted-color: var(--pico-color-zinc-300);
+}
+
+[data-theme="dark"] :root {
+  background-image: url("assets/bg-dark.svg");
+}
+
+[data-theme="dark"] .inner-container {
+  border: 0.5vw solid var(--pico-color-indigo-500);
 }
 
 /* borrowed from IanLunn/Hover */
@@ -201,64 +225,4 @@ main {
 .hvr-grow-shadow:active {
   box-shadow: 0 10px 10px -10px rgb(0 0 0 / 50%);
   transform: scale(1.05);
-}
-
-/* Bob */
-@keyframes hvr-bob {
-  0% {
-    transform: translateY(-8px);
-  }
-
-  50% {
-    transform: translateY(-4px);
-  }
-
-  100% {
-    transform: translateY(-8px);
-  }
-}
-
-@keyframes hvr-bob {
-  0% {
-    transform: translateY(-8px);
-  }
-
-  50% {
-    transform: translateY(-4px);
-  }
-
-  100% {
-    transform: translateY(-8px);
-  }
-}
-
-@keyframes hvr-bob-float {
-  100% {
-    transform: translateY(-8px);
-  }
-}
-
-@keyframes hvr-bob-float {
-  100% {
-    transform: translateY(-8px);
-  }
-}
-
-.hvr-bob {
-  display: inline-block;
-  vertical-align: middle;
-  transform: perspective(1px) translateZ(0);
-  box-shadow: 0 0 1px rgb(0 0 0 / 0%);
-}
-
-.hvr-bob:hover,
-.hvr-bob:focus,
-.hvr-bob:active {
-  animation-name: hvr-bob-float, hvr-bob;
-  animation-duration: 0.3s, 1.5s;
-  animation-delay: 0s, 0.3s;
-  animation-timing-function: ease-out, ease-in-out;
-  animation-iteration-count: 1, infinite;
-  animation-fill-mode: forwards;
-  animation-direction: normal, alternate;
 }
