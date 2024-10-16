@@ -59,7 +59,7 @@ nav ul li {
   border-radius: 0.5rem;
   overflow: hidden;
   border: 0.25rem solid #ffcf34;
-  background-color: rgb(111 120 135 / 3.75%);
+  background-color: var(--pico-card-background-color);
   box-shadow: var(--pico-box-shadow);
 }
 
@@ -71,6 +71,7 @@ nav ul li {
   padding: 0.25em !important;
   border-radius: 0.5em 0 0;
   font-size: small;
+  font-style: italic;
 }
 
 #ref-container {

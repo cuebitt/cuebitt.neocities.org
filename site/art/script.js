@@ -37,14 +37,25 @@ async function makeArtGallery () {
   const response = await fetch('/art/gallery.json')
   const data = await response.json()
   const gallery = document.querySelector('.art-grid')
-  data.forEach((item) => {
+
+  const dataDateParsed = data
+    .map((item) => {
+      item.date = new Date(item.date)
+      return item
+    })
+    .sort((a, b) => a.date - b.date)
+
+  dataDateParsed.forEach((item) => {
     gallery.append(
       createArtGalleryItem(
         item.img_src,
         item.img_alt,
         item.artist_name,
         item.artist_url,
-        item.date,
+        item.date.toLocaleDateString(undefined, {
+          year: 'numeric',
+          month: 'short'
+        }),
         item.blur
       )
     )
@@ -73,7 +84,7 @@ function setupImageModal () {
 
 function rgbToHex (r, g, b) {
   return (
-    '#' +
+
     ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase()
   )
 }
