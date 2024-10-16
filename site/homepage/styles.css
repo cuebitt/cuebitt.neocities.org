@@ -15,7 +15,7 @@
 }
 
 .spoiler {
-  background-color: var(--pico-primary-background);
+  background-color: var(--pico-contrast-background);
   color: transparent;
   user-select: none;
 }
@@ -32,6 +32,15 @@
   font-weight: 400;
   font-style: normal;
   font-variation-settings: "wdth" 100;
+}
+
+.description-subtitle {
+  text-align: center;
+}
+
+.description-subtitle::before,
+.description-subtitle::after {
+  content: "✨";
 }
 
 html,
@@ -57,8 +66,6 @@ main {
 }
 
 #pfp-img {
-  width: 12rem;
-  height: 12rem;
   border-radius: 50%;
   outline: 3px solid var(--pico-color-amber-150);
   outline-offset: 2px;
@@ -72,14 +79,27 @@ main {
 
 .avatar-container {
   border-bottom: none !important;
-  width: fit-content;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  max-width: 18rem;
 }
 
 .inner-container {
-  padding: 2em;
   background-color: var(--pico-secondary-background);
   width: 100%;
   border: 0.5vw solid var(--pico-color-indigo-200);
+  padding: 0 !important;
+  column-gap: 0 !important;
+  overflow: hidden;
+}
+
+.l-col {
+  display: flex;
+  flex-direction: column;
+  background-image: url("assets/l-col-light.svg");
 }
 
 .rounded {
@@ -97,7 +117,7 @@ main {
   justify-content: center;
   align-items: center;
   gap: 0.5em;
-  padding: 1em 2em;
+  padding: 2em;
   width: fit-content;
   margin: 0 auto;
   height: 100%;
@@ -157,6 +177,27 @@ main {
   background-position: center;
 }
 
+.name-tab {
+  background-color: var(--pico-primary-background);
+  width: fit-content;
+  border-top-right-radius: 1vw;
+  padding: 0.5vw;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  border: 0.15rem solid var(--pico-contrast-background);
+  border-bottom-width: 0;
+  border-left-width: 0;
+  transform: translateY(5.5%);
+}
+
+.description-section {
+  background-color: var(--pico-primary-background);
+  padding: 1vw;
+  border: 0.15rem solid var(--pico-contrast-background);
+  border-left-width: 0;
+  border-bottom-width: 0;
+}
+
 /* Light color scheme (Default) */
 
 /* Can be forced with data-theme="light" */
@@ -187,6 +228,10 @@ main {
   .inner-container {
     border: 0.5vw solid var(--pico-color-indigo-500);
   }
+
+  .l-col {
+    background-image: url("assets/l-col-dark.svg");
+  }
 }
 
 /* Dark color scheme (Forced) */
@@ -206,6 +251,10 @@ main {
 
 [data-theme="dark"] .inner-container {
   border: 0.5vw solid var(--pico-color-indigo-500);
+}
+
+[data-theme="dark"] .l-col {
+  background-image: url("assets/l-col-dark.svg");
 }
 
 /* borrowed from IanLunn/Hover */
