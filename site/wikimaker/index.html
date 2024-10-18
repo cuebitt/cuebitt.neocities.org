@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wikimaker Template</title>
+
+    <link rel="stylesheet" href="wikimaker.css" />
+  </head>
+
+  <body>
+    <header>
+      <hgroup>
+        <h1>Wikimaker</h1>
+        <h2>a character wiki page creator</h2>
+      </hgroup>
+    </header>
+
+    <div class="main-container">
+      <aside class="toc-outer">
+        <div class="toc">
+          <span class="toc-header">Contents</span>
+          <hr />
+          <nav>
+            <ul>
+              <li>a</li>
+              <li>b</li>
+              <li>c</li>
+            </ul>
+          </nav>
+        </div>
+      </aside>
+
+      <main>
+        <section>
+          <a id="Background">
+            <h3>Background</h3>
+          </a>
+        </section>
+      </main>
+
+      <aside>
+        <div class="card side-card">
+          <header>
+            <div class="card-header-name">Character Name</div>
+          </header>
+          <div class="card-body">
+            <img
+              src="https://placehold.co/200"
+              alt="placeholder image"
+              class="side-image"
+            />
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <footer>
+      <div class="dropdown-container">
+        <button
+          class="light-dark-switcher"
+          aria-label="light and dark mode switcher"
+          id="theme-switcher-trigger"
+        >
+          <i class="bi bi-moon-stars"></i>
+          <i class="bi bi-sun"></i>
+          <i class="bi bi-laptop"></i>
+        </button>
+
+        <dialog class="dropdown-menu" id="theme-switcher-dialog">
+          <form id="theme-switcher">
+            <span>
+              <input type="radio" name="theme" id="dark" value="dark" />
+              <label for="dark">
+                <i class="bi bi-moon-stars off"></i>
+                <i class="bi bi-moon-stars-fill on"></i>
+                Dark
+              </label>
+            </span>
+
+            <span>
+              <input type="radio" name="theme" id="light" value="light" />
+              <label for="light">
+                <i class="bi bi-sun off"></i>
+                <i class="bi bi-sun-fill on"></i>
+                Light
+              </label>
+            </span>
+
+            <span>
+              <input type="radio" name="theme" id="system" value="auto" />
+              <label for="system">
+                <i class="bi bi-laptop off"></i>
+                <i class="bi bi-laptop-fill on"></i>
+                System
+              </label>
+            </span>
+          </form>
+        </dialog>
+      </div>
+    </footer>
+
+    <script>
+      // setup theme switcher
+      const themeSwitcher = document.getElementById("theme-switcher");
+      const themeSwitcherTrigger = document.getElementById(
+        "theme-switcher-trigger",
+      );
+      const dialog = document.getElementById("theme-switcher-dialog");
+
+      function updateTheme(theme) {
+        themeSwitcherTrigger.querySelectorAll("i.bi").forEach((icon) => {
+          icon.style.display = "none";
+        });
+
+        document.firstElementChild.setAttribute("data-theme", theme);
+        switch (theme) {
+          case "light":
+            themeSwitcherTrigger.querySelector(".bi-sun").style.display =
+              "block";
+            break;
+          case "dark":
+            themeSwitcherTrigger.querySelector(".bi-moon-stars").style.display =
+              "block";
+            break;
+          case "auto":
+            themeSwitcherTrigger.querySelector(".bi-laptop").style.display =
+              "block";
+            break;
+          default:
+            themeSwitcherTrigger.querySelector(".bi-laptop").style.display =
+              "block";
+            document.firstElementChild.setAttribute("data-theme", "auto");
+            break;
+        }
+
+        localStorage.setItem("theme", theme);
+      }
+
+      // Update the theme when the user changes it
+      themeSwitcher.addEventListener("change", (e) => {
+        e.preventDefault();
+        updateTheme(e.target.value);
+      });
+
+      // Close the dialog when the user clicks outside of it
+      window.addEventListener("click", (event) => {
+        if (!dialog.contains(event.target)) {
+          dialog.close();
+        }
+      });
+
+      // Open the dialog when the user clicks the trigger button
+      document
+        .getElementById("theme-switcher-trigger")
+        .addEventListener("click", (e) => {
+          e.stopPropagation();
+
+          if (dialog.open) {
+            dialog.close();
+          } else {
+            dialog.show();
+          }
+        });
+
+      // Initialize the theme from local storage
+      const theme = localStorage.getItem("theme") || "auto";
+      updateTheme(theme);
+    </script>
+  </body>
+</html>
