@@ -6,22 +6,12 @@
   background-color: var(--surface-2);
   border-top-left-radius: var(--radius-3);
   box-shadow: var(--shadow-2);
-  border: var(--border-size-1) solid var(--surface-3);
+  border: var(--border-size-2) solid var(--surface-3);
+  border-right-width: 0;
+  border-bottom-width: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--size-3);
   align-items: center;
-}
-
-#control-panel p {
-  font-style: italic;
-  font-size: var(--font-size-00);
-  opacity: 0;
-  margin: 0;
-}
-
-#control-panel:hover p {
-  opacity: 1;
 }
 
 #downloader {
@@ -39,4 +29,39 @@
 #builder-dialog-inner {
   padding: var(--size-1) var(--size-4);
   overflow-y: auto;
+}
+
+#control-panel .popup {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: var(--layer-important);
+  background-color: var(--surface-2);
+  border-radius: var(--radius-3);
+  transform: translateY(-130%);
+  width: fit-content;
+  height: fit-content;
+  padding: var(--size-2);
+  border: var(--border-size-2) solid var(--surface-3);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+#control-panel:hover .popup {
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+
+#control-panel .popup::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  background-color: var(--surface-2);
+  width: var(--size-5);
+  height: var(--size-5);
+  transform: translateX(-50%) translateY(55%) rotate(45deg);
+  border: var(--border-size-2) solid var(--surface-3);
+  border-left-width: 0;
+  border-top-width: 0;
 }
