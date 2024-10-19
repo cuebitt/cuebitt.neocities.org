@@ -38,7 +38,21 @@ footer {
   border-top: var(--border-size-1) solid var(--surface-2);
 }
 
+a[id]:not([href]) {
+  text-decoration: underline;
+  text-decoration-color: var(--link);
+  text-underline-offset: var(--size-1);
+}
+
 /* main section */
+
+.main-content hr {
+  margin-block: var(--size-fluid-1);
+}
+
+.main-section {
+  margin-block: var(--size-fluid-3);
+}
 
 .main-container {
   display: grid;
@@ -48,7 +62,6 @@ footer {
   gap: var(--size-6);
   flex-grow: 1;
   position: relative;
-  height: 400vh;
 }
 
 .main-container aside {
@@ -66,17 +79,24 @@ footer {
 
 .toc-header {
   font-size: var(--font-size-fluid-1);
-  font-weight: var(--font-weight-5);
+  font-weight: var(--font-weight-6);
 }
 
 .toc hr {
   margin: var(--size-2) 0;
 }
 
-nav ul {
+.toc-nav-list {
+  font-size: var(--font-size-fluid-1);
+  font-weight: var(--font-weight-3);
+}
+
+nav ul,
+nav ul li {
   list-style: none;
   margin-left: 0;
   padding-left: 0;
+  padding-inline-start: 0;
 }
 
 .card {
@@ -90,7 +110,7 @@ nav ul {
 
 .card header {
   background-color: var(--surface-3);
-  padding: var(--size-2) var(--size-2);
+  padding: var(--size-2) var(--size-3);
 }
 
 .card header .card-header-name {
@@ -101,10 +121,44 @@ nav ul {
 
 .card .card-body {
   padding: var(--size-fluid-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-3);
 }
 
 .card .side-image {
-  border-radius: var(--radius-1);
+  border-radius: var(--radius-3);
+  border: 1px solid var(--surface-3);
+}
+
+.side-card-table {
+  width: 100%;
+}
+
+.side-card-table tbody {
+  height: 100%;
+  max-height: 100%;
+}
+
+.side-card-table tbody tr td {
+  text-align: left;
+}
+
+.side-card-table tr td:nth-child(1) {
+  font-weight: var(--font-weight-5);
+}
+
+.side-card-table tbody tr:nth-child(1) td:first-child {
+  border-start-start-radius: var(--nice-inner-radius);
+}
+
+.side-card-table tbody tr:nth-child(1) td:last-child {
+  border-start-end-radius: var(--nice-inner-radius);
+}
+
+.section-anchor h1 {
+  font-size: var(--font-size-fluid-2);
+  font-weight: var(--font-weight-6);
 }
 
 /* light/dark mode switcher */

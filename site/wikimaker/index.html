@@ -5,53 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Wikimaker Template</title>
 
-    <link rel="stylesheet" href="wikimaker.css" />
+    <link rel="shortcut icon" href="https://fav.farm/🌐" type="image/x-icon" />
+    <link rel="stylesheet" href="wikimaker.css" data-inline="true" />
+    <link rel="stylesheet" href="builder.css" />
   </head>
 
   <body>
-    <header>
-      <hgroup>
-        <h1>Wikimaker</h1>
-        <h2>a character wiki page creator</h2>
-      </hgroup>
-    </header>
+    <div class="header"></div>
 
     <div class="main-container">
       <aside class="toc-outer">
-        <div class="toc">
-          <span class="toc-header">Contents</span>
-          <hr />
-          <nav>
-            <ul>
-              <li>a</li>
-              <li>b</li>
-              <li>c</li>
-            </ul>
-          </nav>
-        </div>
+        <div id="toc"></div>
       </aside>
 
-      <main>
-        <section>
-          <a id="Background">
-            <h3>Background</h3>
-          </a>
-        </section>
-      </main>
+      <main class="main-content"></main>
 
       <aside>
-        <div class="card side-card">
-          <header>
-            <div class="card-header-name">Character Name</div>
-          </header>
-          <div class="card-body">
-            <img
-              src="https://placehold.co/200"
-              alt="placeholder image"
-              class="side-image"
-            />
-          </div>
-        </div>
+        <div id="side-card"></div>
       </aside>
     </div>
 
@@ -100,72 +70,75 @@
       </div>
     </footer>
 
-    <script>
-      // setup theme switcher
-      const themeSwitcher = document.getElementById("theme-switcher");
-      const themeSwitcherTrigger = document.getElementById(
-        "theme-switcher-trigger",
-      );
-      const dialog = document.getElementById("theme-switcher-dialog");
+    <!-- functionality for the light/dark mode switcher, included in the generated page -->
+    <script
+      id="theme-switcher-script"
+      src="theme-switcher.js"
+      data-inline="true"
+    ></script>
 
-      function updateTheme(theme) {
-        themeSwitcherTrigger.querySelectorAll("i.bi").forEach((icon) => {
-          icon.style.display = "none";
-        });
+    <span class="remove-from-generated">
+      <!-- templates, not included in the generated page -->
+      <template id="right-card-template">
+        <div class="card side-card">
+          <header>
+            <div class="card-header-name"></div>
+          </header>
+          <div class="card-body">
+            <img class="side-image" />
+            <table class="side-card-table">
+              <tbody class="side-card-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </template>
 
-        document.firstElementChild.setAttribute("data-theme", theme);
-        switch (theme) {
-          case "light":
-            themeSwitcherTrigger.querySelector(".bi-sun").style.display =
-              "block";
-            break;
-          case "dark":
-            themeSwitcherTrigger.querySelector(".bi-moon-stars").style.display =
-              "block";
-            break;
-          case "auto":
-            themeSwitcherTrigger.querySelector(".bi-laptop").style.display =
-              "block";
-            break;
-          default:
-            themeSwitcherTrigger.querySelector(".bi-laptop").style.display =
-              "block";
-            document.firstElementChild.setAttribute("data-theme", "auto");
-            break;
-        }
+      <template id="body-text-section-template">
+        <section class="main-section">
+          <a class="section-anchor">
+            <h1></h1>
+          </a>
+          <hr />
+          <div class="section-body"></div>
+        </section>
+      </template>
 
-        localStorage.setItem("theme", theme);
-      }
+      <template id="toc-template">
+        <div class="toc">
+          <span class="toc-header">Contents</span>
+          <hr />
+          <nav>
+            <ul class="toc-nav-list"></ul>
+          </nav>
+        </div>
+      </template>
 
-      // Update the theme when the user changes it
-      themeSwitcher.addEventListener("change", (e) => {
-        e.preventDefault();
-        updateTheme(e.target.value);
-      });
+      <template id="header-template">
+        <header>
+          <hgroup>
+            <h1></h1>
+            <h2></h2>
+          </hgroup>
+        </header>
+      </template>
 
-      // Close the dialog when the user clicks outside of it
-      window.addEventListener("click", (event) => {
-        if (!dialog.contains(event.target)) {
-          dialog.close();
-        }
-      });
+      <!-- used to construct the page, not included in the generated page -->
+      <script type="module" src="builder.mjs"></script>
 
-      // Open the dialog when the user clicks the trigger button
-      document
-        .getElementById("theme-switcher-trigger")
-        .addEventListener("click", (e) => {
-          e.stopPropagation();
+      <div id="control-panel">
+        <p>Press <kbd>Esc</kbd> to open the menu!</p>
+        <button id="generate-html-btn">Generate HTML</button>
+      </div>
 
-          if (dialog.open) {
-            dialog.close();
-          } else {
-            dialog.show();
-          }
-        });
-
-      // Initialize the theme from local storage
-      const theme = localStorage.getItem("theme") || "auto";
-      updateTheme(theme);
-    </script>
+      <dialog id="builder-dialog">
+        <div id="builder-dialog-inner">
+          <section style="height: 400vh">
+            <h1>Character Info</h1>
+            <label for="character-name-input">Character Name</label>
+            <input type="text" id="character-name-input" />
+          </section>
+        </div>
+      </dialog>
+    </span>
   </body>
 </html>
