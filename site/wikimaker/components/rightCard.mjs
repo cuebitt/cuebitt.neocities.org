@@ -9,6 +9,11 @@ export function RightCard (name, imgSrc, imgAlt, details) {
 
   const detailsTable = cardElem.querySelector('.side-card-table-body')
   for (const detail of details) {
+    if (!detail.label.trim() && !detail.value.trim()) {
+      // skip empty details
+      continue
+    }
+
     const row = document.createElement('tr')
     const labelCell = document.createElement('td')
     const valueCell = document.createElement('td')

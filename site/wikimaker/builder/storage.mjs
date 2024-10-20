@@ -1,3 +1,5 @@
+import { nanoid } from 'https://esm.sh/nanoid@5.0.7'
+
 const defaultData = {
   version: '0.1',
   header: {
@@ -9,8 +11,8 @@ const defaultData = {
     characterImage: 'https://placehold.co/200',
     characterImageAlt: 'Placeholder Image',
     details: [
-      { label: 'Species', value: 'Domestic Cat' },
-      { label: 'Coat Color', value: 'Black' }
+      { label: 'Species', value: 'Domestic Cat', id: nanoid() },
+      { label: 'Coat Color', value: 'Black', id: nanoid() }
     ]
   },
   mainContent: [
@@ -28,9 +30,9 @@ const defaultData = {
 }
 
 export function loadPersistentValues () {
-  return JSON.parse(localStorage.getItem('wikimakerData')) || defaultData
+  return JSON.parse(window.localStorage.getItem('wikimakerData')) || defaultData
 }
 
 export function savePersistentValues (data) {
-  localStorage.setItem('wikimakerData', JSON.stringify(data))
+  window.localStorage.setItem('wikimakerData', JSON.stringify(data))
 }

@@ -3,9 +3,23 @@ import { exportHTML } from './export.mjs'
 import { loadPersistentValues, savePersistentValues } from './storage.mjs'
 import { nanoid } from 'https://esm.sh/nanoid@5.0.7'
 
+// util
+const updateObject = (arr, id, updatedData) => {
+  return arr.map(obj =>
+    obj.id === id ? { ...obj, ...updatedData } : obj
+  )
+}
+
 // Input data elements
+const characterNameInput = document.getElementById('character-name-input')
+const characterImageInput = document.getElementById('character-image-input')
+const characterImageAltInput = document.getElementById('character-image-alt-input')
 const pageTitleInput = document.getElementById('page-title-input')
 const pageSubtitleInput = document.getElementById('page-subtitle-input')
+const detailsTable = document.getElementById('details-table')
+
+// Templates
+const detailsEntryTemplate = document.getElementById('details-entry-template')
 
 function hydratePage (data) {
   // Generate the main sections
@@ -15,8 +29,12 @@ function hydratePage (data) {
     mainFragment.appendChild(section.elem)
   }
 
+  const newMainContent = document.createElement('div')
+  newMainContent.id = 'main-content'
+  newMainContent.appendChild(mainFragment)
+
   // Generate the other sections and insert them into the DOM
-  document.querySelector('.main-content').appendChild(mainFragment)
+  document.getElementById('main-content').replaceWith(newMainContent)
   document.getElementById('side-card').replaceWith(RightCard(data.card.characterName, data.card.characterImage, data.card.characterImageAlt, data.card.details))
   document.querySelector('#toc').replaceWith(Toc(mainContent))
   document.querySelector('.header').replaceWith(Header(data.header.title, data.header.subtitle))
@@ -27,11 +45,13 @@ function hydratePage (data) {
 
 let menuOpen = false
 
-function setupBuilderMenu () {
+function setupBuilderMenu (data) {
+  // generate HTML button (always visible)
   document.getElementById('generate-html-btn').addEventListener('click', () => {
     exportHTML()
   })
 
+  // Esc key to toggle menu dialog
   document.addEventListener('keypress', function onEvent (event) {
     if (event.key === 'Escape') {
       menuOpen = !menuOpen
@@ -41,30 +61,97 @@ function setupBuilderMenu () {
     }
   })
 
+  // Close the dialog with a button
   document.getElementById('close-dialog-btn').addEventListener('click', () => {
     document.getElementById('builder-dialog').close()
     menuOpen = false
   })
 
   // setup details table
-  // temp
-  for (let i = 0; i < 3; i++) {
-    document.querySelector('#details-table tbody').append(
-      document.getElementById('details-entry-template').content.cloneNode(true)
-    )
-  }
+  renderDetailsTable(data)
 
+  // Setup the add row button for the details table
+  document.getElementById('add-row-btn').addEventListener('click', () => {
+    // add new item to detailsTableItems
+    data.card.details.push({ label: '', value: '', id: nanoid() })
+
+    // render the table
+    renderDetailsTable(data)
+  })
+
+  // Update the page with the new values and save to local storage
   document.getElementById('update-page-btn').addEventListener('click', () => {
-    hydratePage()
+    hydratePage(wikiData)
+    savePersistentValues(wikiData)
+  })
+
+  // Character card form
+  characterNameInput.value = data.card.characterName
+  characterNameInput.addEventListener('change', (e) => {
+    wikiData.card.characterName = e.target.value || 'Character'
+  })
+
+  characterImageInput.value = data.card.characterImage
+  characterImageInput.addEventListener('change', (e) => {
+    wikiData.card.characterImage = e.target.value || 'https://placehold.co/200'
+  })
+
+  characterImageAltInput.value = data.card.characterImageAlt
+  characterImageAltInput.addEventListener('change', (e) => {
+    wikiData.card.characterImageAlt = e.target.value || 'Placeholder Image'
+  })
+
+  // Page title and subtitle
+  pageTitleInput.value = data.header.title
+  pageTitleInput.addEventListener('change', (e) => {
+    wikiData.header.title = e.target.value || 'Wikimaker'
+  })
+
+  pageSubtitleInput.value = data.header.subtitle
+  pageSubtitleInput.addEventListener('change', (e) => {
+    wikiData.header.subtitle = e.target.value || 'A character wiki page builder'
   })
 }
 
-// Details table in the builder menu
-const detailsTableItems = [
-  { label: 'Species', value: 'Holy Cow', id: nanoid() },
-  { label: 'Pronouns', value: 'He/Him', id: nanoid() }
-]
+function renderDetailsTable (data) {
+  // Clear the details table
+  detailsTable.innerHTML = ''
+
+  const rows = document.createDocumentFragment()
+  for (const item of data.card.details) {
+    const row = detailsEntryTemplate.content.cloneNode(true)
+
+    // set row id (nanoid used to index list)
+    row.querySelector('.detail-row').id = item.id
+
+    // set row values
+    const labelCell = row.querySelector('[name="attribute"]')
+    labelCell.value = item.label
+    labelCell.addEventListener('change', (e) => {
+      data.card.details = updateObject(data.card.details, item.id, { label: e.target.value })
+    })
+
+    const valueCell = row.querySelector('[name="value"]')
+    valueCell.value = item.value
+    valueCell.addEventListener('change', (e) => {
+      data.card.details = updateObject(data.card.details, item.id, { value: e.target.value })
+    })
+
+    // setup delete button
+    row.querySelector('.del-row-btn').addEventListener('click', () => {
+      // remove item from detailsTableItems
+      data.card.details = data.card.details.filter((i) => i.id !== item.id)
+
+      // remove row from table
+      document.getElementById(item.id).remove()
+    })
+
+    rows.appendChild(row)
+  }
+
+  detailsTable.appendChild(rows)
+}
 
 const wikiData = loadPersistentValues()
-setupBuilderMenu()
+setupBuilderMenu(wikiData)
 hydratePage(wikiData)
