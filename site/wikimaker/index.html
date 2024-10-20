@@ -5,9 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Wikimaker Template</title>
 
-    <link rel="shortcut icon" href="https://fav.farm/🌐" type="image/x-icon" />
+    <link
+      rel="shortcut icon"
+      href="https://fav.farm/🌐"
+      type="image/x-icon"
+      id="favicon"
+    />
     <link rel="stylesheet" href="template/wikimaker.css" data-inline="true" />
     <link rel="stylesheet" href="builder/builder.css" />
+
+    <!-- removed on export -->
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js"
+    ></script>
   </head>
 
   <body>
@@ -85,8 +96,9 @@
       data-inline="true"
     ></script>
 
+    <!-- removed from the exported page -->
     <span class="remove-from-generated">
-      <!-- templates, not included in the generated page -->
+      <!-- templates for page elements -->
       <template id="right-card-template">
         <div class="card side-card" id="side-card">
           <header>
@@ -195,6 +207,34 @@
 
                 <label for="page-subtitle-input">Page subtitle</label>
                 <input type="text" id="page-subtitle-input" />
+
+                <label for="page-favicon-input">Emoji Favicon</label>
+                <div class="emoji-picker-container">
+                  <button id="favicon-emoji-picker-btn">
+                    <span id="selected-emoji">🌐</span>
+                  </button>
+                  <span id="emoji-picker-wrapper" style="display: none">
+                    <emoji-picker id="emoji-picker"></emoji-picker>
+                  </span>
+                </div>
+              </div>
+            </section>
+            <hr />
+
+            <section>
+              <h1>Main Sections</h1>
+              <div id="main-sections-list"></div>
+              <div id="main-sections-btn-container">
+                <button><i class="bi bi-plus-circle-fill"></i>Text</button>
+                <button>
+                  <i class="bi bi-plus-circle-fill"></i>Single Image
+                </button>
+                <button>
+                  <i class="bi bi-plus-circle-fill"></i>Image Gallery
+                </button>
+                <button>
+                  <i class="bi bi-plus-circle-fill"></i>Color Palette
+                </button>
               </div>
             </section>
 
@@ -205,6 +245,8 @@
           </div>
         </div>
       </dialog>
+
+      <!-- templates for menu dialog elements -->
 
       <template id="details-entry-template">
         <tr class="detail-row">
@@ -217,6 +259,8 @@
           </td>
         </tr>
       </template>
+
+      <template id="text-section-entry-template"> </template>
 
       <!-- used to construct the page, not included in the generated page -->
       <script type="module" src="builder/app.mjs"></script>

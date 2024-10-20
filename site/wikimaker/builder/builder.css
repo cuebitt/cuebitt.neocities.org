@@ -1,5 +1,6 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
 @import url("https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.3/dragula.min.css");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap");
 
 #control-panel {
   position: fixed;
@@ -128,4 +129,31 @@
 
 .sortable-swap-highlight {
   background-color: var(--surface-3);
+}
+
+#main-sections-btn-container {
+  display: flex;
+  justify-content: center;
+  padding: var(--size-2) 0;
+  gap: var(--size-2);
+}
+
+#favicon-emoji-picker-btn {
+  padding: 0 var(--size-2);
+  width: fit-content;
+}
+
+#selected-emoji {
+  font-size: var(--font-size-fluid-2);
+}
+
+.emoji-picker-container {
+  position: relative;
+}
+
+.emoji-picker-container emoji-picker {
+  position: absolute;
+  top: -100%;
+  left: 0%;
+  z-index: var(--layer-important);
 }

@@ -26,6 +26,7 @@ const characterImageAltInput = document.getElementById('character-image-alt-inpu
 const pageTitleInput = document.getElementById('page-title-input')
 const pageSubtitleInput = document.getElementById('page-subtitle-input')
 const detailsTable = document.getElementById('details-table')
+const emojiPickerBtn = document.getElementById('favicon-emoji-picker-btn')
 
 // Templates
 const detailsEntryTemplate = document.getElementById('details-entry-template')
@@ -49,8 +50,9 @@ function hydratePage (data) {
   document.querySelector('.toc-nav-list').appendChild(Toc(mainContent))
   document.querySelector('.header').replaceWith(Header(data.header.title, data.header.subtitle))
 
-  // Set the document title
+  // Set the document title and favicon
   document.title = `${data.card.characterName} - ${data.header.title}`
+  document.querySelector('#favicon').href = `https://fav.farm/${data.other.faviconEmoji || '🌐'}`
 
   // dnd
   Sortable.create(document.querySelector('.toc-nav-list'),
@@ -133,6 +135,17 @@ function setupBuilderMenu (data) {
   pageSubtitleInput.value = data.header.subtitle
   pageSubtitleInput.addEventListener('change', (e) => {
     wikiData.header.subtitle = e.target.value || 'A character wiki page builder'
+  })
+
+  // Emoji favicon picker
+  emojiPickerBtn.addEventListener('click', () => {
+    document.getElementById('emoji-picker-wrapper').style.display = 'block'
+  })
+
+  document.getElementById('emoji-picker').addEventListener('emoji-click', (e) => {
+    wikiData.other.faviconEmoji = e.detail.unicode
+    document.getElementById('selected-emoji').textContent = e.detail.unicode
+    document.getElementById('emoji-picker-wrapper').style.display = 'none'
   })
 }
 
