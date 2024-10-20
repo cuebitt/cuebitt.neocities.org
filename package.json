@@ -23,7 +23,7 @@
     "**/*.{css,html}": [
       "prettier --write"
     ],
-    "**/*.{js}": [
+    "**/*.{js,mjs}": [
       "standard --fix"
     ],
     "**/*.{css}": [
