@@ -59,6 +59,10 @@ a[id]:not([href]) {
   margin-block: var(--size-fluid-3);
 }
 
+.main-content p {
+  margin-block: var(--size-fluid-1);
+}
+
 .main-container {
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;

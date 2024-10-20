@@ -11,20 +11,36 @@ const defaultData = {
     characterImage: 'https://placehold.co/200',
     characterImageAlt: 'Placeholder Image',
     details: [
-      { label: 'Species', value: 'Domestic Cat', id: nanoid() },
-      { label: 'Coat Color', value: 'Black', id: nanoid() }
+      { label: 'Version', value: '0.1', id: nanoid() },
+      { label: 'Created by', value: 'Cuebitt', id: nanoid() }
     ]
   },
   mainContent: [
     {
       type: 'text',
       heading: 'About',
-      content: 'Welcome to WikiMaker! To begin editing, press the `Escape` key to open the menu.'
+      content: 'Welcome to WikiMaker! WikiMaker is a simple wiki page generator that produces static web pages that you can easily upload to a number of free web hosts. To begin editing, press the `Escape` key to open the menu.'
+    },
+    {
+      type: 'text',
+      heading: 'Content',
+      content: `WikiMaker supports sections that contain:     
+- Markdown text
+- Color palettes
+- Single images
+- Image gallery slideshows
+
+Any new sections you add will automatically be linked in the table of contents on the left.
+`
     },
     {
       type: 'text',
       heading: 'Done?',
-      content: 'When you\'re finished, press the "Generate HTML" button to get the HTML code for your page.'
+      content: `
+When you're finished, press the "Generate HTML" button to get the HTML code for your page. Your data is saved in your browsers local storage each time you click the \`Update Wiki Page\` button. All data is stored locally, so it may be lost if you clear your browser cache.
+
+The generated web page is designed to be simple enough to be easily customized. If you want to change something that isn't supported by the builder, you can easily edit the HTML directly.
+`
     }
   ]
 }

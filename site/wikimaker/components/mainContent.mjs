@@ -20,13 +20,18 @@ function constructTextSection (header, content, id) {
 
 // color:
 // {color: '#000000', location: 'Nose'}
-function constructColorPaletteSection (header, colors, id) {
+function constructColorPaletteSection (header, colors, id) { // eslint-disable-line no-unused-vars
 
+}
+
+// images:
+// [{src: 'https://placehold.co/200', alt: 'Placeholder image', artist: 'artistname', date: ''}]
+function constructImageGallerySection (header, images, id) { // eslint-disable-line no-unused-vars
 }
 
 // image:
 // {src: 'https://placehold.co/200', alt: 'Placeholder image', artist: 'artistname', date: ''}
-function constructImageGallerySection (header, images, id) {
+function constructSingleImageSection (header, image, id) { // eslint-disable-line no-unused-vars
 }
 
 export function MainContent (mainSections) {
