@@ -44,6 +44,11 @@ a[id]:not([href]) {
   text-underline-offset: var(--size-1);
 }
 
+/* header */
+.header {
+  min-height: var(--size-10);
+}
+
 /* main section */
 
 .main-content hr {
