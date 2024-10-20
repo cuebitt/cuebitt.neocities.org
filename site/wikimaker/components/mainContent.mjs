@@ -38,7 +38,7 @@ export function MainContent (mainSections) {
   const sections = new Map()
 
   for (const section of mainSections) {
-    let id = section.heading.trim().toLowerCase()
+    let id = section.heading.trim().toLowerCase().replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '-')
 
     if (sections.has(id)) {
       let idSuffix = 1
