@@ -3,6 +3,21 @@ import parserHtml from 'https://esm.sh/prettier@3.3.3/plugins/html'
 import parserCSS from 'https://esm.sh/prettier@3.3.3/plugins/postcss'
 import parserBabel from 'https://esm.sh/prettier@3.3.3/plugins/babel'
 import parserEstree from 'https://esm.sh/prettier@3.3.3/plugins/estree'
+import init, { transform } from 'https://esm.sh/lightningcss-wasm'
+
+async function processCSS (css) {
+  // Optimize CSS with LightningCSS
+  await init()
+  const { code } = transform({
+    code: new TextEncoder().encode(css)
+  })
+
+  // Format optimized CSS with Prettier
+  return await prettier.format(TextDecoder().decode(code), {
+    parser: 'css',
+    plugins: [parserCSS]
+  })
+}
 
 async function inlineLinked (htmlDocument) {
   const inlineElems = Array.from(htmlDocument.querySelectorAll('link[rel=stylesheet][data-inline], script[data-inline]'))
@@ -10,12 +25,10 @@ async function inlineLinked (htmlDocument) {
       if (elem.tagName === 'LINK') {
         const response = await fetch(elem.href)
         const text = await response.text()
+        const cssProcessed = await processCSS(text)
 
         const style = document.createElement('style')
-        style.textContent = await prettier.format(text, {
-          parser: 'css',
-          plugins: [parserCSS]
-        })
+        style.textContent = cssProcessed
         elem.replaceWith(style)
       } else if (elem.tagName === 'SCRIPT') {
         const response = await fetch(elem.src)

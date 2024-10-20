@@ -46,9 +46,13 @@ The generated web page is designed to be simple enough to be easily customized. 
 }
 
 export function loadPersistentValues () {
-  return JSON.parse(window.localStorage.getItem('wikimakerData')) || defaultData
+  const data = JSON.parse(window.localStorage.getItem('wikimakerData')) || defaultData
+
+  return { ...data, card: { ...data.card, details: data.card.details.map(detail => ({ ...detail, id: nanoid() })) } }
 }
 
 export function savePersistentValues (data) {
-  window.localStorage.setItem('wikimakerData', JSON.stringify(data))
+  const dataRemovedId = { ...data, card: { ...data.card, details: data.card.details.map(detail => ({ label: detail.label, value: detail.value })) } }
+
+  window.localStorage.setItem('wikimakerData', JSON.stringify(dataRemovedId))
 }
