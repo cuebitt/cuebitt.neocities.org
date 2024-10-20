@@ -1,5 +1,5 @@
 export function Toc (mainContent) {
-  const tocElem = document.getElementById('toc-template').content.cloneNode(true)
+  const tocFragment = document.createDocumentFragment()
 
   for (const section of mainContent) {
     const tocItem = document.createElement('li')
@@ -7,8 +7,8 @@ export function Toc (mainContent) {
     tocLink.href = `#${section.id}`
     tocLink.textContent = section.name
     tocItem.appendChild(tocLink)
-    tocElem.querySelector('.toc-nav-list').appendChild(tocItem)
+    tocFragment.appendChild(tocItem)
   }
 
-  return tocElem
+  return tocFragment
 }

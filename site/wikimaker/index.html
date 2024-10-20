@@ -15,7 +15,13 @@
 
     <div class="main-container">
       <aside class="toc-outer">
-        <div id="toc"></div>
+        <div class="toc" id="toc">
+          <span class="toc-header">Contents</span>
+          <hr />
+          <nav>
+            <ul class="toc-nav-list"></ul>
+          </nav>
+        </div>
       </aside>
 
       <main class="main-content">
@@ -134,66 +140,69 @@
           <header>
             <button id="close-dialog-btn"><i class="bi bi-x-lg"></i></button>
           </header>
-          <section>
-            <h1>Character Info</h1>
 
-            <div class="options-grid">
-              <label for="character-name-input">Name</label>
-              <input
-                type="text"
-                id="character-name-input"
-                name="character-name"
-              />
+          <div class="tab-container">
+            <section>
+              <h1>Character Info</h1>
 
-              <label for="character-image-input">Image URL</label>
-              <input
-                type="text"
-                id="character-image-input"
-                name="character-image-src"
-              />
+              <div class="options-grid">
+                <label for="character-name-input">Name</label>
+                <input
+                  type="text"
+                  id="character-name-input"
+                  name="character-name"
+                />
 
-              <label for="character-image-alt-input">Image alt text</label>
-              <input
-                type="text"
-                id="character-image-alt-input"
-                name="character-image-alt"
-              />
-            </div>
+                <label for="character-image-input">Image URL</label>
+                <input
+                  type="text"
+                  id="character-image-input"
+                  name="character-image-src"
+                />
+
+                <label for="character-image-alt-input">Image alt text</label>
+                <input
+                  type="text"
+                  id="character-image-alt-input"
+                  name="character-image-alt"
+                />
+              </div>
+              <hr />
+            </section>
+            <section>
+              <h1>Details</h1>
+              <table id="details-table">
+                <thead>
+                  <tr>
+                    <th>Attribute</th>
+                    <th>Value</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+              <span class="add-btn-container"
+                ><button id="add-row-btn">
+                  <i class="bi bi-plus-circle-fill"></i></button
+              ></span>
+            </section>
             <hr />
-          </section>
-          <section>
-            <h1>Details</h1>
-            <table id="details-table">
-              <thead>
-                <tr>
-                  <th>Attribute</th>
-                  <th>Value</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
-            <span class="add-btn-container"
-              ><button id="add-row-btn">
-                <i class="bi bi-plus-circle-fill"></i></button
-            ></span>
-          </section>
-          <hr />
-          <section>
-            <h1>Misc</h1>
-            <div id="misc-options" class="options-grid">
-              <label for="page-title-input">Page title</label>
-              <input type="text" id="page-title-input" />
+            <section>
+              <h1>Misc</h1>
+              <div id="misc-options" class="options-grid">
+                <label for="page-title-input">Page title</label>
+                <input type="text" id="page-title-input" />
 
-              <label for="page-subtitle-input">Page subtitle</label>
-              <input type="text" id="page-subtitle-input" />
-            </div>
-          </section>
+                <label for="page-subtitle-input">Page subtitle</label>
+                <input type="text" id="page-subtitle-input" />
+              </div>
+            </section>
 
-          <hr />
-          <section class="add-btn-container">
-            <button id="update-page-btn">Update Wiki Page</button>
-          </section>
+            <hr />
+            <section class="add-btn-container">
+              <button id="update-page-btn">Update Wiki Page</button>
+            </section>
+          </div>
         </div>
       </dialog>
 

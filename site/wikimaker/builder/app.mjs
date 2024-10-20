@@ -2,6 +2,15 @@ import { Header, MainContent, Toc, RightCard } from '../components/index.mjs'
 import { exportHTML } from './export.mjs'
 import { loadPersistentValues, savePersistentValues } from './storage.mjs'
 import { nanoid } from 'https://esm.sh/nanoid@5.0.7'
+import { Sortable, Swap } from 'https://esm.sh/sortablejs'
+
+Sortable.mount(new Swap())
+
+function swapArrayElements (arr, indexA, indexB) {
+  const temp = arr[indexA]
+  arr[indexA] = arr[indexB]
+  arr[indexB] = temp
+}
 
 // util
 const updateObject = (arr, id, updatedData) => {
@@ -36,15 +45,29 @@ function hydratePage (data) {
   // Generate the other sections and insert them into the DOM
   document.getElementById('main-content').replaceWith(newMainContent)
   document.getElementById('side-card').replaceWith(RightCard(data.card.characterName, data.card.characterImage, data.card.characterImageAlt, data.card.details))
-  document.querySelector('#toc').replaceWith(Toc(mainContent))
+  document.querySelector('.toc-nav-list').innerHTML = ''
+  document.querySelector('.toc-nav-list').appendChild(Toc(mainContent))
   document.querySelector('.header').replaceWith(Header(data.header.title, data.header.subtitle))
 
   // Set the document title
   document.title = `${data.card.characterName} - ${data.header.title}`
+
+  // dnd
+  Sortable.create(document.querySelector('.toc-nav-list'),
+    {
+      easing: 'cubic-bezier(1, 0, 0, 1)',
+      animation: 150,
+      onEnd: (evt) => {
+        swapArrayElements(data.mainContent, evt.oldIndex, evt.newIndex)
+        hydratePage(data)
+        savePersistentValues(data)
+      },
+      swap: true,
+      swapClass: 'sortable-swap-highlight'
+    })
 }
 
 let menuOpen = false
-
 function setupBuilderMenu (data) {
   // generate HTML button (always visible)
   document.getElementById('generate-html-btn').addEventListener('click', () => {
