@@ -115,7 +115,8 @@ function setupBuilderMenu (data) {
 
 function renderDetailsTable (data) {
   // Clear the details table
-  detailsTable.innerHTML = ''
+  const tableBody = detailsTable.querySelector('tbody')
+  tableBody.innerHTML = ''
 
   const rows = document.createDocumentFragment()
   for (const item of data.card.details) {
@@ -149,7 +150,7 @@ function renderDetailsTable (data) {
     rows.appendChild(row)
   }
 
-  detailsTable.appendChild(rows)
+  tableBody.appendChild(rows)
 }
 
 const wikiData = loadPersistentValues()
