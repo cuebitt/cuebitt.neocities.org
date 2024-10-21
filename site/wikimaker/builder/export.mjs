@@ -1,87 +1,105 @@
-import * as prettier from 'https://esm.sh/prettier@3.3.3'
-import parserHtml from 'https://esm.sh/prettier@3.3.3/plugins/html'
-import parserCSS from 'https://esm.sh/prettier@3.3.3/plugins/postcss'
-import parserBabel from 'https://esm.sh/prettier@3.3.3/plugins/babel'
-import parserEstree from 'https://esm.sh/prettier@3.3.3/plugins/estree'
-import init, { transform } from 'https://esm.sh/lightningcss-wasm'
+import * as prettier from "https://esm.sh/prettier@3.3.3";
+import parserHtml from "https://esm.sh/prettier@3.3.3/plugins/html";
+import parserCSS from "https://esm.sh/prettier@3.3.3/plugins/postcss";
+import parserBabel from "https://esm.sh/prettier@3.3.3/plugins/babel";
+import parserEstree from "https://esm.sh/prettier@3.3.3/plugins/estree";
+import init, { transform } from "https://esm.sh/lightningcss-wasm";
 
-async function processCSS (css) {
-  // Optimize CSS with LightningCSS
-  await init()
-  const { code } = transform({
-    code: new TextEncoder().encode(css)
-  })
+async function processCSS(css) {
+	// Optimize CSS with LightningCSS
+	await init();
+	const { code } = transform({
+		code: new TextEncoder().encode(css),
+	});
 
-  // Format optimized CSS with Prettier
-  return await prettier.format(TextDecoder().decode(code), {
-    parser: 'css',
-    plugins: [parserCSS]
-  })
+	// Format optimized CSS with Prettier
+	return await prettier.format(TextDecoder().decode(code), {
+		parser: "css",
+		plugins: [parserCSS],
+	});
 }
 
-async function inlineLinked (htmlDocument) {
-  const inlineElems = Array.from(htmlDocument.querySelectorAll('link[rel=stylesheet][data-inline], script[data-inline]'))
-    .map(async (elem) => {
-      if (elem.tagName === 'LINK') {
-        const response = await fetch(elem.href)
-        const text = await response.text()
-        const cssProcessed = await processCSS(text)
+async function inlineLinked(htmlDocument) {
+	const inlineElems = Array.from(
+		htmlDocument.querySelectorAll(
+			"link[rel=stylesheet][data-inline], script[data-inline]",
+		),
+	).map(async (elem) => {
+		if (elem.tagName === "LINK") {
+			const response = await fetch(elem.href);
+			const text = await response.text();
+			const cssProcessed = await processCSS(text);
 
-        const style = document.createElement('style')
-        style.textContent = cssProcessed
-        elem.replaceWith(style)
-      } else if (elem.tagName === 'SCRIPT') {
-        const response = await fetch(elem.src)
-        const text = await response.text()
+			const style = document.createElement("style");
+			style.textContent = cssProcessed;
+			elem.replaceWith(style);
+		} else if (elem.tagName === "SCRIPT") {
+			const response = await fetch(elem.src);
+			const text = await response.text();
 
-        const script = document.createElement('script')
-        script.textContent = await prettier.format(text, {
-          parser: 'babel',
-          plugins: [parserBabel, parserEstree]
-        })
-        elem.replaceWith(script)
-      }
-    })
+			const script = document.createElement("script");
+			script.textContent = await prettier.format(text, {
+				parser: "babel",
+				plugins: [parserBabel, parserEstree],
+			});
+			elem.replaceWith(script);
+		}
+	});
 
-  await Promise.all(inlineElems)
+	await Promise.all(inlineElems);
 }
 
-export async function exportHTML () {
-  // Clone the document
-  const exportHTML = document.documentElement.cloneNode(true)
+export async function exportHTML() {
+	// Clone the document
+	const exportHTML = document.documentElement.cloneNode(true);
 
-  // Remove unnecessary elements
-  exportHTML.querySelector('.remove-from-generated').remove() // Remove the builder menu
-  exportHTML.querySelectorAll('script:not(#theme-switcher-script') // any scripts that aren't the theme switcher
-    .forEach((script) => script.remove())
-  exportHTML.querySelector('base').remove() // base tag
-  exportHTML.querySelector('link[href="builder/builder.css"]').remove() // builder css
-  exportHTML.querySelectorAll('style').forEach((style) => { style.remove() }) // any stray style tags
+	// Remove unnecessary elements
 
-  // Inline linked resources (css and theme switcher script)
-  await inlineLinked(exportHTML)
+	// Remove the builder menu
+	exportHTML.querySelector(".remove-from-generated").remove();
 
-  // Format the HTML Document
-  const formattedHTML = await prettier.format(exportHTML.outerHTML, {
-    parser: 'html',
-    printWidth: 80,
-    tabWidth: 2,
-    useTabs: false,
-    plugins: [parserHtml]
-  })
+	// Remove any scripts except the theme switcher script
+	for (const script of exportHTML.querySelectorAll(
+		"script:not(#theme-switcher-script",
+	)) {
+		script.remove();
+	}
 
-  // Download the file
-  const downloader = document.createElement('a')
-  const blob = new Blob([formattedHTML], { type: 'text/html' })
-  const url = URL.createObjectURL(blob)
+	// Remove the base tag
+	exportHTML.querySelector("base").remove();
 
-  downloader.style.display = 'none'
-  downloader.href = url
-  downloader.download = 'wiki.html'
+	// Remove the builder CSS stylesheet
+	exportHTML.querySelector('link[href="builder/builder.css"]').remove();
 
-  document.body.appendChild(downloader)
-  downloader.click()
-  document.body.removeChild(downloader)
+	// Remove any stray style tags
+	for (const style of exportHTML.querySelectorAll("style")) {
+		style.remove();
+	}
 
-  URL.revokeObjectURL(url)
+	// Inline linked resources (css and theme switcher script)
+	await inlineLinked(exportHTML);
+
+	// Format the HTML Document
+	const formattedHTML = await prettier.format(exportHTML.outerHTML, {
+		parser: "html",
+		printWidth: 80,
+		tabWidth: 2,
+		useTabs: false,
+		plugins: [parserHtml],
+	});
+
+	// Download the file
+	const downloader = document.createElement("a");
+	const blob = new Blob([formattedHTML], { type: "text/html" });
+	const url = URL.createObjectURL(blob);
+
+	downloader.style.display = "none";
+	downloader.href = url;
+	downloader.download = "wiki.html";
+
+	document.body.appendChild(downloader);
+	downloader.click();
+	document.body.removeChild(downloader);
+
+	URL.revokeObjectURL(url);
 }

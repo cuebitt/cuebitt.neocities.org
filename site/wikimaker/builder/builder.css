@@ -3,157 +3,158 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap");
 
 #control-panel {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  padding: var(--size-4);
-  background-color: var(--surface-2);
-  border-top-left-radius: var(--radius-3);
-  box-shadow: var(--shadow-2);
-  border: var(--border-size-2) solid var(--surface-3);
-  border-right-width: 0;
-  border-bottom-width: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-bottom: 15%;
-  transform: translateY(70%);
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	padding: var(--size-4);
+	background-color: var(--surface-2);
+	border-top-left-radius: var(--radius-3);
+	box-shadow: var(--shadow-2);
+	border: var(--border-size-2) solid var(--surface-3);
+	border-right-width: 0;
+	border-bottom-width: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-bottom: 15%;
+	transform: translateY(70%);
 }
 
 #downloader {
-  display: none;
+	display: none;
 }
 
 #builder-dialog {
-  width: fit-content;
-  height: fit-content;
-  max-height: 80%;
-  max-width: 80%;
-  padding: var(--size-4);
-  border: var(--border-size-2) solid var(--surface-3);
+	width: fit-content;
+	height: fit-content;
+	max-height: 80%;
+	max-width: 80%;
+	padding: var(--size-4);
+	border: var(--border-size-2) solid var(--surface-3);
 }
 
 #builder-dialog-inner {
-  padding: var(--size-1) var(--size-4);
-  overflow-y: auto;
+	padding: var(--size-1) var(--size-4);
+	overflow-y: auto;
 }
 
 #control-panel .popup {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: var(--layer-important);
-  background-color: var(--surface-2);
-  border-radius: var(--radius-3);
-  transform: translateY(-130%);
-  width: fit-content;
-  height: fit-content;
-  padding: var(--size-2);
-  border: var(--border-size-2) solid var(--surface-3);
-  opacity: 0;
-  transition: opacity 0.2s;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: var(--layer-important);
+	background-color: var(--surface-2);
+	border-radius: var(--radius-3);
+	transform: translateY(-130%);
+	width: fit-content;
+	height: fit-content;
+	padding: var(--size-2);
+	border: var(--border-size-2) solid var(--surface-3);
+	opacity: 0;
+	transition: opacity 0.2s;
 }
 
 #control-panel:hover .popup {
-  opacity: 1;
-  transition: opacity 0.2s;
+	opacity: 1;
+	transition: opacity 0.2s;
 }
 
 #control-panel .popup::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  background-color: var(--surface-2);
-  width: var(--size-5);
-  height: var(--size-5);
-  transform: translateX(-50%) translateY(55%) rotate(45deg);
-  border: var(--border-size-2) solid var(--surface-3);
-  border-left-width: 0;
-  border-top-width: 0;
+	content: "";
+	position: absolute;
+	left: 50%;
+	bottom: 0;
+	background-color: var(--surface-2);
+	width: var(--size-5);
+	height: var(--size-5);
+	transform: translateX(-50%) translateY(55%) rotate(45deg);
+	border: var(--border-size-2) solid var(--surface-3);
+	border-left-width: 0;
+	border-top-width: 0;
 }
 
 .options-grid {
-  display: grid;
-  grid-template-columns: min-content auto;
-  white-space: nowrap;
-  gap: var(--size-2) var(--size-4);
-  padding: 0 var(--size-4);
+	display: grid;
+	grid-template-columns: min-content auto;
+	white-space: nowrap;
+	gap: var(--size-2) var(--size-4);
+	padding: 0 var(--size-4);
 }
 
 #character-info-form label {
-  font-weight: var(--font-weight-5);
+	font-weight: var(--font-weight-5);
 }
 
 #builder-dialog hr {
-  margin: var(--size-4) 0;
+	margin: var(--size-4) 0;
 }
 
 #builder-dialog h1 {
-  margin-bottom: var(--size-6);
-  font-size: var(--font-size-fluid-2);
-  font-weight: var(--font-weight-7);
+	margin-bottom: var(--size-6);
+	font-size: var(--font-size-fluid-2);
+	font-weight: var(--font-weight-7);
 }
 
 #details-table th {
-  background-color: var(--surface-3);
+	background-color: var(--surface-3);
 }
 
 .add-btn-container {
-  display: flex;
-  justify-content: center;
-  padding: var(--size-2) 0;
+	display: flex;
+	justify-content: center;
+	padding: var(--size-2) 0;
 }
 
 #close-dialog-btn {
-  float: right;
-  width: var(--size-5);
-  height: var(--size-5);
-  padding: 0;
-  transform: translateY(25%);
+	float: right;
+	width: var(--size-5);
+	height: var(--size-5);
+	padding: 0;
+	transform: translateY(25%);
 }
 
 #update-card-btn {
-  background-color: var(--green-2);
+	background-color: var(--green-2);
 }
 
 [data-theme="dark"] #update-card-btn {
-  background-color: var(--green-10);
+	background-color: var(--green-10);
 }
 
+/* biome-ignore lint/correctness/noUnknownMediaFeatureName: <explanation> */
 @media (--OSDark) {
-  #update-card-btn {
-    background-color: var(--green-10);
-  }
+	#update-card-btn {
+		background-color: var(--green-10);
+	}
 }
 
 .sortable-swap-highlight {
-  background-color: var(--surface-3);
+	background-color: var(--surface-3);
 }
 
 #main-sections-btn-container {
-  display: flex;
-  justify-content: center;
-  padding: var(--size-2) 0;
-  gap: var(--size-2);
+	display: flex;
+	justify-content: center;
+	padding: var(--size-2) 0;
+	gap: var(--size-2);
 }
 
 #favicon-emoji-picker-btn {
-  padding: 0 var(--size-2);
-  width: fit-content;
+	padding: 0 var(--size-2);
+	width: fit-content;
 }
 
 #selected-emoji {
-  font-size: var(--font-size-fluid-2);
+	font-size: var(--font-size-fluid-2);
 }
 
 .emoji-picker-container {
-  position: relative;
+	position: relative;
 }
 
 .emoji-picker-container emoji-picker {
-  position: absolute;
-  top: -100%;
-  left: 0%;
-  z-index: var(--layer-important);
+	position: absolute;
+	top: -100%;
+	left: 0%;
+	z-index: var(--layer-important);
 }

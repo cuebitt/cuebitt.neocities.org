@@ -4,30 +4,27 @@
   "description": "my Neocities website!",
   "scripts": {
     "dev": "servor site/ --reload --static",
-    "lint": "standard ./site --fix",
-    "prepare": "husky",
-    "stylelint": "stylelint --fix **/*.css site/**/*.css",
-    "format": "prettier --write site/**/*.{css,html}"
+    "lint": "biome lint --write ./site",
+    "format": "biome format --write ./site && prettier --write ./site/**/*.html",
+    "prepare": "husky"
   },
   "author": "cuebitt",
   "devDependencies": {
+    "@biomejs/biome": "1.9.4",
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
     "prettier": "^3.3.3",
-    "servor": "^4.0.2",
-    "standard": "^17.1.2",
-    "stylelint": "^16.9.0",
-    "stylelint-config-standard": "^36.0.1"
+    "servor": "^4.0.2"
   },
   "lint-staged": {
-    "**/*.{css,html}": [
+    "**/*.{css,js,mjs}": [
+      "biome format --write"
+    ],
+    "**/*.{html}": [
       "prettier --write"
     ],
     "**/*.{js,mjs}": [
-      "standard --fix"
-    ],
-    "**/*.{css}": [
-      "stylelint --fix"
+      "biome lint --write"
     ]
   }
 }
