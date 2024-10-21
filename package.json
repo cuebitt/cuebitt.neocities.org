@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "my Neocities website!",
   "scripts": {
-    "dev": "servor site/ --reload --static",
-    "lint": "biome lint --write ./site",
-    "format": "biome format --write ./site && prettier --write ./site/**/*.html",
+    "dev": "servor src/ --reload --static",
+    "lint": "biome lint --write ./src",
+    "format": "biome format --write ./src && prettier --write ./src/**/*.html",
     "prepare": "husky"
   },
   "author": "cuebitt",
