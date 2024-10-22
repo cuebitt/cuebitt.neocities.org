@@ -3,25 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Wikimaker</title>
+    <title>Responsive Layout</title>
 
-    <link
-      rel="shortcut icon"
-      href="https://fav.farm/🌐"
-      type="image/x-icon"
-      id="favicon"
-    />
     <link rel="stylesheet" href="styles/wikimaker.css" />
-    <link rel="stylesheet" href="styles/themeSwitcher.css" />
-
-    <script
-      type="module"
-      src="https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js"
-    ></script>
   </head>
-
-  <body class="container">
-    <header class="page-header">
+  <body>
+    <header>
       <hgroup>
         <h1>Wikimaker</h1>
         <h2>an easy static wiki page generator!</h2>
@@ -29,96 +16,170 @@
 
       <div id="theme-switcher"></div>
     </header>
-
     <main>
-      <section class="page-preview-container">
+      <div class="column preview-col">
         <div id="page-preview"></div>
-        <h1>a</h1>
-        <h1>a</h1>
-        <h1>a</h1>
-        <h1>a</h1>
-        <h1>a</h1>
-        <h1>a</h1>
-        <h1>a</h1>
-        <h1>a</h1>
-        <h1>a</h1>
-        <h1>a</h1>
-      </section>
+      </div>
 
-      <aside class="builder-control-panel">
-        <div class="tab-container" x-data="{selected_tab: 0}">
-          <div class="tabs-bar">
-            <ul role="tablist" class="tab-list">
-              <li>
-                <button
-                  role="tab"
-                  aria-controls="outer-page-tab-panel"
-                  id="outer-page-tab"
-                  :aria-selected="selected_tab === 0"
-                  @click="selected_tab = 0"
-                >
-                  Outer Page
-                </button>
-              </li>
-              <li>
-                <button
-                  role="tab"
-                  aria-controls="main-sections-tab-panel"
-                  id="main-sections-tab"
-                  :aria-selected="selected_tab === 1"
-                  @click="selected_tab = 1"
-                >
-                  Main Sections
-                </button>
-              </li>
-            </ul>
+      <div class="column builder-col tab-container" x-data="{selected_tab: 0}">
+        <div class="tabs-bar">
+          <ul role="tablist" class="tab-list">
+            <li>
+              <button
+                role="tab"
+                aria-controls="outer-page-tab-panel"
+                id="outer-page-tab"
+                :aria-selected="selected_tab === 0"
+                @click="selected_tab = 0"
+              >
+                Outer Page
+              </button>
+            </li>
+            <li>
+              <button
+                role="tab"
+                aria-controls="main-sections-tab-panel"
+                id="main-sections-tab"
+                :aria-selected="selected_tab === 1"
+                @click="selected_tab = 1"
+              >
+                Main Sections
+              </button>
+            </li>
+          </ul>
+        </div>
+
+        <div
+          class="tab-panels"
+          :style="selected_tab === 0 && {borderTopLeftRadius: 0}"
+        >
+          <div
+            role="tabpanel"
+            id="outer-page-tab-panel"
+            aria-labelledby="outer-page-tab"
+            x-show="selected_tab === 0"
+            x-data
+          >
+            <fieldset>
+              <legend>Header</legend>
+              <div class="fields">
+                <label for="header-title">Title</label>
+                <input
+                  type="text"
+                  id="header-title"
+                  x-model="$store.builder.header.title"
+                />
+
+                <label for="header-subtitle">Subtitle</label>
+                <input
+                  type="text"
+                  id="header-subtitle"
+                  x-model="$store.builder.header.subtitle"
+                />
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Page Subject</legend>
+              <div class="fields">
+                <label for="page-subject-name">Name</label>
+                <input
+                  type="text"
+                  id="page-subject-name"
+                  x-model="$store.builder.card.name"
+                />
+
+                <label for="page-subject-image-url">Image URL</label>
+                <input
+                  type="text"
+                  id="page-subject-image-url"
+                  x-model="$store.builder.card.imageUrl"
+                />
+
+                <label for="page-subject-image-alt">Image alt text</label>
+                <input
+                  type="text"
+                  id="page-subject-image-alt"
+                  x-model="$store.builder.card.imageAlt"
+                />
+              </div>
+            </fieldset>
+
+            <div class="details-table-container">
+              <table>
+                <caption>
+                  Details
+                </caption>
+                <thead>
+                  <tr>
+                    <th>Label</th>
+                    <th>Value</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <template
+                    x-for="(detail, index) in $store.builder.card.details"
+                    :key="detail.key"
+                  >
+                    <tr>
+                      <td>
+                        <input type="text" x-model="detail.label" />
+                      </td>
+                      <td>
+                        <input type="text" x-model="detail.value" />
+                      </td>
+                      <td>
+                        <button
+                          aria-label="delete row"
+                          @click="$store.builder.card.details.splice(index, 1)"
+                        >
+                          <i class="bi bi-trash3-fill"></i>
+                        </button>
+                      </td>
+                    </tr>
+                  </template>
+                </tbody>
+              </table>
+
+              <button
+                aria-label="add new row"
+                @click="$store.builder.addDetail()"
+              >
+                <i class="bi bi-plus-circle-fill"></i>
+              </button>
+            </div>
           </div>
-          <div class="tab-panels">
-            <div
-              role="tabpanel"
-              id="outer-page-tab-panel"
-              aria-labelledby="outer-page-tab"
-              x-show="selected_tab === 0"
-            >
-              hello
-            </div>
-            <div
-              role="tabpanel"
-              id="main-sections-tab-panel"
-              aria-labelledby="main-sections-tab"
-              x-show="selected_tab === 1"
-              x-cloak
-            >
-              world
-            </div>
+          <div
+            role="tabpanel"
+            id="main-sections-tab-panel"
+            aria-labelledby="main-sections-tab"
+            x-show="selected_tab === 1"
+            x-cloak
+          >
+            world
           </div>
         </div>
-      </aside>
+        <div class="update-page-btn-container">
+          <button>
+            <i class="bi bi-magic"></i>
+            Update Page
+          </button>
+        </div>
+      </div>
     </main>
-
     <footer>
       <hr />
-      <p id="footer-copyright"></p>
+      <p
+        x-data
+        x-text="`© ${new Date().getFullYear()} Cuebitt. All rights reserved.`"
+      ></p>
     </footer>
 
-    <!-- init theme switcher -->
+    <!-- init theme switcher first to avoid flashing the wrong theme -->
     <script type="module">
       import { setupThemeSwitcher } from "./templates/theme-switcher.mjs";
 
       setupThemeSwitcher("#theme-switcher");
-    </script>
-
-    <!-- init Alpine.js -->
-    <script type="module">
-      import Alpine from "https://esm.sh/alpinejs";
-
-      Alpine.start();
-    </script>
-
-    <!-- init footer copyright year -->
-    <script>
-      document.getElementById("footer-copyright").textContent =
-        `© ${new Date().getFullYear()} Cuebitt. All rights reserved.`;
     </script>
 
     <!-- init app -->

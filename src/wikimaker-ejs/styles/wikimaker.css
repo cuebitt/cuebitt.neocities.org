@@ -1,136 +1,217 @@
-@import url("https://unpkg.com/open-props@1.7.7");
-@import url("https://unpkg.com/open-props@1.7.7/normalize.min.css");
-@import url("https://unpkg.com/open-props@1.7.7/buttons.min.css");
-@import url("https://unpkg.com/open-props/theme.light.switch.min.css");
-@import url("https://unpkg.com/open-props/theme.dark.switch.min.css");
-@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
-
-/* Styles for the Wiki builder, not the generated Wiki itself. */
-
-html,
-body {
-	margin: 0;
-	padding: 0;
-	height: 100%;
-}
-
+@import "https://unpkg.com/open-props@1.7.7";
+@import "https://unpkg.com/open-props@1.7.7/normalize.min.css";
+@import "https://unpkg.com/open-props@1.7.7/buttons.min.css";
+@import "https://unpkg.com/open-props/theme.light.switch.min.css";
+@import "https://unpkg.com/open-props/theme.dark.switch.min.css";
+@import "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css";
 [x-cloak] {
 	display: none !important;
 }
-
-/* outer container */
-
-.container {
-	padding: var(--size-fluid-1) var(--size-fluid-2);
-	display: flex;
+html,
+body {
+	height: 100%;
+	overflow: hidden;
+}
+body {
 	flex-direction: column;
-	min-height: 100svh;
+	display: flex;
 }
-
-/* expand the main content area to fill the page */
-
-.container main {
-	flex-grow: 1;
-	overflow: auto;
+header h1 {
+	font-size: var(--font-size-fluid-3);
 }
-
-/* page header  */
-
+header h2 {
+	font-size: var(--font-size-fluid-1);
+	font-weight: var(--font-weight-6);
+}
+main {
+	padding: var(--size-2) var(--size-4);
+	gap: var(--size-4);
+	flex: 1;
+	display: flex;
+	overflow: hidden;
+}
+.column {
+	border: var(--border-size-3) solid var(--surface-2);
+	border-radius: var(--radius-2);
+	flex: 1;
+	overflow-y: auto;
+}
+.preview-col {
+	background-color: var(--surface-1);
+	flex: 2.5;
+}
+.builder-col {
+	border: none;
+	flex: 1;
+}
 hr {
 	margin-block: var(--size-4);
 }
-
-.page-header {
-	display: flex;
+header {
+	padding: var(--size-2) var(--size-3);
 	justify-content: space-between;
 	align-items: center;
+	display: flex;
 }
-
+footer {
+	padding: var(--size-2);
+	width: 100%;
+}
+footer p {
+	width: fit-content;
+	margin: 0 auto;
+}
 .page-header h1 {
 	font-size: var(--font-size-fluid-3);
 }
-
 .page-header h2 {
 	font-size: var(--font-size-fluid-1);
 	font-weight: var(--font-weight-6);
 }
-
-/* main section */
-main {
-	padding: var(--size-4);
-	display: grid;
-	grid-template-columns: 2fr 1fr;
-	gap: var(--size-4);
-}
-
-/* generated page preview */
-
 .page-preview-container {
 	border: var(--border-size-2) solid var(--surface-2);
 	border-radius: var(--radius-2);
-	padding: var(--size-2);
-	height: 100%;
-	max-height: 100%;
-	overflow: auto;
 	background-color: var(--surface-1);
+	flex: 2.5;
+	overflow-y: auto;
 }
-
-/* page builder */
-
 .builder-control-panel {
-	height: 100%;
+	flex: 1;
 }
-
 .tab-container {
-	display: flex;
 	flex-direction: column;
-	height: 100%;
-}
-
-.tab-list {
-	list-style: none;
-	padding: 0;
 	display: flex;
-	flex-shrink: 1;
 }
-
+.tab-list {
+	padding: 0;
+	list-style: none;
+	display: flex;
+}
 .tab-list li {
 	margin: 0;
 	padding: 0;
 }
-
 .tab-list button {
-	margin: 0;
 	box-shadow: none;
-	background-color: transparent;
-	border-color: transparent !important;
+	background-color: #0000;
 	border-bottom-width: 0;
-	border-bottom-left-radius: 0;
 	border-bottom-right-radius: 0;
-
+	border-bottom-left-radius: 0;
+	margin: 0;
 	transition: none;
+	border-color: #0000 !important;
 }
-
 .tab-list button[aria-selected="true"] {
-	border-color: var(--surface-2) !important;
 	background-color: var(--surface-2);
+	border-color: var(--surface-2) !important;
 }
-
 .tab-list button:hover {
 	box-shadow: none;
 }
-
 .tab-panels {
-	flex-grow: 1;
-}
-
-.tab-panels div[role="tabpanel"] {
 	border: var(--border-size-2) solid var(--surface-2);
 	border-radius: var(--radius-2);
-	height: 100%;
-	overflow: auto;
+	flex: 1;
+	overflow-y: auto;
+}
+.tab-container div[role="tabpanel"] {
+	padding: var(--size-2) var(--size-4);
+}
+.tab-panels div[role="tabpanel"]:first-child {
+	border-top-left-radius: 0;
+}
+fieldset .fields {
+	white-space: nowrap;
+	gap: var(--size-2) var(--size-4);
+	grid-template-columns: min-content 1fr;
+	display: grid;
+}
+.details-table-container {
+	padding: 0 var(--size-1);
+	gap: var(--size-2);
+	flex-direction: column;
+	display: flex;
+}
+.details-table-container table {
+	table-layout: fixed;
+	width: 100%;
+	max-width: 100%;
+}
+.details-table-container table input {
+	width: 100%;
+}
+.details-table-container table button {
+	width: 100%;
+	margin: 0;
+}
+.update-page-btn-container {
+	padding: var(--size-2) var(--size-10);
+	flex-direction: column;
+	width: 100%;
+	padding-bottom: 0;
+	display: flex;
 }
 
-.tab-panels div[role="tabpanel"]:first-of-type {
-	border-top-left-radius: 0;
+/* theme switcher component */
+
+.dropdown-container {
+	position: relative;
+	height: fit-content;
+}
+
+.light-dark-switcher {
+	padding: var(--size-1) var(--size-2);
+	aspect-ratio: var(--ratio-square);
+}
+
+.dropdown-menu {
+	position: absolute;
+	left: 0;
+	top: 0;
+	transform: translateX(-60%) translateY(50%);
+	z-index: var(--layer-important);
+	border-width: var(--border-size-2);
+	border-radius: var(--radius-2);
+	padding: var(--size-1);
+	width: fit-content;
+	white-space: nowrap;
+	background-color: var(--surface-1);
+}
+
+.dropdown-menu form {
+	display: inline-flex;
+	flex-direction: column;
+}
+
+.dropdown-menu input[type="radio"] {
+	display: none;
+}
+
+.dropdown-menu label {
+	width: 100%;
+	padding: var(--size-1) var(--size-2);
+	border-radius: var(--radius-2);
+}
+
+.dropdown-menu span {
+	width: 100%;
+	display: flex;
+}
+
+.dropdown-menu label:hover {
+	background-color: var(--surface-2);
+}
+
+.dropdown-menu label i {
+	margin-right: var(--size-1);
+}
+
+.dropdown-menu input[type="radio"]:checked + label .on,
+.dropdown-menu input[type="radio"]:not(:checked) + label .off {
+	display: inline-block;
+}
+
+.dropdown-menu input[type="radio"]:checked + label .off,
+.dropdown-menu input[type="radio"]:not(:checked) + label .on {
+	display: none;
 }
