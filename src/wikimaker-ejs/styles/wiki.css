@@ -1,0 +1,8 @@
+@import url("https://unpkg.com/open-props@1.7.7");
+@import url("https://unpkg.com/open-props@1.7.7/normalize.min.css");
+@import url("https://unpkg.com/open-props@1.7.7/buttons.min.css");
+@import url("https://unpkg.com/open-props/theme.light.switch.min.css");
+@import url("https://unpkg.com/open-props/theme.dark.switch.min.css");
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+/* CSS included in the exported page */

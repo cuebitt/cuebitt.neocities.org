@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wikimaker</title>
+
+    <link
+      rel="shortcut icon"
+      href="https://fav.farm/🌐"
+      type="image/x-icon"
+      id="favicon"
+    />
+    <link rel="stylesheet" href="styles/wikimaker.css" />
+    <link rel="stylesheet" href="styles/themeSwitcher.css" />
+
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js"
+    ></script>
+  </head>
+
+  <body class="container">
+    <header class="page-header">
+      <hgroup>
+        <h1>Wikimaker</h1>
+        <h2>an easy static wiki page generator!</h2>
+      </hgroup>
+
+      <div id="theme-switcher"></div>
+    </header>
+
+    <main>
+      <section class="page-preview-container">
+        <div id="page-preview"></div>
+        <h1>a</h1>
+        <h1>a</h1>
+        <h1>a</h1>
+        <h1>a</h1>
+        <h1>a</h1>
+        <h1>a</h1>
+        <h1>a</h1>
+        <h1>a</h1>
+        <h1>a</h1>
+        <h1>a</h1>
+      </section>
+
+      <aside class="builder-control-panel">
+        <div class="tab-container" x-data="{selected_tab: 0}">
+          <div class="tabs-bar">
+            <ul role="tablist" class="tab-list">
+              <li>
+                <button
+                  role="tab"
+                  aria-controls="outer-page-tab-panel"
+                  id="outer-page-tab"
+                  :aria-selected="selected_tab === 0"
+                  @click="selected_tab = 0"
+                >
+                  Outer Page
+                </button>
+              </li>
+              <li>
+                <button
+                  role="tab"
+                  aria-controls="main-sections-tab-panel"
+                  id="main-sections-tab"
+                  :aria-selected="selected_tab === 1"
+                  @click="selected_tab = 1"
+                >
+                  Main Sections
+                </button>
+              </li>
+            </ul>
+          </div>
+          <div class="tab-panels">
+            <div
+              role="tabpanel"
+              id="outer-page-tab-panel"
+              aria-labelledby="outer-page-tab"
+              x-show="selected_tab === 0"
+            >
+              hello
+            </div>
+            <div
+              role="tabpanel"
+              id="main-sections-tab-panel"
+              aria-labelledby="main-sections-tab"
+              x-show="selected_tab === 1"
+              x-cloak
+            >
+              world
+            </div>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      <hr />
+      <p id="footer-copyright"></p>
+    </footer>
+
+    <!-- init theme switcher -->
+    <script type="module">
+      import { setupThemeSwitcher } from "./templates/theme-switcher.mjs";
+
+      setupThemeSwitcher("#theme-switcher");
+    </script>
+
+    <!-- init Alpine.js -->
+    <script type="module">
+      import Alpine from "https://esm.sh/alpinejs";
+
+      Alpine.start();
+    </script>
+
+    <!-- init footer copyright year -->
+    <script>
+      document.getElementById("footer-copyright").textContent =
+        `© ${new Date().getFullYear()} Cuebitt. All rights reserved.`;
+    </script>
+
+    <!-- init app -->
+    <!-- do this last since it takes the longest -->
+    <script type="module" src="app/app.mjs"></script>
+  </body>
+</html>
