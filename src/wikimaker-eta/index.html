@@ -6,6 +6,7 @@
     <title>Wikimaker</title>
 
     <link rel="stylesheet" href="styles/wikimaker.css" />
+    <script src="components/theme-switcher.js"></script>
   </head>
   <body>
     <header>
@@ -14,7 +15,7 @@
         <h2>an easy static wiki page generator!</h2>
       </hgroup>
 
-      <div id="theme-switcher"></div>
+      <theme-switcher></theme-switcher>
     </header>
     <main>
       <div class="column preview-col">
@@ -174,13 +175,6 @@
         x-text="`© ${new Date().getFullYear()} Cuebitt. All rights reserved.`"
       ></p>
     </footer>
-
-    <!-- init theme switcher first to avoid flashing the wrong theme -->
-    <script type="module">
-      import { setupThemeSwitcher } from "./partials/theme-switcher.mjs";
-
-      setupThemeSwitcher("#theme-switcher");
-    </script>
 
     <!-- init app -->
     <!-- do this last since it takes the longest -->
