@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Responsive Layout</title>
+    <title>Wikimaker</title>
 
     <link rel="stylesheet" href="styles/wikimaker.css" />
   </head>
@@ -18,7 +18,7 @@
     </header>
     <main>
       <div class="column preview-col">
-        <div id="page-preview"></div>
+        <iframe id="page-preview-frame"></iframe>
       </div>
 
       <div class="column builder-col tab-container" x-data="{selected_tab: 0}">
@@ -160,7 +160,7 @@
           </div>
         </div>
         <div class="update-page-btn-container">
-          <button>
+          <button id="update-page-btn">
             <i class="bi bi-magic"></i>
             Update Page
           </button>
@@ -177,7 +177,7 @@
 
     <!-- init theme switcher first to avoid flashing the wrong theme -->
     <script type="module">
-      import { setupThemeSwitcher } from "./templates/theme-switcher.mjs";
+      import { setupThemeSwitcher } from "./partials/theme-switcher.mjs";
 
       setupThemeSwitcher("#theme-switcher");
     </script>
