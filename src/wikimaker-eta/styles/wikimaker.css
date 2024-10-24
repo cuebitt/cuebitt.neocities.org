@@ -38,7 +38,7 @@ main {
 }
 .preview-col {
 	background-color: var(--surface-1);
-	flex: 2.5;
+	flex: 2;
 }
 .builder-col {
 	border: none;

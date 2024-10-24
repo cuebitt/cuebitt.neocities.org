@@ -16,13 +16,30 @@
         background-color: var(--surface-1);
         border-radius: 5px;
       }
-
       [data-theme="dark"] theme-switcher::part(btn) {
         padding: 0;
         border: none;
         background: none;
         background-color: var(--surface-3);
         border-radius: 5px;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        [data-theme="light"] theme-switcher::part(btn) {
+          padding: 0;
+          border: var(--border-size-2) solid var(--surface-3);
+          background: none;
+          background-color: var(--surface-1);
+          border-radius: 5px;
+        }
+
+        [data-theme="auto"] theme-switcher::part(btn) {
+          padding: 0;
+          border: none;
+          background: none;
+          background-color: var(--surface-3);
+          border-radius: 5px;
+        }
       }
     </style>
   </head>
@@ -125,49 +142,67 @@
               </div>
             </fieldset>
 
-            <div class="details-table-container">
-              <table>
-                <caption>
-                  Details
-                </caption>
-                <thead>
-                  <tr>
-                    <th>Label</th>
-                    <th>Value</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <template
-                    x-for="(detail, index) in $store.builder.card.details"
-                    :key="detail.key"
-                  >
+            <fieldset>
+              <legend>Details</legend>
+              <div class="details-table-container">
+                <table>
+                  <thead>
                     <tr>
-                      <td>
-                        <input type="text" x-model="detail.label" />
-                      </td>
-                      <td>
-                        <input type="text" x-model="detail.value" />
-                      </td>
-                      <td>
-                        <button
-                          aria-label="delete row"
-                          @click="$store.builder.card.details.splice(index, 1)"
-                        >
-                          <i class="bi bi-trash3-fill"></i>
-                        </button>
-                      </td>
+                      <th scope="col">Label</th>
+                      <th scope="col">Value</th>
                     </tr>
-                  </template>
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    <template
+                      x-for="(detail, index) in $store.builder.card.details"
+                      :key="detail.key"
+                    >
+                      <tr>
+                        <td>
+                          <input type="text" x-model="detail.label" />
+                        </td>
+                        <td>
+                          <input type="text" x-model="detail.value" />
+                        </td>
+                        <td>
+                          <button
+                            aria-label="delete row"
+                            @click="$store.builder.card.details.splice(index, 1)"
+                          >
+                            <i class="bi bi-trash3-fill"></i>
+                          </button>
+                        </td>
+                      </tr>
+                    </template>
+                  </tbody>
+                </table>
 
-              <button
-                aria-label="add new row"
-                @click="$store.builder.addDetail()"
-              >
-                <i class="bi bi-plus-circle-fill"></i>
-              </button>
-            </div>
+                <button
+                  aria-label="add new row"
+                  @click="$store.builder.addDetail()"
+                >
+                  <i class="bi bi-plus-circle-fill"></i>
+                </button>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Misc</legend>
+              <div class="fields">
+                <label for="emoji-favicon">Emoji Favicon</label>
+                <input type="text" id="emoji-favicon" />
+
+                <label for="include-theme-switcher"
+                  >Include Theme Switcher</label
+                >
+                <input
+                  type="checkbox"
+                  id="include-theme-switcher"
+                  style="margin: auto 0"
+                  x-model="$store.builder.other.includeThemeSwitcher"
+                />
+              </div>
+            </fieldset>
           </div>
           <div
             role="tabpanel"

@@ -23,6 +23,7 @@ const defaultData = {
 	},
 	other: {
 		faviconEmoji: "🌐",
+		includeThemeSwitcher: true,
 	},
 	mainContent: [
 		{

@@ -4,5 +4,9 @@ export const header = /*html*/ `
     <h1><%= it.title %></h1>
     <h2><%= it.subtitle %></h2>
   </hgroup>
+
+  <% if (it.includeThemeSwitcher) { %>
+    <theme-switcher></theme-switcher>
+  <% } %>
 </header>
 `;
