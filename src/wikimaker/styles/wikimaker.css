@@ -21,7 +21,8 @@ header h1 {
 }
 header h2 {
 	font-size: var(--font-size-fluid-1);
-	font-weight: var(--font-weight-6);
+	font-weight: var(--font-weight-4);
+	color: var(--text-2);
 }
 main {
 	padding: var(--size-2) var(--size-4);
